@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rehmat Developers — Transforming Ideas Into Digital Reality</title>
+  <meta name="description" content="Rehmat Developers — Premium web development agency offering custom websites, full-stack applications, e-commerce solutions, and digital experiences. Based in Raja Jang, Kasur, Pakistan. CEO: Muhammad Waleed.">
+  <meta name="keywords" content="web development, website design, full-stack developer, e-commerce, Rehmat Developers, Muhammad Waleed, Kasur, Pakistan, Lahore, web agency">
+  <meta name="author" content="Rehmat Developers">
+  <meta property="og:title" content="Rehmat Developers — Premium Web Development Agency">
+  <meta property="og:description" content="We craft stunning websites, powerful web applications, and digital experiences that help your business grow.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== PRELOADER ===== -->
+  <div class="preloader">
+    <div class="preloader-logo">&lt;RD/&gt;</div>
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ===== CUSTOM CURSOR ===== -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div class="scroll-progress"></div>
+
+  <!-- ===== PARTICLES ===== -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <!-- Text logo ki jagah image logo -->
+<a href="index.html" class="logo">
+    <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+    <!-- Background Elements -->
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+    <div class="hero-grid"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="dot"></span>
+        Available for New Projects
+      </div>
+
+      <h1 class="reveal reveal-delay-1">
+        We Build<br>
+        <span class="gradient-text typing-text" data-words='["Stunning Websites", "Web Applications", "E-Commerce Stores", "Digital Experiences", "SaaS Platforms"]'></span>
+        <span class="type-cursor"></span>
+      </h1>
+
+      <p class="subtitle reveal reveal-delay-2">
+        Rehmat Developers is a premium web development agency crafting high-performance, visually stunning digital solutions that transform your business and captivate your audience.
+      </p>
+
+      <div class="hero-buttons reveal reveal-delay-3">
+        <a href="contact.html" class="btn btn-primary btn-lg">
+          🚀 Start Your Project
+        </a>
+        <a href="portfolio.html" class="btn btn-secondary btn-lg">
+          💼 View Our Work
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE SECTION ===== -->
+  <div class="marquee-section">
+    <div class="marquee">
+      <div class="marquee-item">HTML5 <span class="sep">◆</span></div>
+      <div class="marquee-item">CSS3 <span class="sep">◆</span></div>
+      <div class="marquee-item">JavaScript <span class="sep">◆</span></div>
+      <div class="marquee-item">React.js <span class="sep">◆</span></div>
+      <div class="marquee-item">Next.js <span class="sep">◆</span></div>
+      <div class="marquee-item">Node.js <span class="sep">◆</span></div>
+      <div class="marquee-item">Python <span class="sep">◆</span></div>
+      <div class="marquee-item">MongoDB <span class="sep">◆</span></div>
+      <div class="marquee-item">WordPress <span class="sep">◆</span></div>
+      <div class="marquee-item">Figma <span class="sep">◆</span></div>
+      <div class="marquee-item">Tailwind CSS <span class="sep">◆</span></div>
+      <div class="marquee-item">PHP <span class="sep">◆</span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-item">HTML5 <span class="sep">◆</span></div>
+      <div class="marquee-item">CSS3 <span class="sep">◆</span></div>
+      <div class="marquee-item">JavaScript <span class="sep">◆</span></div>
+      <div class="marquee-item">React.js <span class="sep">◆</span></div>
+      <div class="marquee-item">Next.js <span class="sep">◆</span></div>
+      <div class="marquee-item">Node.js <span class="sep">◆</span></div>
+      <div class="marquee-item">Python <span class="sep">◆</span></div>
+      <div class="marquee-item">MongoDB <span class="sep">◆</span></div>
+      <div class="marquee-item">WordPress <span class="sep">◆</span></div>
+      <div class="marquee-item">Figma <span class="sep">◆</span></div>
+      <div class="marquee-item">Tailwind CSS <span class="sep">◆</span></div>
+      <div class="marquee-item">PHP <span class="sep">◆</span></div>
+    </div>
+  </div>
+
+  <!-- ===== SERVICES OVERVIEW ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">⚡ What We Do</div>
+        <h2 class="reveal reveal-delay-1">Services That <span class="gradient-text">Drive Results</span></h2>
+        <p class="reveal reveal-delay-2">We offer comprehensive digital solutions tailored to your unique business needs. From concept to deployment, we handle everything.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="glass-card service-card reveal reveal-delay-1">
+          <span class="card-number">01</span>
+          <div class="service-icon-wrapper">🌐</div>
+          <h3>Custom Web Development</h3>
+          <p>We build tailor-made websites from scratch using the latest technologies. Every pixel is crafted to perfection, ensuring your site stands out from the competition.</p>
+          <ul class="service-features">
+            <li>Responsive & Mobile-First Design</li>
+            <li>SEO-Optimized Architecture</li>
+            <li>Lightning-Fast Performance</li>
+            <li>Cross-Browser Compatibility</li>
+          </ul>
+        </div>
+
+        <div class="glass-card service-card reveal reveal-delay-2">
+          <span class="card-number">02</span>
+          <div class="service-icon-wrapper">⚙️</div>
+          <h3>Full-Stack Applications</h3>
+          <p>End-to-end web applications with powerful backends, dynamic frontends, and secure database integrations that scale with your business growth.</p>
+          <ul class="service-features">
+            <li>React / Next.js Frontends</li>
+            <li>Node.js / Python Backends</li>
+            <li>RESTful API Development</li>
+            <li>Real-Time Features</li>
+          </ul>
+        </div>
+
+        <div class="glass-card service-card reveal reveal-delay-3">
+          <span class="card-number">03</span>
+          <div class="service-icon-wrapper">🛒</div>
+          <h3>E-Commerce Solutions</h3>
+          <p>Feature-rich online stores designed to convert visitors into loyal customers. Seamless shopping experiences with secure payment processing.</p>
+          <ul class="service-features">
+            <li>Payment Gateway Integration</li>
+            <li>Inventory Management</li>
+            <li>Order Tracking System</li>
+            <li>Multi-Currency Support</li>
+          </ul>
+        </div>
+
+        <div class="glass-card service-card reveal reveal-delay-4">
+          <span class="card-number">04</span>
+          <div class="service-icon-wrapper">🎨</div>
+          <h3>UI/UX Design</h3>
+          <p>Beautiful, intuitive interfaces designed with your users in mind. We create wireframes, prototypes, and pixel-perfect designs that delight.</p>
+          <ul class="service-features">
+            <li>User Research & Personas</li>
+            <li>Wireframing & Prototyping</li>
+            <li>Design System Creation</li>
+            <li>Usability Testing</li>
+          </ul>
+        </div>
+
+        <div class="glass-card service-card reveal reveal-delay-5">
+          <span class="card-number">05</span>
+          <div class="service-icon-wrapper">🚀</div>
+          <h3>Landing Pages</h3>
+          <p>High-converting landing pages that turn visitors into leads and customers. Data-driven design with clear calls-to-action and persuasive copy.</p>
+          <ul class="service-features">
+            <li>A/B Testing Ready</li>
+            <li>Conversion Optimization</li>
+            <li>Fast Load Times</li>
+            <li>Analytics Integration</li>
+          </ul>
+        </div>
+
+        <div class="glass-card service-card reveal reveal-delay-6">
+          <span class="card-number">06</span>
+          <div class="service-icon-wrapper">🔧</div>
+          <h3>Maintenance & Support</h3>
+          <p>Ongoing website maintenance, security updates, performance monitoring, and 24/7 technical support to keep your digital presence flawless.</p>
+          <ul class="service-features">
+            <li>Regular Security Updates</li>
+            <li>Performance Monitoring</li>
+            <li>Bug Fixes & Improvements</li>
+            <li>Content Updates</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:50px;" class="reveal">
+        <a href="services.html" class="btn btn-secondary">View All Services →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS SECTION ===== -->
+  <section class="section section-alt stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="glass-card stat-card reveal reveal-delay-1">
+          <h3><span class="counter" data-target="50" data-suffix="+">0</span></h3>
+          <p>Projects Delivered</p>
+        </div>
+        <div class="glass-card stat-card reveal reveal-delay-2">
+          <h3><span class="counter" data-target="35" data-suffix="+">0</span></h3>
+          <p>Happy Clients</p>
+        </div>
+        <div class="glass-card stat-card reveal reveal-delay-3">
+          <h3><span class="counter" data-target="2" data-suffix="+">0</span></h3>
+          <p>Years Experience</p>
+        </div>
+        <div class="glass-card stat-card reveal reveal-delay-4">
+          <h3><span class="counter" data-target="100" data-suffix="%">0</span></h3>
+          <p>Client Satisfaction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY CHOOSE US ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">🏆 Why Us</div>
+        <h2 class="reveal reveal-delay-1">Why Businesses <span class="gradient-text">Trust Us</span></h2>
+        <p class="reveal reveal-delay-2">We don't just write code — we build digital experiences that drive real business growth and leave lasting impressions.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="glass-card why-card reveal reveal-delay-1">
+          <div class="icon-box cyan">⚡</div>
+          <div>
+            <h3>Lightning-Fast Delivery</h3>
+            <p>We respect your time and deadlines. Most projects are delivered within 1-3 weeks without ever compromising on quality. Our streamlined workflow ensures efficiency at every stage.</p>
+          </div>
+        </div>
+
+        <div class="glass-card why-card reveal reveal-delay-2">
+          <div class="icon-box purple">💎</div>
+          <div>
+            <h3>Premium Quality Code</h3>
+            <p>Every line of code we write is clean, well-documented, and follows industry best practices. Your website will be scalable, maintainable, and built to last for years to come.</p>
+          </div>
+        </div>
+
+        <div class="glass-card why-card reveal reveal-delay-3">
+          <div class="icon-box pink">💰</div>
+          <div>
+            <h3>Affordable Pricing</h3>
+            <p>Premium quality doesn't have to break the bank. We offer competitive rates and flexible payment plans that make professional web development accessible to businesses of all sizes.</p>
+          </div>
+        </div>
+
+        <div class="glass-card why-card reveal reveal-delay-4">
+          <div class="icon-box green">🔧</div>
+          <div>
+            <h3>24/7 Dedicated Support</h3>
+            <p>Our relationship doesn't end at delivery. We provide round-the-clock support via WhatsApp, email, and phone to ensure your website runs smoothly at all times.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">💬 Testimonials</div>
+        <h2 class="reveal reveal-delay-1">What Our <span class="gradient-text">Clients Say</span></h2>
+        <p class="reveal reveal-delay-2">Don't just take our word for it — hear from the businesses we've helped transform digitally.</p>
+      </div>
+    </div>
+
+    <div class="testimonials-wrapper reveal">
+      <div class="testimonials-track">
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Rehmat Developers completely transformed our online presence. The website they built is stunning, fast, and has significantly increased our customer inquiries. Highly recommended!"</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AK</div>
+            <div>
+              <h4>Ahmed Khan</h4>
+              <span>CEO, Khan Enterprises</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Working with Muhammad Waleed and his team was an absolute pleasure. They understood our vision perfectly and delivered a web application that exceeded all our expectations."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SR</div>
+            <div>
+              <h4>Sara Rizvi</h4>
+              <span>Founder, StyleHub</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"The e-commerce store they built for us has doubled our online sales in just 3 months. The attention to detail and user experience is world-class. Amazing team!"</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">UM</div>
+            <div>
+              <h4>Usman Malik</h4>
+              <span>Owner, Malik Traders</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Professional, responsive, and incredibly talented. They delivered our project ahead of schedule and the quality was outstanding. We've already started our second project with them."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">FA</div>
+            <div>
+              <h4>Fatima Ali</h4>
+              <span>Marketing Director, TechVentures</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Best investment we made for our business. The landing page they designed converts like crazy. Their understanding of modern web trends is impressive."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">HN</div>
+            <div>
+              <h4>Hassan Nawaz</h4>
+              <span>Startup Founder</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicate for seamless loop -->
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Rehmat Developers completely transformed our online presence. The website they built is stunning, fast, and has significantly increased our customer inquiries. Highly recommended!"</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AK</div>
+            <div>
+              <h4>Ahmed Khan</h4>
+              <span>CEO, Khan Enterprises</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Working with Muhammad Waleed and his team was an absolute pleasure. They understood our vision perfectly and delivered a web application that exceeded all our expectations."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SR</div>
+            <div>
+              <h4>Sara Rizvi</h4>
+              <span>Founder, StyleHub</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"The e-commerce store they built for us has doubled our online sales in just 3 months. The attention to detail and user experience is world-class. Amazing team!"</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">UM</div>
+            <div>
+              <h4>Usman Malik</h4>
+              <span>Owner, Malik Traders</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Professional, responsive, and incredibly talented. They delivered our project ahead of schedule and the quality was outstanding. We've already started our second project with them."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">FA</div>
+            <div>
+              <h4>Fatima Ali</h4>
+              <span>Marketing Director, TechVentures</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Best investment we made for our business. The landing page they designed converts like crazy. Their understanding of modern web trends is impressive."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">HN</div>
+            <div>
+              <h4>Hassan Nawaz</h4>
+              <span>Startup Founder</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEEDBACK SECTION ===== -->
+  <section class="section feedback-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">⭐ Client Feedback</div>
+        <h2 class="reveal reveal-delay-1">Real <span class="gradient-text">Feedback</span> From Real Clients</h2>
+        <p class="reveal reveal-delay-2">These are genuine reviews submitted by our valued clients through our website.</p>
+      </div>
+
+      <!-- Feedback Display -->
+      <div class="feedback-grid" id="feedbackContainer">
+        <!-- Feedbacks will be rendered here by JavaScript -->
+      </div>
+
+      <!-- Feedback Form -->
+      <div class="feedback-form-wrapper reveal">
+        <h3>📝 Share Your Experience</h3>
+        <div id="feedbackSuccess" class="form-success" style="display:none;">
+          <div class="icon">✅</div>
+          <h3>Thank You!</h3>
+          <p>Your feedback has been submitted successfully.</p>
+        </div>
+        <form id="feedbackForm" class="contact-form">
+          <input type="hidden" id="feedbackRating" name="rating" value="0">
+          <div class="star-rating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fbName">Your Name *</label>
+              <input type="text" id="fbName" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="fbEmail">Email (Optional)</label>
+              <input type="email" id="fbEmail" placeholder="john@example.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fbService">Service Used</label>
+            <select id="fbService">
+              <option value="">-- Select Service --</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Full-Stack App">Full-Stack Application</option>
+              <option value="E-Commerce">E-Commerce</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Landing Page">Landing Page</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fbMessage">Your Feedback *</label>
+            <textarea id="fbMessage" placeholder="Tell us about your experience..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Submit Feedback ⭐</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="section section-alt cta-section">
+    <div class="cta-orb o1"></div>
+    <div class="cta-orb o2"></div>
+    <div class="container">
+      <div class="reveal">
+        <h2>Ready to Build Something <span class="gradient-text">Extraordinary?</span></h2>
+        <p>Let's discuss your project and turn your vision into a stunning digital reality. Free consultation, no obligations.</p>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary btn-lg">📞 Get Free Quote</a>
+          <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%27m%20interested%20in%20your%20services." class="btn btn-whatsapp btn-lg" target="_blank">💬 WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">&lt;RD/&gt;</a>
+        <p>Rehmat Developers is a premium web development agency based in Raja Jang, Kasur, Pakistan. We transform ideas into powerful digital experiences that drive business growth.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Facebook">📘</a>
+          <a href="#" class="social-link" title="Instagram">📸</a>
+          <a href="#" class="social-link" title="LinkedIn">💼</a>
+          <a href="#" class="social-link" title="GitHub">🐙</a>
+          <a href="#" class="social-link" title="Twitter">🐦</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">→ Home</a></li>
+          <li><a href="about.html">→ About Us</a></li>
+          <li><a href="services.html">→ Services</a></li>
+          <li><a href="portfolio.html">→ Portfolio</a></li>
+          <li><a href="blog.html">→ Blog</a></li>
+          <li><a href="pricing.html">→ Pricing</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">→ Web Development</a></li>
+          <li><a href="services.html">→ Full-Stack Apps</a></li>
+          <li><a href="services.html">→ E-Commerce</a></li>
+          <li><a href="services.html">→ UI/UX Design</a></li>
+          <li><a href="services.html">→ Landing Pages</a></li>
+          <li><a href="services.html">→ SEO & Marketing</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact Info</h4>
+        <ul>
+          <li><a href="mailto:rehmat.developers022@gmail.com">📧 rehmat.developers022@gmail.com</a></li>
+          <li><a href="tel:+923284461097">📱 +92 (328) 446-1097</a></li>
+          <li><a href="https://wa.me/923284461097" target="_blank">💬 WhatsApp Chat</a></li>
+          <li><a href="contact.html">📍 Raja Jang, Kasur, Pakistan</a></li>
+          <li><a href="faq.html">❓ FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Rehmat Developers. All Rights Reserved.</p>
+      <p class="made-with">Made with <span class="heart">❤</span> by Muhammad Waleed</p>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOAT ===== -->
+  <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%27m%20interested%20in%20your%20services." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
+
+  <!-- ===== SCROLL TO TOP ===== -->
+  <button class="scroll-top" title="Back to Top">↑</button>
+
+  <!-- ===== ADMIN LOGIN MODAL ===== -->
+  <div class="admin-modal-overlay">
+    <div class="admin-modal">
+      <h3>🔐 Admin Login</h3>
+      <p>Enter admin password to manage feedbacks</p>
+      <input type="password" id="adminPassword" placeholder="••••••••">
+      <div class="error-msg">❌ Incorrect password. Try again.</div>
+      <div class="btn-row">
+        <button class="btn btn-secondary btn-sm" onclick="document.querySelector('.admin-modal-overlay').classList.remove('show')">Cancel</button>
+        <button class="btn btn-primary btn-sm" id="adminLoginBtn">Login</button>
+      </div>
+      <div style="margin-top:16px;">
+        <button class="btn btn-ghost btn-sm" id="adminLogoutBtn">Logout Admin</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Portfolio | Rehmat Developers</title>
+  <meta name="description" content="Explore our portfolio of websites, web applications, e-commerce stores, and digital projects crafted by Rehmat Developers. Real work for real clients.">
+  <meta name="keywords" content="portfolio, web development projects, case studies, Rehmat Developers work, website examples, Pakistan web agency">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== PRELOADER ===== -->
+  <div class="preloader">
+    <div class="preloader-logo">&lt;RD/&gt;</div>
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ===== CUSTOM CURSOR ===== -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div class="scroll-progress"></div>
+
+  <!-- ===== PARTICLES ===== -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">&lt;RD/&gt;</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html" class="active">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+    <div class="hero-grid"></div>
+    <div class="page-hero-content">
+      <h1 class="reveal">Our <span class="gradient-text">Portfolio</span></h1>
+      <p class="reveal reveal-delay-1">Showcasing our best work, creative projects, and digital success stories</p>
+      <div class="breadcrumb reveal reveal-delay-2">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <span class="current">Portfolio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">💼 Featured Work</div>
+        <h2 class="reveal reveal-delay-1">Projects That <span class="gradient-text">Make Us Proud</span></h2>
+        <p class="reveal reveal-delay-2">Every project in our portfolio represents a unique challenge solved with creativity, technical excellence, and a deep understanding of our clients' goals. Browse through our collection of websites, web applications, and digital experiences we've crafted for businesses across various industries.</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="filter-buttons reveal">
+        <button class="filter-btn active" data-filter="all">🎯 All Projects</button>
+        <button class="filter-btn" data-filter="web">🌐 Websites</button>
+        <button class="filter-btn" data-filter="app">⚙️ Web Apps</button>
+        <button class="filter-btn" data-filter="ecommerce">🛒 E-Commerce</button>
+        <button class="filter-btn" data-filter="design">🎨 UI/UX Design</button>
+        <button class="filter-btn" data-filter="landing">🚀 Landing Pages</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid">
+
+        <!-- Project 1 -->
+        <div class="portfolio-card reveal reveal-delay-1" data-category="web">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);">🏢</div>
+          <div class="portfolio-overlay">
+            <span class="tag">Website</span>
+            <h3>Khan Enterprises</h3>
+            <p>Modern corporate website with CMS integration, blog, and lead generation forms. Built with Next.js and headless CMS for optimal performance.</p>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="portfolio-card reveal reveal-delay-2" data-category="ecommerce">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #7c3aed 0%, #f43f5e 100%);">👗</div>
+          <div class="portfolio-overlay">
+            <span class="tag">E-Commerce</span>
+            <h3>StyleHub Fashion Store</h3>
+            <p>Full-featured online fashion store with payment gateway, inventory management, wishlist, and customer reviews. Doubled sales in 3 months.</p>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="portfolio-card reveal reveal-delay-3" data-category="app">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #f43f5e 0%, #00d4ff 100%);">📊</div>
+          <div class="portfolio-overlay">
+            <span class="tag">Web App</span>
+            <h3>TaskFlow Dashboard</h3>
+            <p>Full-stack project management application with real-time collaboration, team chat, Kanban boards, and powerful analytics dashboard.</p>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="portfolio-card reveal reveal-delay-4" data-category="design">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #00d4ff 0%, #f43f5e 100%);">💳</div>
+          <div class="portfolio-overlay">
+            <span class="tag">UI/UX Design</span>
+            <h3>FinBank Mobile App</h3>
+            <p>Complete UI/UX design for a modern mobile banking application. Clean, intuitive interface with focus on security and user trust.</p>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="portfolio-card reveal reveal-delay-5" data-category="web">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%);">🏘️</div>
+          <div class="portfolio-overlay">
+            <span class="tag">Website</span>
+            <h3>Premier Real Estate</h3>
+            <p>Property listing platform with advanced search, filtering, map integration, virtual tours, and agent profiles. Mobile-responsive design.</p>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="portfolio-card reveal reveal-delay-6" data-category="app">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #f43f5e 0%, #7c3aed 100%);">📈</div>
+          <div class="portfolio-overlay">
+            <span class="tag">Web App</span>
+            <h3>Analytics Pro Dashboard</h3>
+            <p>Interactive data visualization dashboard with real-time charts, custom reports, and multi-user support. Built with React and D3.js.</p>
+          </div>
+        </div>
+
+        <!-- Project 7 -->
+        <div class="portfolio-card reveal reveal-delay-7" data-category="landing">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #00d4ff 0%, #10b981 100%);">🚀</div>
+          <div class="portfolio-overlay">
+            <span class="tag">Landing Page</span>
+            <h3>SaaS Product Launch</h3>
+            <p>High-converting landing page for a SaaS startup launch. Achieved 15% conversion rate with persuasive copy and smooth animations.</p>
+          </div>
+        </div>
+
+        <!-- Project 8 -->
+        <div class="portfolio-card reveal reveal-delay-8" data-category="ecommerce">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #f59e0b 0%, #f43f5e 100%);">🍔</div>
+          <div class="portfolio-overlay">
+            <span class="tag">E-Commerce</span>
+            <h3>FoodExpress Delivery</h3>
+            <p>Complete food delivery platform with restaurant listings, menu management, order tracking, and payment integration (JazzCash, EasyPaisa).</p>
+          </div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="portfolio-card reveal reveal-delay-9" data-category="design">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #7c3aed 0%, #10b981 100%);">🎓</div>
+          <div class="portfolio-overlay">
+            <span class="tag">UI/UX Design</span>
+            <h3>EduLearn Platform</h3>
+            <p>Modern UI/UX design for an online learning platform with course catalog, video lessons, quizzes, and student progress tracking.</p>
+          </div>
+        </div>
+
+        <!-- Project 10 -->
+        <div class="portfolio-card reveal reveal-delay-1" data-category="web">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #10b981 0%, #00d4ff 100%);">🏥</div>
+          <div class="portfolio-overlay">
+            <span class="tag">Website</span>
+            <h3>MediCare Clinic</h3>
+            <p>Professional medical clinic website with appointment booking, doctor profiles, services showcase, and patient portal integration.</p>
+          </div>
+        </div>
+
+        <!-- Project 11 -->
+        <div class="portfolio-card reveal reveal-delay-2" data-category="landing">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #f43f5e 0%, #f59e0b 100%);">💪</div>
+          <div class="portfolio-overlay">
+            <span class="tag">Landing Page</span>
+            <h3>FitLife Gym Membership</h3>
+            <p>Energetic landing page for a gym membership campaign. Features video background, pricing plans, trainer profiles, and signup form.</p>
+          </div>
+        </div>
+
+        <!-- Project 12 -->
+        <div class="portfolio-card reveal reveal-delay-3" data-category="app">
+          <div class="portfolio-thumb" style="background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);">💬</div>
+          <div class="portfolio-overlay">
+            <span class="tag">Web App</span>
+            <h3>ChatSphere Messenger</h3>
+            <p>Real-time chat application with group messaging, file sharing, voice notes, and end-to-end encryption. Built with Socket.io and Node.js.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Coming Soon Note -->
+      <div style="text-align:center; margin-top:70px;" class="reveal">
+        <div class="glass-card" style="max-width:700px; margin:0 auto; padding:40px;">
+          <div style="font-size:3rem; margin-bottom:16px;">🚀</div>
+          <h3 style="font-family:var(--font-heading); color:#fff; margin-bottom:12px; font-size:1.4rem;">More Projects Coming Soon!</h3>
+          <p style="color:var(--text-secondary); margin-bottom:24px;">We're constantly working on exciting new projects for amazing clients. Check back soon to see our latest work, or contact us to become our next success story!</p>
+          <a href="contact.html" class="btn btn-primary">💬 Start Your Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INDUSTRIES WE SERVE ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">🏢 Industries</div>
+        <h2 class="reveal reveal-delay-1">Industries We've <span class="gradient-text">Served</span></h2>
+        <p class="reveal reveal-delay-2">Our diverse portfolio spans multiple industries, giving us the versatility to understand your unique business challenges and deliver tailored solutions.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="glass-card service-card reveal reveal-delay-1" style="text-align:center;">
+          <div class="service-icon-wrapper" style="margin:0 auto 20px;">🏢</div>
+          <h3>Corporate</h3>
+          <p>Professional business websites that establish credibility, showcase services, and generate leads for enterprises of all sizes.</p>
+        </div>
+        <div class="glass-card service-card reveal reveal-delay-2" style="text-align:center;">
+          <div class="service-icon-wrapper" style="margin:0 auto 20px;">🛍️</div>
+          <h3>Retail & Fashion</h3>
+          <p>Beautiful e-commerce stores with seamless shopping experiences, product galleries, and secure checkout flows.</p>
+        </div>
+        <div class="glass-card service-card reveal reveal-delay-3" style="text-align:center;">
+          <div class="service-icon-wrapper" style="margin:0 auto 20px;">🏥</div>
+          <h3>Healthcare</h3>
+          <p>HIPAA-compliant medical websites with appointment booking, patient portals, and doctor profiles.</p>
+        </div>
+        <div class="glass-card service-card reveal reveal-delay-4" style="text-align:center;">
+          <div class="service-icon-wrapper" style="margin:0 auto 20px;">🎓</div>
+          <h3>Education</h3>
+          <p>Learning management systems, course platforms, and educational websites for schools and online academies.</p>
+        </div>
+        <div class="glass-card service-card reveal reveal-delay-5" style="text-align:center;">
+          <div class="service-icon-wrapper" style="margin:0 auto 20px;">🏘️</div>
+          <h3>Real Estate</h3>
+          <p>Property listing platforms with advanced search, map integration, virtual tours, and agent management.</p>
+        </div>
+        <div class="glass-card service-card reveal reveal-delay-6" style="text-align:center;">
+          <div class="service-icon-wrapper" style="margin:0 auto 20px;">🍽️</div>
+          <h3>Restaurants</h3>
+          <p>Online ordering systems, menu management, table reservations, and food delivery platforms.</p>
+        </div>
+        <div class="glass-card service-card reveal reveal-delay-7" style="text-align:center;">
+          <div class="service-icon-wrapper" style="margin:0 auto 20px;">💰</div>
+          <h3>Finance & Banking</h3>
+          <p>Secure financial platforms, banking dashboards, investment tools, and fintech applications.</p>
+        </div>
+        <div class="glass-card service-card reveal reveal-delay-8" style="text-align:center;">
+          <div class="service-icon-wrapper" style="margin:0 auto 20px;">💪</div>
+          <h3>Fitness & Wellness</h3>
+          <p>Gym websites, workout tracking apps, membership portals, and wellness coaching platforms.</p>
+        </div>
+        <div class="glass-card service-card reveal reveal-delay-9" style="text-align:center;">
+          <div class="service-icon-wrapper" style="margin:0 auto 20px;">🚀</div>
+          <h3>Startups & SaaS</h3>
+          <p>Launch-ready websites, MVP development, SaaS platforms, and conversion-optimized landing pages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="section stats-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">📊 Numbers</div>
+        <h2 class="reveal reveal-delay-1">Our Impact in <span class="gradient-text">Numbers</span></h2>
+      </div>
+      <div class="stats-grid">
+        <div class="glass-card stat-card reveal reveal-delay-1">
+          <h3><span class="counter" data-target="50" data-suffix="+">0</span></h3>
+          <p>Projects Delivered</p>
+        </div>
+        <div class="glass-card stat-card reveal reveal-delay-2">
+          <h3><span class="counter" data-target="12" data-suffix="+">0</span></h3>
+          <p>Industries Served</p>
+        </div>
+        <div class="glass-card stat-card reveal reveal-delay-3">
+          <h3><span class="counter" data-target="35" data-suffix="+">0</span></h3>
+          <p>Happy Clients</p>
+        </div>
+        <div class="glass-card stat-card reveal reveal-delay-4">
+          <h3><span class="counter" data-target="98" data-suffix="%">0</span></h3>
+          <p>On-Time Delivery</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECT PROCESS ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">🔄 Our Approach</div>
+        <h2 class="reveal reveal-delay-1">How We Make Projects <span class="gradient-text">Successful</span></h2>
+        <p class="reveal reveal-delay-2">Every project in our portfolio went through our proven workflow — a careful blend of strategy, creativity, and technical excellence.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="glass-card process-card reveal reveal-delay-1">
+          <div class="process-number">01</div>
+          <div class="icon">🔍</div>
+          <h3>Research</h3>
+          <p>Deep understanding of client goals, target audience, competitors, and industry trends.</p>
+        </div>
+        <div class="glass-card process-card reveal reveal-delay-2">
+          <div class="process-number">02</div>
+          <div class="icon">🎨</div>
+          <h3>Design</h3>
+          <p>Creating stunning visuals, user flows, and interactive prototypes that bring ideas to life.</p>
+        </div>
+        <div class="glass-card process-card reveal reveal-delay-3">
+          <div class="process-number">03</div>
+          <div class="icon">💻</div>
+          <h3>Develop</h3>
+          <p>Writing clean, scalable code with modern tech stacks and best industry practices.</p>
+        </div>
+        <div class="glass-card process-card reveal reveal-delay-4">
+          <div class="process-number">04</div>
+          <div class="icon">🚀</div>
+          <h3>Deliver</h3>
+          <p>Rigorous testing, smooth deployment, and ongoing support to ensure lasting success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section section-alt cta-section">
+    <div class="cta-orb o1"></div>
+    <div class="cta-orb o2"></div>
+    <div class="container">
+      <div class="reveal">
+        <h2>Ready to Be Our <span class="gradient-text">Next Success Story?</span></h2>
+        <p>Let's add your project to our growing portfolio. Share your vision, and we'll turn it into a digital masterpiece that drives real results for your business.</p>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary btn-lg">🚀 Start Your Project</a>
+          <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project." class="btn btn-whatsapp btn-lg" target="_blank">💬 WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">&lt;RD/&gt;</a>
+        <p>Rehmat Developers is a premium web development agency based in Raja Jang, Kasur, Pakistan. We transform ideas into powerful digital experiences that drive business growth.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Facebook">📘</a>
+          <a href="#" class="social-link" title="Instagram">📸</a>
+          <a href="#" class="social-link" title="LinkedIn">💼</a>
+          <a href="#" class="social-link" title="GitHub">🐙</a>
+          <a href="#" class="social-link" title="Twitter">🐦</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">→ Home</a></li>
+          <li><a href="about.html">→ About Us</a></li>
+          <li><a href="services.html">→ Services</a></li>
+          <li><a href="portfolio.html">→ Portfolio</a></li>
+          <li><a href="blog.html">→ Blog</a></li>
+          <li><a href="pricing.html">→ Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">→ Web Development</a></li>
+          <li><a href="services.html">→ Full-Stack Apps</a></li>
+          <li><a href="services.html">→ E-Commerce</a></li>
+          <li><a href="services.html">→ UI/UX Design</a></li>
+          <li><a href="services.html">→ Landing Pages</a></li>
+          <li><a href="services.html">→ SEO & Marketing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <ul>
+          <li><a href="mailto:rehmat.developers022@gmail.com">📧 rehmat.developers022@gmail.com</a></li>
+          <li><a href="tel:+923284461097">📱 +92 (328) 446-1097</a></li>
+          <li><a href="https://wa.me/923284461097" target="_blank">💬 WhatsApp Chat</a></li>
+          <li><a href="contact.html">📍 Raja Jang, Kasur, Pakistan</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Rehmat Developers. All Rights Reserved.</p>
+      <p class="made-with">Made with <span class="heart">❤</span> by Muhammad Waleed</p>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOAT ===== -->
+  <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%27m%20interested%20in%20your%20services." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
+
+  <!-- ===== SCROLL TO TOP ===== -->
+  <button class="scroll-top" title="Back to Top">↑</button>
+
+  <!-- ===== ADMIN LOGIN MODAL ===== -->
+  <div class="admin-modal-overlay">
+    <div class="admin-modal">
+      <h3>🔐 Admin Login</h3>
+      <p>Enter admin password to manage feedbacks</p>
+      <input type="password" id="adminPassword" placeholder="••••••••">
+      <div class="error-msg">❌ Incorrect password. Try again.</div>
+      <div class="btn-row">
+        <button class="btn btn-secondary btn-sm" onclick="document.querySelector('.admin-modal-overlay').classList.remove('show')">Cancel</button>
+        <button class="btn btn-primary btn-sm" id="adminLoginBtn">Login</button>
+      </div>
+      <div style="margin-top:16px;">
+        <button class="btn btn-ghost btn-sm" id="adminLogoutBtn">Logout Admin</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/script.js"></script>
+</body>
+</html>
