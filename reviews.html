@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Reviews — Rehmat Developers</title>
+  <meta name="description" content="Read real reviews and feedback from clients who have worked with Rehmat Developers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="preloader">
+    <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+  </div>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
+    </ul>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-grid"></div>
+    <div class="page-hero-content">
+        <h1 class="reveal">Client <span class="gradient-text">Reviews</span></h1>
+        <p class="reveal reveal-delay-1">Honest feedback from businesses and individuals we have partnered with.</p>
+        <div class="breadcrumb reveal reveal-delay-2">
+            <a href="index.html">Home</a> <span class="separator">/</span> <span class="current">Reviews</span>
+        </div>
+    </div>
+  </section>
+
+  <!-- ALL REVIEWS GRID -->
+  <section class="section">
+    <div class="container">
+      <div class="feedback-grid" id="allFeedbacksContainer">
+        <!-- JS will populate all reviews here -->
+      </div>
+      <div style="text-align:center; margin-top:50px;">
+        <a href="index.html" class="btn btn-primary">Add Your Review</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+      <div class="container">
+          <div class="footer-grid">
+              <div class="footer-col">
+                  <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle; margin-bottom: 20px;">
+                  <p>Transforming ideas into powerful digital experiences.</p>
+              </div>
+              <div class="footer-col">
+                  <h4>Quick Links</h4>
+                  <ul>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="about.html">About Us</a></li>
+                      <li><a href="services.html">Services</a></li>
+                      <li><a href="pricing.html">Pricing</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Contact Info</h4>
+                  <ul class="contact-info">
+                      <li>📍 Raja Jang, Kasur, Punjab, Pakistan</li>
+                      <li>📧 <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
+                      <li>📞 <a href="tel:+923284461097">+92 (328) 446-1097</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="footer-bottom">
+              <p>© 2026 Rehmat Developers. All Rights Reserved.</p>
+              <p>Made with ❤ by Muhammad Waleed</p>
+          </div>
+      </div>
+  </footer>
+
+  <!-- Admin Modal for Delete functionality -->
+  <div class="admin-modal-overlay">
+    <div class="admin-modal">
+      <h3>🔐 Admin Login</h3>
+      <input type="password" id="adminPassword" placeholder="••••••••">
+      <div class="error-msg">❌ Incorrect password.</div>
+      <div class="btn-row">
+        <button class="btn btn-secondary btn-sm" onclick="document.querySelector('.admin-modal-overlay').classList.remove('show')">Cancel</button>
+        <button class="btn btn-primary btn-sm" id="adminLoginBtn">Login</button>
+      </div>
+      <div style="margin-top:16px;">
+        <button class="btn btn-ghost btn-sm" id="adminLogoutBtn">Logout Admin</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  
+  <script>
+    // Load ALL feedbacks on this page
+    function loadAllFeedbacks() {
+      const container = document.getElementById('allFeedbacksContainer');
+      if (!container) return;
+      
+      let feedbacks = JSON.parse(localStorage.getItem('rehmat_feedbacks')) || [];
+      
+      if (feedbacks.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 40px; color: var(--text-muted);">No reviews found.</div>`;
+        return;
+      }
+
+      container.innerHTML = '';
+      // Reverse to show newest first
+      feedbacks.reverse().forEach(fb => {
+        let stars = '★'.repeat(fb.rating || 5) + '☆'.repeat(5 - (fb.rating || 5));
+        let initial = fb.name ? fb.name.charAt(0).toUpperCase() : 'C';
+        let date = fb.date || new Date().toLocaleDateString();
+
+        const card = document.createElement('div');
+        card.className = 'glass-card feedback-card';
+        card.innerHTML = `
+          <div class="rating">${stars}</div>
+          <p class="message">"${fb.message}"</p>
+          <div class="author">
+            <div class="author-avatar">${initial}</div>
+            <div>
+              <h4>${fb.name}</h4>
+              <span>${fb.service || 'Client'}</span>
+            </div>
+          </div>
+          <span class="date">${date}</span>
+          <button class="delete-btn" data-id="${fb.id}" title="Delete Feedback">🗑️</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadAllFeedbacks);
+  </script>
+</body>
+</html>
