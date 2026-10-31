@@ -3,155 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Client Reviews — Rehmat Developers</title>
-  <meta name="description" content="Read real reviews and feedback from clients who have worked with Rehmat Developers.">
+  <title>Client Reviews & Feedback | Rehmat Developers</title>
+  <meta name="description" content="Real client reviews for Rehmat Developers. Share your experience with Muhammad Waleed and team.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="scroll-progress"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <canvas id="particles-canvas"></canvas>
 
   <div class="preloader">
-    <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
-    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+    <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px;">
   </div>
 
-  <nav class="navbar">
-    <a href="index.html" class="logo">
-      <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
-    </ul>
-    <div class="hamburger"><span></span><span></span><span></span></div>
-  </nav>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png.png" alt="Rehmat Developers Logo" style="height:120px;">
+      </a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+        <a href="reviews.html" class="active">Reviews</a>
+        <a href="contact.html" class="btn btn-primary">Contact Us</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Page Hero -->
   <section class="page-hero">
-    <div class="hero-orb orb-1"></div>
-    <div class="hero-orb orb-2"></div>
-    <div class="hero-grid"></div>
-    <div class="page-hero-content">
-        <h1 class="reveal">Client <span class="gradient-text">Reviews</span></h1>
-        <p class="reveal reveal-delay-1">Honest feedback from businesses and individuals we have partnered with.</p>
-        <div class="breadcrumb reveal reveal-delay-2">
-            <a href="index.html">Home</a> <span class="separator">/</span> <span class="current">Reviews</span>
-        </div>
+    <div class="container text-center">
+      <h1 class="reveal">Client Reviews</h1>
+      <p class="reveal">Real feedback from clients who worked with Rehmat Developers.</p>
     </div>
   </section>
 
-  <!-- ALL REVIEWS GRID -->
   <section class="section">
     <div class="container">
-      <div class="feedback-grid" id="allFeedbacksContainer">
-        <!-- JS will populate all reviews here -->
+      <div class="glass-card reveal" style="max-width:800px;margin:0 auto 50px;padding:32px;">
+        <h2 style="text-align:center;margin-bottom:8px;">Leave Your Feedback</h2>
+        <p style="text-align:center;color:var(--text-muted);margin-bottom:24px;">Your review appears instantly on this page and the homepage.</p>
+
+        <form id="feedbackForm">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+            <div class="form-group">
+              <label for="fbName">Full Name *</label>
+              <input type="text" id="fbName" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="fbEmail">Email</label>
+              <input type="email" id="fbEmail" name="email" placeholder="optional@email.com">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:16px;">
+            <label for="fbService">Service / Business</label>
+            <input type="text" id="fbService" name="service" placeholder="e.g. E-Commerce Store Owner">
+          </div>
+
+          <div class="form-group" style="margin-top:16px;">
+            <label>Star Rating *</label>
+            <div class="star-rating" aria-label="Rating">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
+            </div>
+            <input type="hidden" id="feedbackRating" name="rating" value="0">
+          </div>
+
+          <div class="form-group" style="margin-top:16px;">
+            <label for="fbMessage">Your Review *</label>
+            <textarea id="fbMessage" name="message" rows="5" required placeholder="Share your experience working with us..."></textarea>
+          </div>
+
+          <div id="feedbackSuccess" style="display:none;color:#10b981;text-align:center;font-weight:600;margin:12px 0;">
+            ✅ Thank you! Your review has been published.
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px;">Submit Feedback</button>
+        </form>
       </div>
-      <div style="text-align:center; margin-top:50px;">
-        <a href="index.html" class="btn btn-primary">Add Your Review</a>
+
+      <h2 class="text-center reveal" style="margin-bottom:10px;">What Clients Say</h2>
+      <p class="text-center reveal" style="color:var(--text-muted);margin-bottom:28px;">All submitted feedback</p>
+
+      <!-- THIS ID MUST MATCH script.js -->
+      <div id="feedbackContainer" class="feedback-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;">
+        <!-- Dynamic reviews inject here -->
+      </div>
+
+      <div style="text-align:center;margin-top:30px;">
+        <button type="button" id="adminLogoutBtn" class="btn" style="display:none;">Exit Admin Mode</button>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-      <div class="container">
-          <div class="footer-grid">
-              <div class="footer-col">
-                  <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle; margin-bottom: 20px;">
-                  <p>Transforming ideas into powerful digital experiences.</p>
-              </div>
-              <div class="footer-col">
-                  <h4>Quick Links</h4>
-                  <ul>
-                      <li><a href="index.html">Home</a></li>
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="services.html">Services</a></li>
-                      <li><a href="pricing.html">Pricing</a></li>
-                      <li><a href="contact.html">Contact</a></li>
-                  </ul>
-              </div>
-              <div class="footer-col">
-                  <h4>Contact Info</h4>
-                  <ul class="contact-info">
-                      <li>📍 Raja Jang, Kasur, Punjab, Pakistan</li>
-                      <li>📧 <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
-                      <li>📞 <a href="tel:+923284461097">+92 (328) 446-1097</a></li>
-                  </ul>
-              </div>
-          </div>
-          <div class="footer-bottom">
-              <p>© 2026 Rehmat Developers. All Rights Reserved.</p>
-              <p>Made with ❤ by Muhammad Waleed</p>
-          </div>
-      </div>
-  </footer>
-
-  <!-- Admin Modal for Delete functionality -->
+  <!-- Admin Modal -->
   <div class="admin-modal-overlay">
-    <div class="admin-modal">
-      <h3>🔐 Admin Login</h3>
-      <input type="password" id="adminPassword" placeholder="••••••••">
-      <div class="error-msg">❌ Incorrect password.</div>
-      <div class="btn-row">
-        <button class="btn btn-secondary btn-sm" onclick="document.querySelector('.admin-modal-overlay').classList.remove('show')">Cancel</button>
-        <button class="btn btn-primary btn-sm" id="adminLoginBtn">Login</button>
-      </div>
-      <div style="margin-top:16px;">
-        <button class="btn btn-ghost btn-sm" id="adminLogoutBtn">Logout Admin</button>
-      </div>
+    <div class="admin-modal glass-card">
+      <h3>Admin Access</h3>
+      <p style="color:var(--text-muted);font-size:0.9rem;">Enter password to manage reviews.</p>
+      <input type="password" id="adminPassword" placeholder="Admin password">
+      <p class="error-msg" style="display:none;color:#ef4444;">Wrong password</p>
+      <button type="button" id="adminLoginBtn" class="btn btn-primary">Login</button>
     </div>
   </div>
 
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px;">
+        </a>
+        <p>Custom, high-performance web development solutions by Muhammad Waleed.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Info</h4>
+        <ul class="contact-info">
+          <li><i class="fas fa-map-marker-alt"></i> <span>Raja Jang, Kasur, Punjab, Pakistan</span></li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
+          <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/923284461097" target="_blank">+92 (328) 446-1097</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>&copy; 2025 Rehmat Developers. Founded by Muhammad Waleed. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll to top">↑</button>
   <script src="js/script.js"></script>
-  
   <script>
-    // Load ALL feedbacks on this page
-    function loadAllFeedbacks() {
-      const container = document.getElementById('allFeedbacksContainer');
-      if (!container) return;
-      
-      let feedbacks = JSON.parse(localStorage.getItem('rehmat_feedbacks')) || [];
-      
-      if (feedbacks.length === 0) {
-        container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 40px; color: var(--text-muted);">No reviews found.</div>`;
-        return;
-      }
-
-      container.innerHTML = '';
-      // Reverse to show newest first
-      feedbacks.reverse().forEach(fb => {
-        let stars = '★'.repeat(fb.rating || 5) + '☆'.repeat(5 - (fb.rating || 5));
-        let initial = fb.name ? fb.name.charAt(0).toUpperCase() : 'C';
-        let date = fb.date || new Date().toLocaleDateString();
-
-        const card = document.createElement('div');
-        card.className = 'glass-card feedback-card';
-        card.innerHTML = `
-          <div class="rating">${stars}</div>
-          <p class="message">"${fb.message}"</p>
-          <div class="author">
-            <div class="author-avatar">${initial}</div>
-            <div>
-              <h4>${fb.name}</h4>
-              <span>${fb.service || 'Client'}</span>
-            </div>
-          </div>
-          <span class="date">${date}</span>
-          <button class="delete-btn" data-id="${fb.id}" title="Delete Feedback">🗑️</button>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', loadAllFeedbacks);
+    // Show logout btn only in admin mode
+    setInterval(() => {
+      const btn = document.getElementById('adminLogoutBtn');
+      if (btn) btn.style.display = document.body.classList.contains('admin-mode') ? 'inline-block' : 'none';
+    }, 500);
   </script>
 </body>
 </html>
