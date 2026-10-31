@@ -10,6 +10,140 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== FIX REVIEWS LAYOUT & HEADERS ===== */
+    
+    /* 1. Header Centering Fix */
+    .review-section-header {
+      text-align: center !important;
+      margin-bottom: 50px;
+    }
+    .review-section-header h2 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin-bottom: 12px;
+      color: #f8fafc;
+    }
+    .review-section-header p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* 2. Feedback Grid Expansion Fix */
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    /* 3. Premium Card Styling (No more small boxes) */
+    .feedback-card {
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      height: 100%; /* Forces cards to be equal height */
+    }
+    .feedback-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 212, 255, 0.4);
+      box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
+    }
+    
+    .feedback-card .date {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .feedback-card .rating {
+      color: #f59e0b;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+      margin-top: 8px;
+    }
+    
+    .feedback-card .message {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      font-style: italic;
+      margin-bottom: 30px;
+      flex-grow: 1; /* Pushes author to bottom */
+    }
+    
+    .feedback-card .author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+    
+    .feedback-card .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00d4ff, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+    }
+    
+    .feedback-card .author h4 {
+      margin: 0 0 4px 0;
+      font-size: 1.1rem;
+      color: #f8fafc;
+    }
+    
+    .feedback-card .author span {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    .feedback-card .delete-btn {
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: none;
+      transition: all 0.3s;
+    }
+    .feedback-card .delete-btn:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+    body.admin-mode .feedback-card .delete-btn {
+      display: block;
+    }
+  </style>
 </head>
 <body>
   <div class="scroll-progress"></div>
@@ -41,38 +175,43 @@
     </div>
   </header>
 
+  <!-- Hero Section -->
   <section class="page-hero">
-    <div class="container text-center">
+    <div class="container text-center" style="text-align: center;">
       <h1 class="reveal">Client Reviews</h1>
-      <p class="reveal">Real feedback from clients who worked with Rehmat Developers.</p>
+      <p class="reveal" style="max-width: 600px; margin: 0 auto;">Real feedback from clients who worked with Rehmat Developers.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="glass-card reveal" style="max-width:800px;margin:0 auto 50px;padding:32px;">
-        <h2 style="text-align:center;margin-bottom:8px;">Leave Your Feedback</h2>
-        <p style="text-align:center;color:var(--text-muted);margin-bottom:24px;">Your review appears instantly on this page and the homepage.</p>
+      
+      <!-- FORM SECTION -->
+      <div class="glass-card reveal" style="max-width:850px; margin:0 auto 60px; padding:40px; border-radius: 20px;">
+        <div class="review-section-header" style="margin-bottom: 30px;">
+          <h2>Leave Your Feedback</h2>
+          <p>Your review appears instantly on this page and the homepage slider.</p>
+        </div>
 
         <form id="feedbackForm">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
             <div class="form-group">
-              <label for="fbName">Full Name *</label>
-              <input type="text" id="fbName" name="name" required placeholder="Your name">
+              <label for="fbName" style="margin-bottom: 8px; display: block; color: #e2e8f0;">Full Name *</label>
+              <input type="text" id="fbName" name="name" required placeholder="e.g. Ali Khan">
             </div>
             <div class="form-group">
-              <label for="fbEmail">Email</label>
+              <label for="fbEmail" style="margin-bottom: 8px; display: block; color: #e2e8f0;">Email</label>
               <input type="email" id="fbEmail" name="email" placeholder="optional@email.com">
             </div>
           </div>
 
-          <div class="form-group" style="margin-top:16px;">
-            <label for="fbService">Service / Business</label>
+          <div class="form-group" style="margin-top:20px;">
+            <label for="fbService" style="margin-bottom: 8px; display: block; color: #e2e8f0;">Service / Business</label>
             <input type="text" id="fbService" name="service" placeholder="e.g. E-Commerce Store Owner">
           </div>
 
-          <div class="form-group" style="margin-top:16px;">
-            <label>Star Rating *</label>
+          <div class="form-group" style="margin-top:20px;">
+            <label style="margin-bottom: 8px; display: block; color: #e2e8f0;">Star Rating *</label>
             <div class="star-rating" aria-label="Rating">
               <span class="star" data-value="1">★</span>
               <span class="star" data-value="2">★</span>
@@ -83,29 +222,36 @@
             <input type="hidden" id="feedbackRating" name="rating" value="0">
           </div>
 
-          <div class="form-group" style="margin-top:16px;">
-            <label for="fbMessage">Your Review *</label>
+          <div class="form-group" style="margin-top:20px;">
+            <label for="fbMessage" style="margin-bottom: 8px; display: block; color: #e2e8f0;">Your Review *</label>
             <textarea id="fbMessage" name="message" rows="5" required placeholder="Share your experience working with us..."></textarea>
           </div>
 
-          <div id="feedbackSuccess" style="display:none;color:#10b981;text-align:center;font-weight:600;margin:12px 0;">
-            ✅ Thank you! Your review has been published.
+          <div id="feedbackSuccess" style="display:none; color:#10b981; text-align:center; font-weight:600; margin:15px 0;">
+            ✅ Thank you! Your review has been published successfully.
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px;">Submit Feedback</button>
+          <button type="submit" class="btn btn-primary" style="width:100%; margin-top:15px; padding: 14px; font-size: 1.05rem;">
+            Submit Feedback
+          </button>
         </form>
       </div>
 
-      <h2 class="text-center reveal" style="margin-bottom:10px;">What Clients Say</h2>
-      <p class="text-center reveal" style="color:var(--text-muted);margin-bottom:28px;">All submitted feedback</p>
-
-      <!-- THIS ID MUST MATCH script.js -->
-      <div id="feedbackContainer" class="feedback-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;">
-        <!-- Dynamic reviews inject here -->
+      <!-- REVIEWS GRID SECTION -->
+      <div class="review-section-header reveal">
+        <h2>What Clients Say</h2>
+        <p>All submitted feedback from our verified clients</p>
       </div>
 
-      <div style="text-align:center;margin-top:30px;">
-        <button type="button" id="adminLogoutBtn" class="btn" style="display:none;">Exit Admin Mode</button>
+      <!-- EXACT MATCH ID WITH JS -->
+      <div id="feedbackContainer" class="feedback-grid">
+        <!-- Dynamic reviews inject here automatically by JS -->
+      </div>
+
+      <div style="text-align:center; margin-top:40px;">
+        <button type="button" id="adminLogoutBtn" class="btn" style="display:none; border: 1px solid #ef4444; color: #ef4444;">
+          Exit Admin Mode
+        </button>
       </div>
     </div>
   </section>
@@ -113,14 +259,15 @@
   <!-- Admin Modal -->
   <div class="admin-modal-overlay">
     <div class="admin-modal glass-card">
-      <h3>Admin Access</h3>
-      <p style="color:var(--text-muted);font-size:0.9rem;">Enter password to manage reviews.</p>
+      <h3 style="margin-bottom: 10px;">Admin Access</h3>
+      <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom: 20px;">Enter password to manage reviews.</p>
       <input type="password" id="adminPassword" placeholder="Admin password">
-      <p class="error-msg" style="display:none;color:#ef4444;">Wrong password</p>
-      <button type="button" id="adminLoginBtn" class="btn btn-primary">Login</button>
+      <p class="error-msg" style="display:none; color:#ef4444; margin-top: 10px;">Wrong password</p>
+      <button type="button" id="adminLoginBtn" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Login</button>
     </div>
   </div>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-grid">
       <div class="footer-about">
