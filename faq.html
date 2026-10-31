@@ -13,7 +13,7 @@
         /* FAQ Accordion Fixed Styles */
         .faq-search-wrap {
             max-width: 640px;
-            margin: 0 auto 50px;
+            margin: 0 auto 60px;
             position: relative;
         }
         .faq-search-wrap input {
@@ -42,43 +42,61 @@
             font-size: 1.1rem;
             pointer-events: none;
         }
+
+        /* PREMIUM FAQ LAYOUT FIX */
+        .faq-content-wrapper {
+            max-width: 860px; /* Stop accordions from stretching too wide */
+            margin: 0 auto;
+        }
         .faq-category {
-            margin-bottom: 48px;
+            margin-bottom: 60px;
         }
         .faq-category-title {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.35rem;
+            gap: 18px;
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 24px;
             color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.5px;
         }
         .faq-category-title span.cat-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 16px;
             font-size: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.1);
         }
+
         .faq-list {
             display: flex;
             flex-direction: column;
             gap: 14px;
         }
         .faq-item {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255,255,255,0.025);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
-            transition: border-color 0.3s, background 0.3s;
+            transition: border-color 0.3s, background 0.3s, transform 0.3s;
         }
         .faq-item:hover {
             border-color: rgba(0,212,255,0.3);
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.04);
+            transform: translateY(-2px);
         }
         .faq-item.active {
             border-color: rgba(0,212,255,0.5) !important;
             background: rgba(0,212,255,0.06) !important;
+            transform: translateY(0);
         }
         .faq-question {
             display: flex;
@@ -97,7 +115,7 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            background: rgba(0,212,255,0.15);
+            background: rgba(0,212,255,0.12);
             color: #00d4ff;
             display: flex;
             align-items: center;
@@ -111,6 +129,7 @@
             transform: rotate(45deg);
             background: linear-gradient(135deg, #7c3aed, #00d4ff);
             color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
         }
         
         /* ANSWER FIX: Controlled via !important so style.css cannot hide it */
@@ -146,17 +165,29 @@
         .faq-no-results.show {
             display: block;
         }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            .faq-category-title {
+                font-size: 1.4rem;
+            }
+            .faq-category-title span.cat-icon {
+                width: 46px;
+                height: 46px;
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- ==================== PRELOADER ==================== -->
     <div class="preloader">
-    <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
-    <div class="preloader-bar">
-      <div class="preloader-bar-fill"></div>
+        <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+        <div class="preloader-bar">
+            <div class="preloader-bar-fill"></div>
+        </div>
     </div>
-  </div>
 
     <!-- ==================== CUSTOM CURSOR ==================== -->
     <div class="cursor-dot"></div>
@@ -171,8 +202,8 @@
     <!-- ==================== NAVBAR ==================== -->
     <nav class="navbar">
         <a href="index.html" class="logo">
-    <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
-</a>
+            <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+        </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -217,278 +248,283 @@
                 <p>No questions match your search. Try different keywords or <a href="contact.html" style="color:#00d4ff;">contact us</a> directly.</p>
             </div>
 
-            <!-- ========== CATEGORY 1: GENERAL ========== -->
-            <div class="faq-category reveal" data-category="general">
-                <h2 class="faq-category-title"><span class="cat-icon">🌐</span> General</h2>
-                <div class="faq-list">
+            <!-- FAQ Wrapper Center Align -->
+            <div class="faq-content-wrapper">
 
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>What is Rehmat Developers and who runs it?</span>
-                            <span class="faq-icon">+</span>
+                <!-- ========== CATEGORY 1: GENERAL ========== -->
+                <div class="faq-category reveal" data-category="general">
+                    <h2 class="faq-category-title"><span class="cat-icon">🌐</span> General</h2>
+                    <div class="faq-list">
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What is Rehmat Developers and who runs it?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Rehmat Developers is a premium web design and development studio based in Raja Jang, Kasur, Punjab, Pakistan. The company is led by CEO <strong>Muhammad Waleed</strong>. We specialize in high-performance websites, UI/UX design, e-commerce platforms and custom web applications for startups, local businesses and growing brands worldwide. The brand name “Rehmat” honors family roots while the day-to-day work and client communication are handled directly by Muhammad Waleed and the core team.
+                            </div>
                         </div>
-                        <div class="faq-answer">
-                            Rehmat Developers is a premium web design and development studio based in Raja Jang, Kasur, Punjab, Pakistan. The company is led by CEO <strong>Muhammad Waleed</strong>. We specialize in high-performance websites, UI/UX design, e-commerce platforms and custom web applications for startups, local businesses and growing brands worldwide. The brand name “Rehmat” honors family roots while the day-to-day work and client communication are handled directly by Muhammad Waleed and the core team.
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What services do you offer?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                We offer end-to-end digital solutions including: custom website design &amp; development, responsive UI/UX design, e-commerce stores with payment gateways, SEO optimization, landing pages, business portfolios, blog/CMS setups, performance optimization, basic brand identity support, and post-launch maintenance. If your project needs something specialized (dashboards, APIs, multi-language sites), we can scope a custom package for you.
+                            </div>
                         </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Do you only work with clients in Pakistan?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                No. Although we are based in Pakistan, we work with clients internationally. Communication is primarily in English (and Urdu when preferred). All delivery, previews and handoff are done online via secure links, screen shares and chat — so location is never a barrier.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How do I get started with a project?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Simply go to our <a href="contact.html" style="color:#00d4ff;">Contact page</a>, send a message with your project details, or WhatsApp us at <a href="https://wa.me/923284461097" style="color:#00d4ff;" target="_blank">+92 328 4461097</a>. We will reply within 24 hours, discuss your goals, recommend the right plan (or a custom quote), and outline next steps including milestones and timeline.
+                            </div>
+                        </div>
+
                     </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>What services do you offer?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            We offer end-to-end digital solutions including: custom website design &amp; development, responsive UI/UX design, e-commerce stores with payment gateways, SEO optimization, landing pages, business portfolios, blog/CMS setups, performance optimization, basic brand identity support, and post-launch maintenance. If your project needs something specialized (dashboards, APIs, multi-language sites), we can scope a custom package for you.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Do you only work with clients in Pakistan?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            No. Although we are based in Pakistan, we work with clients internationally. Communication is primarily in English (and Urdu when preferred). All delivery, previews and handoff are done online via secure links, screen shares and chat — so location is never a barrier.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>How do I get started with a project?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            Simply go to our <a href="contact.html" style="color:#00d4ff;">Contact page</a>, send a message with your project details, or WhatsApp us at <a href="https://wa.me/923284461097" style="color:#00d4ff;" target="_blank">+92 328 4461097</a>. We will reply within 24 hours, discuss your goals, recommend the right plan (or a custom quote), and outline next steps including milestones and timeline.
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
-            <!-- ========== CATEGORY 2: PRICING & PAYMENT ========== -->
-            <div class="faq-category reveal" data-category="pricing">
-                <h2 class="faq-category-title"><span class="cat-icon">💎</span> Pricing &amp; Payment</h2>
-                <div class="faq-list">
+                <!-- ========== CATEGORY 2: PRICING & PAYMENT ========== -->
+                <div class="faq-category reveal" data-category="pricing">
+                    <h2 class="faq-category-title"><span class="cat-icon">💎</span> Pricing &amp; Payment</h2>
+                    <div class="faq-list">
 
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>What are your pricing plans?</span>
-                            <span class="faq-icon">+</span>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What are your pricing plans?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                We have three clear one-time packages: <strong>Starter ($99)</strong> — up to 5 pages, ideal for small businesses; <strong>Professional ($299)</strong> — up to 15 pages with advanced UI, blog/CMS and 30-day support (our most popular); and <strong>Enterprise ($599)</strong> — unlimited pages, e-commerce, APIs, 3D effects and 90-day support. Full feature comparison is on our <a href="pricing.html" style="color:#00d4ff;">Pricing page</a>. Custom quotes are available for unique scopes.
+                            </div>
                         </div>
-                        <div class="faq-answer">
-                            We have three clear one-time packages: <strong>Starter ($99)</strong> — up to 5 pages, ideal for small businesses; <strong>Professional ($299)</strong> — up to 15 pages with advanced UI, blog/CMS and 30-day support (our most popular); and <strong>Enterprise ($599)</strong> — unlimited pages, e-commerce, APIs, 3D effects and 90-day support. Full feature comparison is on our <a href="pricing.html" style="color:#00d4ff;">Pricing page</a>. Custom quotes are available for unique scopes.
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Are there any hidden fees?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                No. The price quoted for your plan is the price you pay for the agreed scope. We do not add surprise charges for standard features listed in the package. If you later request work outside the original scope (extra pages, new modules, third-party licenses), we will discuss cost clearly before doing anything.
+                            </div>
                         </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How do payments work? Do I pay everything upfront?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                We use a <strong>safe milestone-based payment structure</strong>. You do not pay 100% upfront. Typical flow: a starter milestone to begin, then payments tied to design approval and development stages after you have reviewed live preview links. Final balance is cleared at launch after you approve the completed work. Exact split is confirmed in writing before we start so both sides stay protected.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Do you offer a money-back guarantee or refunds?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                We do <strong>not</strong> offer post-delivery cash refunds. Instead we protect you with our <strong>100% Quality &amp; Work Protection Policy</strong>: milestone payments, live preview links before each major stage, and <strong>unlimited revisions during the active development phase</strong> until the work matches the approved direction. You only pay for stages you have reviewed and accepted. This keeps quality high and protects both client and developer from freelancing fraud. Full details are on the <a href="pricing.html" style="color:#00d4ff;">Pricing page</a>.
+                            </div>
+                        </div>
+
                     </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Are there any hidden fees?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            No. The price quoted for your plan is the price you pay for the agreed scope. We do not add surprise charges for standard features listed in the package. If you later request work outside the original scope (extra pages, new modules, third-party licenses), we will discuss cost clearly before doing anything.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>How do payments work? Do I pay everything upfront?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            We use a <strong>safe milestone-based payment structure</strong>. You do not pay 100% upfront. Typical flow: a starter milestone to begin, then payments tied to design approval and development stages after you have reviewed live preview links. Final balance is cleared at launch after you approve the completed work. Exact split is confirmed in writing before we start so both sides stay protected.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Do you offer a money-back guarantee or refunds?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            We do <strong>not</strong> offer post-delivery cash refunds. Instead we protect you with our <strong>100% Quality &amp; Work Protection Policy</strong>: milestone payments, live preview links before each major stage, and <strong>unlimited revisions during the active development phase</strong> until the work matches the approved direction. You only pay for stages you have reviewed and accepted. This keeps quality high and protects both client and developer from freelancing fraud. Full details are on the <a href="pricing.html" style="color:#00d4ff;">Pricing page</a>.
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
-            <!-- ========== CATEGORY 3: DESIGN PROCESS ========== -->
-            <div class="faq-category reveal" data-category="process">
-                <h2 class="faq-category-title"><span class="cat-icon">🎨</span> Design Process</h2>
-                <div class="faq-list">
+                <!-- ========== CATEGORY 3: DESIGN PROCESS ========== -->
+                <div class="faq-category reveal" data-category="process">
+                    <h2 class="faq-category-title"><span class="cat-icon">🎨</span> Design Process</h2>
+                    <div class="faq-list">
 
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>What does your typical project process look like?</span>
-                            <span class="faq-icon">+</span>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What does your typical project process look like?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                1) <strong>Discovery</strong> — goals, audience, references, content needs.<br>
+                                2) <strong>Proposal &amp; milestones</strong> — scope, timeline, payment stages.<br>
+                                3) <strong>Design</strong> — layout direction and UI shared via previews for feedback.<br>
+                                4) <strong>Development</strong> — build with regular preview links; revisions during this phase.<br>
+                                5) <strong>Review &amp; polish</strong> — final checks, speed, SEO basics, responsiveness.<br>
+                                6) <strong>Launch &amp; handoff</strong> — go live, credentials, short guide, and support window per plan.
+                            </div>
                         </div>
-                        <div class="faq-answer">
-                            1) <strong>Discovery</strong> — goals, audience, references, content needs.<br>
-                            2) <strong>Proposal &amp; milestones</strong> — scope, timeline, payment stages.<br>
-                            3) <strong>Design</strong> — layout direction and UI shared via previews for feedback.<br>
-                            4) <strong>Development</strong> — build with regular preview links; revisions during this phase.<br>
-                            5) <strong>Review &amp; polish</strong> — final checks, speed, SEO basics, responsiveness.<br>
-                            6) <strong>Launch &amp; handoff</strong> — go live, credentials, short guide, and support window per plan.
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How many revisions do I get?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Starter includes <strong>1 revision round</strong>, Professional includes <strong>3 rounds</strong>, and Enterprise includes <strong>unlimited revisions</strong> until you are satisfied — all during the active development phase. “During development” means before final launch approval. After launch, minor fixes are covered by your plan’s free support window; larger new features are quoted separately.
+                            </div>
                         </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Can I see the website before it goes live?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Always. You receive <strong>live preview / staging links</strong> so you can click through every page on phone and desktop, test forms, and request changes before public launch. Nothing goes live without your go-ahead.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Who provides text and images for the website?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                You can provide your own logo, photos and copy (best for brand accuracy). If you need help, we can guide structure, polish wording, and use high-quality stock or placeholder visuals until your final assets are ready. Full custom photography or long-form copywriting can be added as an optional extra if required.
+                            </div>
+                        </div>
+
                     </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>How many revisions do I get?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            Starter includes <strong>1 revision round</strong>, Professional includes <strong>3 rounds</strong>, and Enterprise includes <strong>unlimited revisions</strong> until you are satisfied — all during the active development phase. “During development” means before final launch approval. After launch, minor fixes are covered by your plan’s free support window; larger new features are quoted separately.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Can I see the website before it goes live?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            Always. You receive <strong>live preview / staging links</strong> so you can click through every page on phone and desktop, test forms, and request changes before public launch. Nothing goes live without your go-ahead.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Who provides text and images for the website?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            You can provide your own logo, photos and copy (best for brand accuracy). If you need help, we can guide structure, polish wording, and use high-quality stock or placeholder visuals until your final assets are ready. Full custom photography or long-form copywriting can be added as an optional extra if required.
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
-            <!-- ========== CATEGORY 4: TIMELINE ========== -->
-            <div class="faq-category reveal" data-category="timeline">
-                <h2 class="faq-category-title"><span class="cat-icon">⏱️</span> Timeline</h2>
-                <div class="faq-list">
+                <!-- ========== CATEGORY 4: TIMELINE ========== -->
+                <div class="faq-category reveal" data-category="timeline">
+                    <h2 class="faq-category-title"><span class="cat-icon">⏱️</span> Timeline</h2>
+                    <div class="faq-list">
 
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>How long does a website take to complete?</span>
-                            <span class="faq-icon">+</span>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How long does a website take to complete?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Typical delivery windows (after content and kickoff are ready): <strong>Starter ~3 days</strong>, <strong>Professional ~7 days</strong>, <strong>Enterprise ~14 days</strong>. Complex custom apps may need longer — we confirm a realistic date in your proposal. Delays usually only happen if feedback or content from the client side is pending.
+                            </div>
                         </div>
-                        <div class="faq-answer">
-                            Typical delivery windows (after content and kickoff are ready): <strong>Starter ~3 days</strong>, <strong>Professional ~7 days</strong>, <strong>Enterprise ~14 days</strong>. Complex custom apps may need longer — we confirm a realistic date in your proposal. Delays usually only happen if feedback or content from the client side is pending.
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Can you deliver urgently or on a rush schedule?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Often yes, depending on current workload and scope. Rush delivery may require tighter feedback turnaround from your side and sometimes a rush fee. Message us with your deadline and we will tell you honestly what is possible.
+                            </div>
                         </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What do you need from me to avoid delays?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Clear goals, brand assets (logo, colors), page content or rough draft text, reference sites you like, timely feedback on previews, and milestone payments as agreed. The faster those pieces arrive, the faster we ship.
+                            </div>
+                        </div>
+
                     </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Can you deliver urgently or on a rush schedule?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            Often yes, depending on current workload and scope. Rush delivery may require tighter feedback turnaround from your side and sometimes a rush fee. Message us with your deadline and we will tell you honestly what is possible.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>What do you need from me to avoid delays?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            Clear goals, brand assets (logo, colors), page content or rough draft text, reference sites you like, timely feedback on previews, and milestone payments as agreed. The faster those pieces arrive, the faster we ship.
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
-            <!-- ========== CATEGORY 5: SUPPORT ========== -->
-            <div class="faq-category reveal" data-category="support">
-                <h2 class="faq-category-title"><span class="cat-icon">🛠️</span> Support</h2>
-                <div class="faq-list">
+                <!-- ========== CATEGORY 5: SUPPORT ========== -->
+                <div class="faq-category reveal" data-category="support">
+                    <h2 class="faq-category-title"><span class="cat-icon">🛠️</span> Support</h2>
+                    <div class="faq-list">
 
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>What support do I get after launch?</span>
-                            <span class="faq-icon">+</span>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What support do I get after launch?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Professional includes <strong>30 days</strong> and Enterprise <strong>90 days</strong> of free post-launch support (bug fixes, small text/image updates, basic technical help). Starter is optimized for launch with guidance at handoff; extended support can be added. After the free window you can arrange a maintenance plan if you want ongoing help.
+                            </div>
                         </div>
-                        <div class="faq-answer">
-                            Professional includes <strong>30 days</strong> and Enterprise <strong>90 days</strong> of free post-launch support (bug fixes, small text/image updates, basic technical help). Starter is optimized for launch with guidance at handoff; extended support can be added. After the free window you can arrange a maintenance plan if you want ongoing help.
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How can I contact you for updates or issues?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                WhatsApp is fastest: <a href="https://wa.me/923284461097" style="color:#00d4ff;" target="_blank">+92 328 4461097</a>. You can also email <a href="mailto:rehmat.developers022@gmail.com" style="color:#00d4ff;">rehmat.developers022@gmail.com</a> or use the <a href="contact.html" style="color:#00d4ff;">Contact form</a>. We aim to respond within 24 hours (usually much sooner).
+                            </div>
                         </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Will I be able to edit the website myself later?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Depends on the build. Static sites are updated by requesting changes or a small maintenance pass. Professional and Enterprise projects that include a <strong>CMS/blog</strong> let you add posts or edit certain content yourself after a short walkthrough. We explain exactly what you can change at handoff.
+                            </div>
+                        </div>
+
                     </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>How can I contact you for updates or issues?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            WhatsApp is fastest: <a href="https://wa.me/923284461097" style="color:#00d4ff;" target="_blank">+92 328 4461097</a>. You can also email <a href="mailto:rehmat.developers022@gmail.com" style="color:#00d4ff;">rehmat.developers022@gmail.com</a> or use the <a href="contact.html" style="color:#00d4ff;">Contact form</a>. We aim to respond within 24 hours (usually much sooner).
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Will I be able to edit the website myself later?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            Depends on the build. Static sites are updated by requesting changes or a small maintenance pass. Professional and Enterprise projects that include a <strong>CMS/blog</strong> let you add posts or edit certain content yourself after a short walkthrough. We explain exactly what you can change at handoff.
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
-            <!-- ========== CATEGORY 6: TECHNICAL ========== -->
-            <div class="faq-category reveal" data-category="technical">
-                <h2 class="faq-category-title"><span class="cat-icon">⚙️</span> Technical</h2>
-                <div class="faq-list">
+                <!-- ========== CATEGORY 6: TECHNICAL ========== -->
+                <div class="faq-category reveal" data-category="technical">
+                    <h2 class="faq-category-title"><span class="cat-icon">⚙️</span> Technical</h2>
+                    <div class="faq-list">
 
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>What technologies do you use?</span>
-                            <span class="faq-icon">+</span>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What technologies do you use?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                We build with modern, maintainable stacks: semantic HTML5, CSS3 (including advanced layouts and animations), and vanilla JavaScript for fast, dependency-light sites. Where needed we integrate CMS options, e-commerce/payment tools, APIs and analytics. Stack is chosen to match your goals — performance and clarity first, not unnecessary complexity.
+                            </div>
                         </div>
-                        <div class="faq-answer">
-                            We build with modern, maintainable stacks: semantic HTML5, CSS3 (including advanced layouts and animations), and vanilla JavaScript for fast, dependency-light sites. Where needed we integrate CMS options, e-commerce/payment tools, APIs and analytics. Stack is chosen to match your goals — performance and clarity first, not unnecessary complexity.
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Will my website be mobile-friendly and fast?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Yes. Every site is <strong>fully responsive</strong> (mobile, tablet, desktop) and built with performance in mind — optimized assets, clean code, and solid Core Web Vitals practices. Enterprise plans target the highest PageSpeed scores; all plans are tested on real devices before launch.
+                            </div>
                         </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Do you handle domain, hosting and SSL?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                We guide you through domain and hosting choices and set up <strong>SSL (HTTPS)</strong> so the site is secure. You keep ownership of your domain and hosting accounts. If you already have hosting, we can deploy there. If you need recommendations, we suggest reliable, affordable options and help with DNS and go-live.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Is SEO included?</span>
+                                <span class="faq-icon">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                Yes at the level of your plan: Starter gets essential on-page setup (titles, meta, sitemap basics). Professional and Enterprise get deeper technical SEO, structure, performance and analytics/Search Console setup. Ongoing content SEO and link building can be discussed as a separate retainer if you want long-term ranking growth.
+                            </div>
+                        </div>
+
                     </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Will my website be mobile-friendly and fast?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            Yes. Every site is <strong>fully responsive</strong> (mobile, tablet, desktop) and built with performance in mind — optimized assets, clean code, and solid Core Web Vitals practices. Enterprise plans target the highest PageSpeed scores; all plans are tested on real devices before launch.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Do you handle domain, hosting and SSL?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            We guide you through domain and hosting choices and set up <strong>SSL (HTTPS)</strong> so the site is secure. You keep ownership of your domain and hosting accounts. If you already have hosting, we can deploy there. If you need recommendations, we suggest reliable, affordable options and help with DNS and go-live.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Is SEO included?</span>
-                            <span class="faq-icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            Yes at the level of your plan: Starter gets essential on-page setup (titles, meta, sitemap basics). Professional and Enterprise get deeper technical SEO, structure, performance and analytics/Search Console setup. Ongoing content SEO and link building can be discussed as a separate retainer if you want long-term ranking growth.
-                        </div>
-                    </div>
-
                 </div>
-            </div>
+
+            </div> <!-- End of FAQ Content Wrapper -->
 
         </div>
     </section>
