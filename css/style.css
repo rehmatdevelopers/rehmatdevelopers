@@ -2371,7 +2371,7 @@ body.admin-mode .feedback-card .delete-btn {
 
   .about-content {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 10px;
   }
 }
 
