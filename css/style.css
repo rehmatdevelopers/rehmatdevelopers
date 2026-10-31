@@ -2483,3 +2483,18 @@ body.admin-mode .feedback-card .delete-btn {
 
   .feedback-grid { grid-template-columns: 1fr; }
 }
+
+
+
+/* ===== FOOTER EMOJI & EMAIL ALIGNMENT FIX ===== */
+.contact-info li {
+    display: flex !important;
+    align-items: flex-start !important;
+}
+
+.contact-info li a {
+    word-break: break-all !important; /* Lambi email ko emoji ke aagay hi wrap karega */
+    overflow-wrap: anywhere !important;
+    margin-left: 5px !important; /* Emoji aur text ke beech thora space */
+    line-height: 1.4 !important;
+}
