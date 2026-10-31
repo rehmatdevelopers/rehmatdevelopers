@@ -1,414 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Rehmat Developers</title>
-  <meta name="description" content="Learn about Rehmat Developers — a passionate web development agency led by CEO Muhammad Waleed, based in Raja Jang, Kasur, Pakistan. Our story, mission, team, and values.">
-  <meta name="keywords" content="about Rehmat Developers, Muhammad Waleed, web development agency, Kasur, Pakistan, our team, our story">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Rehmat Developers</title>
+    <meta name="description" content="Learn about Rehmat Developers, our CEO Muhammad Waleed, and our mission to provide elite web development from Raja Jang, Pakistan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { box-sizing: border-box; }
+        
+        /* ABOUT GRIDS */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+        .about-image-wrapper h3 {
+            font-size: 2.5rem;
+            text-align: center;
+            background: -webkit-linear-gradient(0deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .stat-label {
+            color: var(--text-secondary, #a0aec0);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* VALUES GRID */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .value-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .value-card h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .value-card p {
+            color: var(--text-secondary, #a0aec0);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* --- MOBILE RESPONSIVE FIXES --- */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .value-card {
+                padding: 30px 20px;
+            }
+            .about-image-wrapper {
+                min-height: 250px;
+                padding: 20px;
+            }
+            .about-image-wrapper h3 {
+                font-size: 1.8rem;
+            }
+            .stat-card {
+                padding: 20px 15px;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ===== PRELOADER ===== -->
-  <div class="preloader">
-    <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
-    <div class="preloader-bar">
-      <div class="preloader-bar-fill"></div>
-    </div>
-  </div>
-
-  <!-- ===== CUSTOM CURSOR ===== -->
-  <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
-
-  <!-- ===== SCROLL PROGRESS ===== -->
-  <div class="scroll-progress"></div>
-
-  <!-- ===== PARTICLES ===== -->
-  <canvas id="particles-canvas"></canvas>
-
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar">
-    <a href="index.html" class="logo">
-    <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
-</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
-    </ul>
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </nav>
-
-  <!-- ===== PAGE HERO ===== -->
-  <section class="page-hero">
-    <div class="hero-orb orb-1"></div>
-    <div class="hero-orb orb-2"></div>
-    <div class="hero-orb orb-3"></div>
-    <div class="hero-grid"></div>
-    <div class="page-hero-content">
-      <h1 class="reveal">About <span class="gradient-text">Us</span></h1>
-      <p class="reveal reveal-delay-1">The story, passion, and people behind Rehmat Developers</p>
-      <div class="breadcrumb reveal reveal-delay-2">
-        <a href="index.html">Home</a>
-        <span class="separator">/</span>
-        <span class="current">About Us</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== OUR STORY ===== -->
-  <section class="section">
-    <div class="container">
-      <div class="about-content">
-        <div class="about-text">
-          <div class="section-badge reveal">📖 Our Story</div>
-          <h3 class="reveal reveal-delay-1">From a Small Town to the <span class="gradient-text">Digital World</span></h3>
-          <p class="reveal reveal-delay-2">
-            Rehmat Developers was born out of a deep passion for technology and a burning desire to make professional web development accessible to businesses of all sizes. Founded by <strong style="color:#fff;">Muhammad Waleed</strong> in the heart of Raja Jang, Kasur, Pakistan, our agency carries a name that honors family legacy — "Rehmat" being the name of our founder's beloved father.
-          </p>
-          <p class="reveal reveal-delay-3">
-            What started as a one-man mission to help local businesses establish their online presence has now grown into a full-fledged digital agency serving clients across Pakistan and beyond. We remember the early days — working late nights from a small room, learning new technologies, and delivering projects that made our clients smile. Those humble beginnings shaped our core values: <strong style="color:var(--cyan);">hard work, honesty, and relentless pursuit of excellence</strong>.
-          </p>
-          <p class="reveal reveal-delay-4">
-            Today, Rehmat Developers is a team of skilled developers, designers, and strategists who share a common vision — to transform ideas into powerful digital realities. We've worked with startups, small businesses, e-commerce brands, and growing enterprises, delivering over 50 successful projects and counting. Every project we take on is treated as our own, because we believe your success is our success.
-          </p>
-          <p class="reveal reveal-delay-5">
-            We don't just build websites. We build <strong style="color:#fff;">relationships, trust, and digital experiences</strong> that stand the test of time. Whether you need a simple landing page or a complex full-stack application, our team is ready to bring your vision to life with precision, creativity, and cutting-edge technology.
-          </p>
+    <!-- ==================== PRELOADER ==================== -->
+    <div class="preloader">
+        <img class="preloader-logo" src="images/logo.png" alt="Rehmat Developers" style="height:60px; width:auto; vertical-align:middle;">
+        <div class="preloader-bar">
+            <div class="preloader-bar-fill"></div>
         </div>
-        <div class="about-image reveal-right">
-          <div class="image-wrapper">
-            <!-- Replace with your real photo: <img src="images/waleed.jpg" alt="Muhammad Waleed - CEO"> -->
-            <div style="text-align:center; padding:40px;">
-              <div style="font-size:6rem; margin-bottom:16px;">👨‍💻</div>
-              <p style="color:var(--text-muted); font-size:0.9rem;">Muhammad Waleed<br><span style="color:var(--cyan);">Founder & CEO</span></p>
+    </div>
+
+    <!-- ==================== CUSTOM CURSOR ==================== -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- ==================== SCROLL PROGRESS ==================== -->
+    <div class="scroll-progress"></div>
+
+    <!-- ==================== PARTICLES ==================== -->
+    <canvas id="particles"></canvas>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Rehmat Developers" style="height:45px; width:auto; vertical-align:middle;">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <!-- ==================== PAGE HERO ==================== -->
+    <section class="page-hero">
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+        <div class="hero-orb orb-3"></div>
+        <div class="hero-grid"></div>
+        <div class="page-hero-content">
+            <h1 class="reveal">Our <span class="gradient-text">Story</span></h1>
+            <p class="reveal reveal-delay-1">Learn about Rehmat Developers, our CEO Muhammad Waleed, and our vision to empower businesses worldwide with elite web solutions from Raja Jang, Pakistan.</p>
+            <div class="breadcrumb reveal reveal-delay-2">
+                <a href="index.html">Home</a>
+                <span class="separator">/</span>
+                <span class="current">About Us</span>
             </div>
-          </div>
-          <div class="floating-badge">
-            <h4>50+</h4>
-            <span>Projects Completed</span>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== CEO MESSAGE ===== -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge reveal">👤 CEO's Message</div>
-        <h2 class="reveal reveal-delay-1">A Word From <span class="gradient-text">Our Founder</span></h2>
-      </div>
-      <div class="container-sm reveal reveal-delay-2">
-        <div class="glass-card" style="text-align:center; padding:50px 40px; position:relative;">
-          <div style="font-size:4rem; margin-bottom:20px;">💬</div>
-          <blockquote style="font-size:1.15rem; color:var(--text-secondary); line-height:2; font-style:italic; margin-bottom:28px;">
-            "When I started Rehmat Developers, I had one simple belief — every business, no matter how small, deserves a world-class digital presence. Growing up in Raja Jang, Kasur, I saw countless talented entrepreneurs struggling to compete online simply because they couldn't afford expensive agencies. I decided to change that.
-            <br><br>
-            I named this agency after my father, Rehmat, because he taught me the values of hard work, integrity, and serving others with excellence. Every project we deliver carries his name and our commitment to quality.
-            <br><br>
-            Today, I'm proud to lead a team of incredibly talented individuals who share this vision. We don't just write code — we craft digital experiences that help businesses grow, connect with their customers, and achieve their dreams. If you have a vision, we have the skills to make it real. Let's build something amazing together."
-          </blockquote>
-          <div style="display:flex; align-items:center; justify-content:center; gap:16px;">
-            <div style="width:56px; height:56px; border-radius:50%; background:var(--gradient-main); display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:700; color:#fff; font-family:var(--font-heading);">W</div>
-            <div style="text-align:left;">
-              <h4 style="color:#fff; font-family:var(--font-heading); font-size:1.1rem;">Muhammad Waleed</h4>
-              <span style="color:var(--cyan); font-size:0.85rem;">Founder & CEO, Rehmat Developers</span>
+    <!-- ==================== ABOUT STORY ==================== -->
+    <section class="section">
+        <div class="container">
+            <div class="about-grid">
+                
+                <!-- Left: Graphic Placeholder -->
+                <div class="about-image-wrapper reveal">
+                    <h3>Rehmat<br>Developers</h3>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="about-content reveal reveal-delay-1">
+                    <span class="section-tag" style="margin-bottom: 12px; display:inline-block;">👋 Welcome</span>
+                    <h2 class="section-title" style="text-align:left; margin-bottom: 24px;">Built on Vision, <span class="gradient-text">Driven by Code</span></h2>
+                    <p style="color:var(--text-secondary); line-height:1.7; margin-bottom: 16px;">
+                        Founded and led by CEO <strong>Muhammad Waleed</strong>, Rehmat Developers operates out of Raja Jang, Kasur, Punjab, Pakistan. We started with a simple belief: high-quality web development should be accessible, modern, and built to perform.
+                    </p>
+                    <p style="color:var(--text-secondary); line-height:1.7; margin-bottom: 24px;">
+                        We don't just build websites; we craft digital experiences. From high-converting landing pages to complex corporate platforms, our agency handles UI/UX design, frontend development, and rigorous performance optimization to ensure your brand stands out globally.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary">Work With Us →</a>
+                </div>
+
             </div>
-          </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid reveal">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Dedicated Support</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5★</div>
+                    <div class="stat-label">Rating Worldwide</div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- ==================== OUR CORE VALUES ==================== -->
+    <section class="section" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <span class="section-tag">💎 Our Philosophy</span>
+                <h2 class="section-title">Why Choose <span class="gradient-text">Us?</span></h2>
+            </div>
+
+            <div class="values-grid reveal reveal-delay-1">
+                <div class="value-card">
+                    <div class="value-icon">🛡️</div>
+                    <h3>100% Work Protection</h3>
+                    <p>We work exclusively on secure milestone payments. You review our work at every phase via live preview links. No blind trust needed.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Flawless Performance</h3>
+                    <p>Slow websites lose clients. We optimize every single line of code, image, and asset to ensure lightning-fast load times.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎨</div>
+                    <h3>Modern Design Trends</h3>
+                    <p>Your business deserves to look premium. We utilize modern UI/UX principles, sleek animations, and clean layouts.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">📱</div>
+                    <h3>Responsive First</h3>
+                    <p>Over 70% of traffic comes from mobile devices. Every project we build looks and functions perfectly across all screen sizes.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Transparent Communication</h3>
+                    <p>CEO Muhammad Waleed oversees project communications directly. We keep you updated daily via WhatsApp and Email.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3>Scalable Code</h3>
+                    <p>We build with the future in mind. Our architecture allows you to easily scale, add features, and grow your platform down the line.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="cta-section" style="padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to Start Your Project?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Join forces with Rehmat Developers and let us build a digital presence that puts you miles ahead of the competition.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html" class="btn btn-primary">Get a Free Quote</a>
+                <a href="portfolio.html" class="btn btn-outline">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo.png" alt="Rehmat Developers" style="height:45px; width:auto; vertical-align:middle; margin-bottom: 20px;">
+                    <p>Transforming ideas into powerful digital experiences. We build stunning, high-performance websites that help businesses grow and succeed in the modern digital landscape.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">UI/UX Design</a></li>
+                        <li><a href="services.html">E-Commerce Solutions</a></li>
+                        <li><a href="services.html">SEO Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li>📍 Raja Jang, Kasur, Punjab, Pakistan</li>
+                        <li>📧 <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
+                        <li>📞 <a href="tel:+923284461097">+92 (328) 446-1097</a></li>
+                        <li>💬 <a href="https://wa.me/923284461097">WhatsApp Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Rehmat Developers. All Rights Reserved.</p>
+                <p>Made with ❤ by Muhammad Waleed</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== WHATSAPP FLOAT ==================== -->
+    <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%20have%20a%20question." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- ==================== SCROLL TOP ==================== -->
+    <button class="scroll-top" aria-label="Scroll to top">↑</button>
+
+    <!-- ==================== ADMIN MODAL ==================== -->
+    <div class="admin-modal-overlay">
+        <div class="admin-modal">
+            <h3>🔐 Admin Login</h3>
+            <p>Enter admin password to manage website</p>
+            <input type="password" id="adminPassword" placeholder="••••••••">
+            <div class="error-msg">❌ Incorrect password. Try again.</div>
+            <div class="btn-row">
+                <button class="btn btn-secondary btn-sm" onclick="document.querySelector('.admin-modal-overlay').classList.remove('show')">Cancel</button>
+                <button class="btn btn-primary btn-sm" id="adminLoginBtn">Login</button>
+            </div>
+            <div style="margin-top:16px;">
+                <button class="btn btn-ghost btn-sm" id="adminLogoutBtn">Logout Admin</button>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <!-- ===== MISSION & VISION ===== -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge reveal">🎯 Purpose</div>
-        <h2 class="reveal reveal-delay-1">Our Mission & <span class="gradient-text">Vision</span></h2>
-        <p class="reveal reveal-delay-2">The driving forces behind everything we do at Rehmat Developers.</p>
-      </div>
-      <div class="mv-grid">
-        <div class="glass-card mv-card reveal reveal-delay-1">
-          <div class="icon">🎯</div>
-          <h3>Our Mission</h3>
-          <p>To empower businesses of all sizes with high-quality, affordable, and innovative digital solutions that drive measurable growth, enhance user experiences, and create lasting impact in the ever-evolving digital landscape. We strive to bridge the gap between technology and business success by delivering world-class web development services from the heart of Pakistan to the global market.</p>
-        </div>
-        <div class="glass-card mv-card reveal reveal-delay-2">
-          <div class="icon">🔭</div>
-          <h3>Our Vision</h3>
-          <p>To become a globally recognized web development agency known for innovation, reliability, and exceptional digital craftsmanship. We envision a future where every business in Pakistan and beyond has access to premium digital solutions that help them compete on the world stage. We aim to build a legacy of excellence that honors our roots while embracing the future of technology.</p>
-        </div>
-        <div class="glass-card mv-card reveal reveal-delay-3">
-          <div class="icon">💎</div>
-          <h3>Our Values</h3>
-          <p>Integrity in every line of code. Excellence in every pixel. Transparency in every conversation. Innovation in every solution. These are not just words on a wall — they are the principles that guide our daily work, shape our team culture, and define the quality of every project we deliver to our valued clients around the world.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== OUR JOURNEY / TIMELINE ===== -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge reveal">📅 Our Journey</div>
-        <h2 class="reveal reveal-delay-1">The Road <span class="gradient-text">So Far</span></h2>
-        <p class="reveal reveal-delay-2">Every milestone tells a story of growth, learning, and determination.</p>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="year">2022</div>
-          <h3>The Spark 💡</h3>
-          <p>Muhammad Waleed began learning web development and building small projects for friends and local businesses in Raja Jang, Kasur. What started as a hobby quickly turned into a passion that would change everything.</p>
-        </div>
-        <div class="timeline-item reveal reveal-delay-1">
-          <div class="timeline-dot"></div>
-          <div class="year">2023</div>
-          <h3>First Clients 🤝</h3>
-          <p>Delivered the first 10 professional websites to local businesses. Word-of-mouth referrals started pouring in. The decision was made — Rehmat Developers would become a full-time agency dedicated to digital excellence.</p>
-        </div>
-        <div class="timeline-item reveal reveal-delay-2">
-          <div class="timeline-dot"></div>
-          <div class="year">2024</div>
-          <h3>Team Expansion 🚀</h3>
-          <p>Grew the team to include talented frontend developers, backend specialists, and UI/UX designers. Expanded services to include full-stack applications, e-commerce solutions, and digital marketing. Completed 30+ projects.</p>
-        </div>
-        <div class="timeline-item reveal reveal-delay-3">
-          <div class="timeline-dot"></div>
-          <div class="year">2026</div>
-          <h3>Going Global 🌍</h3>
-          <p>Launched our premium agency website, started serving international clients, and set ambitious goals for the future. With 50+ projects delivered and a growing reputation for quality, the best is yet to come.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TEAM ===== -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge reveal">👥 Our Team</div>
-        <h2 class="reveal reveal-delay-1">Meet The <span class="gradient-text">Experts</span></h2>
-        <p class="reveal reveal-delay-2">The talented individuals who turn your ideas into digital masterpieces every single day.</p>
-      </div>
-      <div class="team-grid">
-        <div class="glass-card team-card reveal reveal-delay-1">
-          <div class="team-avatar">
-            <!-- Replace: <img src="images/waleed.jpg" alt="Muhammad Waleed"> -->
-            <div class="placeholder">W</div>
-          </div>
-          <h3>Muhammad Waleed</h3>
-          <div class="role">Founder & CEO</div>
-          <p>Visionary leader and full-stack developer with a passion for creating impactful digital solutions. Oversees all projects and ensures every client receives world-class service and results.</p>
-        </div>
-
-        <div class="glass-card team-card reveal reveal-delay-2">
-          <div class="team-avatar">
-            <div class="placeholder">A</div>
-          </div>
-          <h3>Ali Hassan</h3>
-          <div class="role">Senior Frontend Developer</div>
-          <p>Expert in React.js, Next.js, and modern CSS frameworks. Ali transforms designs into pixel-perfect, responsive interfaces with smooth animations and flawless user experiences.</p>
-        </div>
-
-        <div class="glass-card team-card reveal reveal-delay-3">
-          <div class="team-avatar">
-            <div class="placeholder">U</div>
-          </div>
-          <h3>Usman Tariq</h3>
-          <div class="role">Backend & Database Specialist</div>
-          <p>Master of Node.js, Python, MongoDB, and MySQL. Usman architects robust server-side systems and secure databases that power our most complex web applications.</p>
-        </div>
-
-        <div class="glass-card team-card reveal reveal-delay-4">
-          <div class="team-avatar">
-            <div class="placeholder">F</div>
-          </div>
-          <h3>Fatima Noor</h3>
-          <div class="role">UI/UX Designer</div>
-          <p>Creative genius behind our stunning designs. Fatima crafts beautiful, user-centered interfaces using Figma and Adobe XD that make digital products a joy to use.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SKILLS & TECHNOLOGIES ===== -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge reveal">🛠️ Tech Stack</div>
-        <h2 class="reveal reveal-delay-1">Technologies We <span class="gradient-text">Master</span></h2>
-        <p class="reveal reveal-delay-2">We stay ahead of the curve by mastering the latest and most powerful web technologies.</p>
-      </div>
-      <div class="skills-grid reveal">
-        <span class="skill-tag">HTML5</span>
-        <span class="skill-tag">CSS3</span>
-        <span class="skill-tag">JavaScript (ES6+)</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">React.js</span>
-        <span class="skill-tag">Next.js</span>
-        <span class="skill-tag">Vue.js</span>
-        <span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Express.js</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Django</span>
-        <span class="skill-tag">PHP</span>
-        <span class="skill-tag">Laravel</span>
-        <span class="skill-tag">MongoDB</span>
-        <span class="skill-tag">MySQL</span>
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">Firebase</span>
-        <span class="skill-tag">WordPress</span>
-        <span class="skill-tag">Shopify</span>
-        <span class="skill-tag">Tailwind CSS</span>
-        <span class="skill-tag">Bootstrap</span>
-        <span class="skill-tag">SASS/SCSS</span>
-        <span class="skill-tag">Figma</span>
-        <span class="skill-tag">Adobe XD</span>
-        <span class="skill-tag">Git & GitHub</span>
-        <span class="skill-tag">REST APIs</span>
-        <span class="skill-tag">GraphQL</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">Vercel</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== STATS ===== -->
-  <section class="section stats-section">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="glass-card stat-card reveal reveal-delay-1">
-          <h3><span class="counter" data-target="50" data-suffix="+">0</span></h3>
-          <p>Projects Delivered</p>
-        </div>
-        <div class="glass-card stat-card reveal reveal-delay-2">
-          <h3><span class="counter" data-target="35" data-suffix="+">0</span></h3>
-          <p>Happy Clients</p>
-        </div>
-        <div class="glass-card stat-card reveal reveal-delay-3">
-          <h3><span class="counter" data-target="15" data-suffix="+">0</span></h3>
-          <p>Technologies Used</p>
-        </div>
-        <div class="glass-card stat-card reveal reveal-delay-4">
-          <h3><span class="counter" data-target="100" data-suffix="%">0</span></h3>
-          <p>Client Satisfaction</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA ===== -->
-  <section class="section section-alt cta-section">
-    <div class="cta-orb o1"></div>
-    <div class="cta-orb o2"></div>
-    <div class="container">
-      <div class="reveal">
-        <h2>Want to Join Our <span class="gradient-text">Success Story?</span></h2>
-        <p>Let's collaborate and build something extraordinary together. Your next big project starts with a simple conversation.</p>
-        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-          <a href="contact.html" class="btn btn-primary btn-lg">📞 Get In Touch</a>
-          <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%20want%20to%20discuss%20a%20project." class="btn btn-whatsapp btn-lg" target="_blank">💬 WhatsApp Us</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
-        <p>Rehmat Developers is a premium web development agency based in Raja Jang, Kasur, Pakistan. We transform ideas into powerful digital experiences that drive business growth.</p>
-        <div class="social-links">
-          <a href="#" class="social-link" title="Facebook">📘</a>
-          <a href="#" class="social-link" title="Instagram">📸</a>
-          <a href="#" class="social-link" title="LinkedIn">💼</a>
-          <a href="#" class="social-link" title="GitHub">🐙</a>
-          <a href="#" class="social-link" title="Twitter">🐦</a>
-        </div>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">→ Home</a></li>
-          <li><a href="about.html">→ About Us</a></li>
-          <li><a href="services.html">→ Services</a></li>
-          <li><a href="portfolio.html">→ Portfolio</a></li>
-          <li><a href="blog.html">→ Blog</a></li>
-          <li><a href="pricing.html">→ Pricing</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html">→ Web Development</a></li>
-          <li><a href="services.html">→ Full-Stack Apps</a></li>
-          <li><a href="services.html">→ E-Commerce</a></li>
-          <li><a href="services.html">→ UI/UX Design</a></li>
-          <li><a href="services.html">→ Landing Pages</a></li>
-          <li><a href="services.html">→ SEO & Marketing</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact Info</h4>
-        <ul>
-          <li><a href="mailto:rehmat.developers022@gmail.com">📧 rehmat.developers022@gmail.com</a></li>
-          <li><a href="tel:+923284461097">📱 +92 (328) 446-1097</a></li>
-          <li><a href="https://wa.me/923284461097" target="_blank">💬 WhatsApp Chat</a></li>
-          <li><a href="contact.html">📍 Raja Jang, Kasur, Pakistan</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Rehmat Developers. All Rights Reserved.</p>
-      <p class="made-with">Made with <span class="heart">❤</span> by Muhammad Waleed</p>
-    </div>
-  </footer>
-
-  <!-- ===== WHATSAPP FLOAT ===== -->
-  <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%27m%20interested%20in%20your%20services." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
-
-  <!-- ===== SCROLL TO TOP ===== -->
-  <button class="scroll-top" title="Back to Top">↑</button>
-
-  <!-- ===== ADMIN LOGIN MODAL ===== -->
-  <div class="admin-modal-overlay">
-    <div class="admin-modal">
-      <h3>🔐 Admin Login</h3>
-      <p>Enter admin password to manage feedbacks</p>
-      <input type="password" id="adminPassword" placeholder="••••••••">
-      <div class="error-msg">❌ Incorrect password. Try again.</div>
-      <div class="btn-row">
-        <button class="btn btn-secondary btn-sm" onclick="document.querySelector('.admin-modal-overlay').classList.remove('show')">Cancel</button>
-        <button class="btn btn-primary btn-sm" id="adminLoginBtn">Login</button>
-      </div>
-      <div style="margin-top:16px;">
-        <button class="btn btn-ghost btn-sm" id="adminLogoutBtn">Logout Admin</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== SCRIPTS ===== -->
-  <script src="js/script.js"></script>
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="js/script.js"></script>
 </body>
 </html>
