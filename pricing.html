@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing — Rehmat Developers</title>
-    <meta name="description" content="Transparent pricing plans for web development by Rehmat Developers. Starter, Professional & Enterprise packages with 100% Quality & Work Protection Policy.">
+    <meta name="description" content="Transparent pricing plans for custom web development by Rehmat Developers. Starter ($250-$400), Professional ($600-$1,000) & Enterprise ($2,000-$3,000) packages with 100% Quality & Work Protection Policy.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -73,7 +73,16 @@
             line-height: 1.5;
         }
         .plan-price {
-            margin-bottom: 28px;
+            margin-bottom: 20px;
+        }
+        .plan-price .starting-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #00d4ff;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
         }
         .plan-price .currency {
             font-size: 1.2rem;
@@ -82,20 +91,26 @@
             vertical-align: super;
         }
         .plan-price .amount {
-            font-size: 3.2rem;
+            font-size: 3rem;
             font-weight: 800;
             color: #fff;
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1;
         }
-        .plan-price .period {
-            font-size: 0.95rem;
-            color: var(--text-secondary, #a0aec0);
+        .plan-price .price-range-tag {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.82rem;
+            color: #b0b8c4;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .plan-features {
             list-style: none;
             padding: 0;
-            margin: 0 0 32px 0;
+            margin: 16px 0 32px 0;
             flex-grow: 1;
         }
         .plan-features li {
@@ -123,52 +138,73 @@
             padding: 14px 20px;
         }
 
-        /* ===== WHY CHOOSE US — 3 TOP + 3 BOTTOM ===== */
+        /* ===== WHY CHOOSE US: STRICT TOP-TO-BOTTOM VERTICAL LAYOUT ===== */
         .why-section {
             margin-top: 100px;
+            width: 100%;
+        }
+        .why-header {
+            text-align: center !important;
+            max-width: 640px !important;
+            margin: 0 auto 50px auto !important;
+            position: relative;
+            z-index: 2;
         }
         .why-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-            margin-top: 50px;
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 28px !important;
+            width: 100% !important;
         }
         .why-card {
-            background: rgba(255, 255, 255, 0.025);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 20px;
-            padding: 36px 28px;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.025) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 20px !important;
+            padding: 36px 24px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100% !important;
         }
         .why-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(0, 212, 255, 0.3);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-6px) !important;
+            border-color: rgba(0, 212, 255, 0.35) !important;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
         }
         .why-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(124, 58, 237, 0.15));
-            border: 1px solid rgba(0, 212, 255, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin: 0 auto 20px auto;
+            width: 64px !important;
+            height: 64px !important;
+            border-radius: 18px !important;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(124, 58, 237, 0.15)) !important;
+            border: 1px solid rgba(0, 212, 255, 0.3) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 1.8rem !important;
+            margin: 0 0 20px 0 !important;
+            flex-shrink: 0 !important;
+            float: none !important;
         }
         .why-card h3 {
-            font-size: 1.15rem;
-            color: #fff;
-            margin-bottom: 12px;
-            font-weight: 700;
+            font-size: 1.25rem !important;
+            color: #fff !important;
+            margin: 0 0 12px 0 !important;
+            font-weight: 700 !important;
+            font-family: 'Space Grotesk', sans-serif !important;
+            text-align: center !important;
+            width: 100% !important;
+            float: none !important;
         }
         .why-card p {
-            color: var(--text-secondary, #a0aec0);
-            font-size: 0.9rem;
-            line-height: 1.7;
-            margin: 0;
+            color: var(--text-secondary, #a0aec0) !important;
+            font-size: 0.92rem !important;
+            line-height: 1.65 !important;
+            margin: 0 !important;
+            text-align: center !important;
+            width: 100% !important;
+            float: none !important;
         }
 
         /* ===== PROTECTION POLICY BOX ===== */
@@ -296,7 +332,7 @@
                 transform: translateY(-8px);
             }
             .why-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr) !important;
             }
             .policy-points {
                 grid-template-columns: repeat(2, 1fr);
@@ -304,7 +340,7 @@
         }
         @media (max-width: 640px) {
             .why-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
             }
             .policy-box {
                 padding: 32px 22px;
@@ -313,7 +349,7 @@
                 grid-template-columns: 1fr;
             }
             .plan-price .amount {
-                font-size: 2.6rem;
+                font-size: 2.5rem;
             }
             .custom-quote {
                 padding: 40px 22px;
@@ -370,7 +406,7 @@
         <div class="hero-grid"></div>
         <div class="page-hero-content">
             <h1 class="reveal">Simple, Transparent <span class="gradient-text">Pricing</span></h1>
-            <p class="reveal reveal-delay-1">No hidden fees. No surprises. Choose a plan that fits your business — every package is protected by our 100% Quality &amp; Work Protection Policy.</p>
+            <p class="reveal reveal-delay-1">No hidden fees. No surprises. Choose a package tailored for your project scale — fully protected by our 100% Quality &amp; Work Protection Policy.</p>
             <div class="breadcrumb reveal reveal-delay-2">
                 <a href="index.html">Home</a>
                 <span class="separator">/</span>
@@ -385,69 +421,72 @@
             <div style="text-align:center; max-width:640px; margin:0 auto;">
                 <span class="section-tag">💼 Our Packages</span>
                 <h2 class="section-title">Choose Your <span class="gradient-text">Plan</span></h2>
-                <p style="color:var(--text-secondary); line-height:1.7;">All plans include mobile-responsive design, performance optimization, and direct communication with our team.</p>
+                <p style="color:var(--text-secondary); line-height:1.7;">All plans include bespoke UI/UX design, custom code development, mobile responsiveness, and milestone-based delivery.</p>
             </div>
 
             <div class="pricing-grid">
 
-                <!-- STARTER -->
+                <!-- STARTER PLAN ($250 - $400) -->
                 <div class="price-card reveal">
-                    <div class="plan-name">Starter</div>
-                    <div class="plan-desc">Perfect for freelancers, startups &amp; personal brands getting online.</div>
+                    <div class="plan-name">Starter Web Plan</div>
+                    <div class="plan-desc">Ideal for startups, personal brands &amp; high-converting landing pages.</div>
                     <div class="plan-price">
-                        <span class="currency">$</span><span class="amount">99</span>
-                        <div class="period">one-time payment</div>
+                        <span class="starting-label">Starting From</span>
+                        <span class="currency">$</span><span class="amount">299</span>
+                        <div><span class="price-range-tag">Project Range: $250 – $400</span></div>
                     </div>
                     <ul class="plan-features">
-                        <li><span class="check">✓</span> Up to 5 Pages</li>
-                        <li><span class="check">✓</span> Mobile Responsive Design</li>
-                        <li><span class="check">✓</span> Contact Form Integration</li>
-                        <li><span class="check">✓</span> Basic SEO Setup</li>
-                        <li><span class="check">✓</span> WhatsApp Button</li>
+                        <li><span class="check">✓</span> Up to 5 Custom Pages</li>
+                        <li><span class="check">✓</span> Bespoke Responsive Layout</li>
+                        <li><span class="check">✓</span> Contact &amp; Inquiry Form</li>
+                        <li><span class="check">✓</span> Essential On-Page SEO</li>
+                        <li><span class="check">✓</span> Instant WhatsApp Widget</li>
                         <li><span class="check">✓</span> 30 Days Free Support</li>
-                        <li><span class="check">✓</span> Milestone Payment Option</li>
+                        <li><span class="check">✓</span> Secure Milestone Payments</li>
                     </ul>
                     <a href="contact.html" class="btn btn-outline">Get Started</a>
                 </div>
 
-                <!-- PROFESSIONAL (FEATURED) -->
+                <!-- PROFESSIONAL PLAN ($600 - $1,000) - FEATURED -->
                 <div class="price-card featured reveal reveal-delay-1">
-                    <div class="popular-badge">⭐ MOST POPULAR</div>
-                    <div class="plan-name">Professional</div>
-                    <div class="plan-desc">Ideal for growing businesses that need a high-converting premium website.</div>
+                    <div class="popular-badge">⭐ MOST POPULAR CHOICE</div>
+                    <div class="plan-name">Professional Plan</div>
+                    <div class="plan-desc">For growing businesses needing a multi-page corporate web platform.</div>
                     <div class="plan-price">
-                        <span class="currency">$</span><span class="amount">299</span>
-                        <div class="period">one-time payment</div>
+                        <span class="starting-label">Starting From</span>
+                        <span class="currency">$</span><span class="amount">799</span>
+                        <div><span class="price-range-tag">Project Range: $600 – $1,000</span></div>
                     </div>
                     <ul class="plan-features">
-                        <li><span class="check">✓</span> Up to 12 Pages</li>
-                        <li><span class="check">✓</span> Custom UI/UX Design</li>
-                        <li><span class="check">✓</span> Advanced Animations</li>
-                        <li><span class="check">✓</span> Blog / Portfolio Section</li>
-                        <li><span class="check">✓</span> SEO + Speed Optimization</li>
-                        <li><span class="check">✓</span> CMS / Easy Content Edit</li>
+                        <li><span class="check">✓</span> Up to 12 Custom Pages</li>
+                        <li><span class="check">✓</span> Premium Custom UI/UX Design</li>
+                        <li><span class="check">✓</span> Sleek Interactive Animations</li>
+                        <li><span class="check">✓</span> Blog / Portfolio Engine</li>
+                        <li><span class="check">✓</span> Advanced SEO &amp; Speed Tuning</li>
+                        <li><span class="check">✓</span> Content Management Ready</li>
                         <li><span class="check">✓</span> 60 Days Free Support</li>
-                        <li><span class="check">✓</span> Live Preview + Milestones</li>
+                        <li><span class="check">✓</span> Live Staging Preview Links</li>
                     </ul>
                     <a href="contact.html" class="btn btn-primary">Get Started</a>
                 </div>
 
-                <!-- ENTERPRISE -->
+                <!-- ENTERPRISE / E-COMMERCE ($2,000 - $3,000) -->
                 <div class="price-card reveal reveal-delay-2">
-                    <div class="plan-name">Enterprise</div>
-                    <div class="plan-desc">For companies that need a powerful, scalable &amp; fully custom digital platform.</div>
+                    <div class="plan-name">Enterprise / E-Commerce</div>
+                    <div class="plan-desc">Full-scale online stores, custom web apps &amp; complex business systems.</div>
                     <div class="plan-price">
-                        <span class="currency">$</span><span class="amount">599</span>
-                        <div class="period">one-time payment</div>
+                        <span class="starting-label">Starting From</span>
+                        <span class="currency">$</span><span class="amount">2,499</span>
+                        <div><span class="price-range-tag">Project Range: $2,000 – $3,000</span></div>
                     </div>
                     <ul class="plan-features">
-                        <li><span class="check">✓</span> Unlimited Pages</li>
-                        <li><span class="check">✓</span> Fully Custom Design System</li>
-                        <li><span class="check">✓</span> E-Commerce / Web App Ready</li>
-                        <li><span class="check">✓</span> Advanced SEO + Analytics</li>
-                        <li><span class="check">✓</span> Admin Dashboard</li>
-                        <li><span class="check">✓</span> API Integrations</li>
-                        <li><span class="check">✓</span> 90 Days Free Support</li>
+                        <li><span class="check">✓</span> Unlimited Pages / Products</li>
+                        <li><span class="check">✓</span> Complete E-Commerce Storefront</li>
+                        <li><span class="check">✓</span> Custom Payment Gateway Setup</li>
+                        <li><span class="check">✓</span> Admin Dashboard &amp; Inventory</li>
+                        <li><span class="check">✓</span> Advanced SEO &amp; Analytics Integration</li>
+                        <li><span class="check">✓</span> Custom API Integrations</li>
+                        <li><span class="check">✓</span> 90 Days Priority Support</li>
                         <li><span class="check">✓</span> Priority Development Queue</li>
                     </ul>
                     <a href="contact.html" class="btn btn-outline">Get Started</a>
@@ -455,51 +494,55 @@
 
             </div>
 
-            <!-- ===== WHY CHOOSE US: 3 + 3 GRID ===== -->
+            <!-- ===== WHY CHOOSE US: TOP HEADING + TOP-TO-BOTTOM CARDS ===== -->
             <div class="why-section">
-                <div style="text-align:center; max-width:640px; margin:0 auto;">
+                <div class="why-header">
                     <span class="section-tag">✨ Why Rehmat Developers</span>
                     <h2 class="section-title">What Makes Us <span class="gradient-text">Different</span></h2>
                 </div>
 
                 <div class="why-grid">
 
-                    <!-- ROW 1 — 3 cards -->
+                    <!-- CARD 1 -->
                     <div class="why-card reveal">
                         <div class="why-icon">💰</div>
                         <h3>No Hidden Fees</h3>
-                        <p>The price you see is the price you pay. No surprise charges for essential features, stock images, plugin licenses, or deployment costs. Everything listed in your plan is included.</p>
+                        <p>The price quoted is the price you pay. No unexpected charges for essential features, stock assets, or deployment setup. Complete transparency from initial quote to launch.</p>
                     </div>
 
+                    <!-- CARD 2 -->
                     <div class="why-card reveal reveal-delay-1">
                         <div class="why-icon">🎯</div>
-                        <h3>Results-Focused</h3>
-                        <p>We do not just build pretty websites — we build high-converting digital machines engineered to generate leads, drive sales, and deliver measurable return on investment.</p>
+                        <h3>Results-Focused Code</h3>
+                        <p>We do not just build pretty layouts — we engineer high-converting digital platforms built to generate leads, drive revenue, and deliver clear ROI for your business.</p>
                     </div>
 
+                    <!-- CARD 3 -->
                     <div class="why-card reveal reveal-delay-2">
                         <div class="why-icon">⚡</div>
                         <h3>Lightning Fast Delivery</h3>
-                        <p>Time is money, and we respect yours. Our streamlined process delivers high-quality websites in a fraction of the time most agencies require — without sacrificing quality.</p>
+                        <p>Time is money. Our experienced team builds clean custom code quickly without cutting corners, delivering weeks ahead of traditional agency timelines.</p>
                     </div>
 
-                    <!-- ROW 2 — 3 cards -->
+                    <!-- CARD 4 -->
                     <div class="why-card reveal">
                         <div class="why-icon">🛡️</div>
                         <h3>Quality Protection Promise</h3>
-                        <p>Your satisfaction during development is our priority. Live preview links and milestone approvals mean you only move forward when you are happy. Unlimited revisions in the dev phase.</p>
+                        <p>Your complete satisfaction is guaranteed during active development. Live preview links and milestone sign-offs ensure you stay in total control of every feature.</p>
                     </div>
 
+                    <!-- CARD 5 -->
                     <div class="why-card reveal reveal-delay-1">
                         <div class="why-icon">🔧</div>
                         <h3>Free Post-Launch Support</h3>
-                        <p>Our relationship does not end when your website goes live. Depending on your plan, you receive 30 to 90 days of completely free post-launch support, updates, and bug fixes.</p>
+                        <p>We stay by your side after launch. Depending on your chosen package, receive 30 to 90 days of complimentary maintenance, bug fixes, and operational support.</p>
                     </div>
 
+                    <!-- CARD 6 -->
                     <div class="why-card reveal reveal-delay-2">
                         <div class="why-icon">📞</div>
                         <h3>Direct Communication</h3>
-                        <p>When you work with Rehmat Developers, you communicate directly with the senior developers and designers actually building your website — not a middleman account manager.</p>
+                        <p>No middlemen account managers. Communicate directly with CEO Muhammad Waleed and senior lead developers working on your project via WhatsApp and Email.</p>
                     </div>
 
                 </div>
@@ -509,24 +552,24 @@
             <div class="policy-box reveal">
                 <h2>🛡️ 100% Quality &amp; Work Protection Policy</h2>
                 <p>
-                    We do <strong style="color:#fff;">not</strong> offer cash refunds after final delivery. Instead, we protect you with a transparent milestone system so you stay in full control from day one to launch.
+                    We operate on a transparent milestone system so you retain 100% control over project direction, quality, and funds from kick-off to final deployment.
                 </p>
                 <div class="policy-points">
                     <div class="policy-point">
                         <strong>💳 Milestone Payments</strong>
-                        <span>Pay in stages tied to real progress. You never pay the full amount upfront.</span>
+                        <span>Payments are structured in stages tied directly to approved deliverables. Never pay everything upfront.</span>
                     </div>
                     <div class="policy-point">
-                        <strong>🔗 Live Preview Links</strong>
-                        <span>Review the actual website on a private link before approving the next milestone.</span>
+                        <strong>🔗 Live Staging Previews</strong>
+                        <span>Test and review your live website link on private servers before authorizing the next phase.</span>
                     </div>
                     <div class="policy-point">
-                        <strong>🔄 Unlimited Dev Revisions</strong>
-                        <span>During the active development phase we revise until the design &amp; features match your vision.</span>
+                        <strong>🔄 Active Phase Revisions</strong>
+                        <span>Unlimited refinements during active development until the design and features match your vision.</span>
                     </div>
                     <div class="policy-point">
-                        <strong>✅ You Approve Every Step</strong>
-                        <span>No blind trust. Work only moves forward when you are satisfied with the progress.</span>
+                        <strong>✅ Approval Control</strong>
+                        <span>Work moves forward only when you give official approval on each phase of execution.</span>
                     </div>
                 </div>
             </div>
@@ -541,9 +584,9 @@
                     <thead>
                         <tr>
                             <th>Feature</th>
-                            <th>Starter</th>
-                            <th>Professional</th>
-                            <th>Enterprise</th>
+                            <th>Starter ($250–$400)</th>
+                            <th>Professional ($600–$1k)</th>
+                            <th>Enterprise ($2k–$3k)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -555,45 +598,39 @@
                         </tr>
                         <tr>
                             <td>Custom UI/UX Design</td>
-                            <td class="no">—</td>
-                            <td class="yes">✓</td>
-                            <td class="yes">✓</td>
+                            <td>Standard Custom</td>
+                            <td class="yes">Bespoke Premium</td>
+                            <td class="yes">Enterprise Grade</td>
                         </tr>
                         <tr>
-                            <td>Advanced Animations</td>
+                            <td>E-Commerce &amp; Payments</td>
                             <td class="no">—</td>
-                            <td class="yes">✓</td>
-                            <td class="yes">✓</td>
+                            <td class="no">—</td>
+                            <td class="yes">✓ Full Setup</td>
                         </tr>
                         <tr>
-                            <td>Blog / Portfolio</td>
+                            <td>Admin / Content Dashboard</td>
                             <td class="no">—</td>
-                            <td class="yes">✓</td>
-                            <td class="yes">✓</td>
+                            <td class="yes">Basic CMS</td>
+                            <td class="yes">✓ Custom Admin</td>
                         </tr>
                         <tr>
-                            <td>E-Commerce Ready</td>
+                            <td>Blog / Portfolio Engine</td>
                             <td class="no">—</td>
-                            <td class="no">—</td>
-                            <td class="yes">✓</td>
+                            <td class="yes">✓ Included</td>
+                            <td class="yes">✓ Included</td>
                         </tr>
                         <tr>
-                            <td>Admin Dashboard</td>
-                            <td class="no">—</td>
-                            <td class="no">—</td>
-                            <td class="yes">✓</td>
+                            <td>SEO &amp; Performance</td>
+                            <td>On-Page Basic</td>
+                            <td>Advanced Speed + SEO</td>
+                            <td>Full Suite + Analytics</td>
                         </tr>
                         <tr>
-                            <td>SEO Optimization</td>
-                            <td>Basic</td>
-                            <td>Advanced</td>
-                            <td>Full + Analytics</td>
-                        </tr>
-                        <tr>
-                            <td>Free Support</td>
+                            <td>Complimentary Support</td>
                             <td>30 Days</td>
                             <td>60 Days</td>
-                            <td>90 Days</td>
+                            <td>90 Days Priority</td>
                         </tr>
                         <tr>
                             <td>Milestone Payments</td>
@@ -602,7 +639,7 @@
                             <td class="yes">✓</td>
                         </tr>
                         <tr>
-                            <td>Live Preview Links</td>
+                            <td>Live Staging Links</td>
                             <td class="yes">✓</td>
                             <td class="yes">✓</td>
                             <td class="yes">✓</td>
@@ -613,11 +650,11 @@
 
             <!-- ===== CUSTOM QUOTE ===== -->
             <div class="custom-quote reveal">
-                <h2>Need a <span class="gradient-text">Custom Quote?</span></h2>
-                <p>Have a unique project, larger scope, or special requirements? Tell us what you need and CEO Muhammad Waleed will personally send you a tailored proposal.</p>
+                <h2>Need a <span class="gradient-text">Custom Proposal?</span></h2>
+                <p>Have complex web application requirements, custom software architecture, or unique scope needs? CEO Muhammad Waleed will personally prepare a tailored strategy and proposal.</p>
                 <div class="custom-quote-btns">
                     <a href="contact.html" class="btn btn-primary">Request Custom Quote</a>
-                    <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%20need%20a%20custom%20quote%20for%20my%20project." target="_blank" class="btn btn-outline">💬 WhatsApp Us</a>
+                    <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%20want%20to%20discuss%20a%20custom%20web%20project." target="_blank" class="btn btn-outline">💬 Instant WhatsApp Chat</a>
                 </div>
             </div>
 
