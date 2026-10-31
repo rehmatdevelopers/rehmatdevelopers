@@ -38,7 +38,6 @@ if (cursorDot && cursorRing && window.innerWidth > 768) {
   }
   animateRing();
 
-  // Hover effects
   const hoverElements = document.querySelectorAll('a, button, .btn, .glass-card, .filter-btn, .faq-question, .skill-tag, .portfolio-card, .star');
   hoverElements.forEach(el => {
     el.addEventListener('mouseenter', () => {
@@ -57,7 +56,6 @@ const canvas = document.getElementById('particles-canvas');
 if (canvas) {
   const ctx = canvas.getContext('2d');
   let particles = [];
-  let animationId;
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -125,7 +123,7 @@ if (canvas) {
       p.draw();
     });
     connectParticles();
-    animationId = requestAnimationFrame(animateParticles);
+    requestAnimationFrame(animateParticles);
   }
   animateParticles();
 }
@@ -157,7 +155,6 @@ if (hamburger && navLinks) {
     });
   });
 
-  // Close on outside click
   document.addEventListener('click', (e) => {
     if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
       hamburger.classList.remove('active');
@@ -216,7 +213,6 @@ const counterObserver = new IntersectionObserver((entries) => {
         function updateCounter(currentTime) {
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
-          // Ease out cubic
           const eased = 1 - Math.pow(1 - progress, 3);
           const current = Math.floor(eased * target);
           counter.textContent = current + suffix;
@@ -288,12 +284,12 @@ if (typingElement) {
     }
 
     if (!isDeleting && charIndex === currentWord.length) {
-      typingSpeed = 2000; // Pause at end
+      typingSpeed = 2000;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       wordIndex = (wordIndex + 1) % words.length;
-      typingSpeed = 400; // Pause before new word
+      typingSpeed = 400;
     }
 
     setTimeout(typeEffect, typingSpeed);
@@ -338,12 +334,10 @@ document.querySelectorAll('.faq-question').forEach(question => {
     const item = question.parentElement;
     const isActive = item.classList.contains('active');
 
-    // Close all
     document.querySelectorAll('.faq-item').forEach(faq => {
       faq.classList.remove('active');
     });
 
-    // Open clicked (if wasn't active)
     if (!isActive) {
       item.classList.add('active');
     }
@@ -382,19 +376,33 @@ if (starRating) {
   }
 }
 
+// ===== HELPER: ESCAPE HTML =====
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 // ===== FEEDBACK SYSTEM (localStorage) =====
 const FeedbackSystem = {
   STORAGE_KEY: 'rd_feedbacks',
   ADMIN_KEY: 'rd_admin',
   ADMIN_PASSWORD: 'waleed2025',
 
-  // Get all feedbacks
   getAll() {
-    const data = localStorage.getItem(this.STORAGE_KEY);
-    return data ? JSON.parse(data) : [];
+    try {
+      const data = localStorage.getItem(this.STORAGE_KEY);
+      const parsed = data ? JSON.parse(data) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) {
+      return [];
+    }
   },
 
-  // Save a new feedback
   add(feedback) {
     const feedbacks = this.getAll();
     feedback.id = Date.now();
@@ -406,14 +414,12 @@ const FeedbackSystem = {
     return feedback;
   },
 
-  // Delete a specific feedback by ID
   delete(id) {
     let feedbacks = this.getAll();
     feedbacks = feedbacks.filter(f => f.id !== id);
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(feedbacks));
   },
 
-  // Admin check
   isAdmin() {
     return sessionStorage.getItem(this.ADMIN_KEY) === 'true';
   },
@@ -432,103 +438,244 @@ const FeedbackSystem = {
     document.body.classList.remove('admin-mode');
   },
 
-  // Render all feedbacks on page
+  // Reviews page grid
   render() {
     const container = document.getElementById('feedbackContainer');
-    if (!container) return;
+    if (container) {
+      const feedbacks = this.getAll();
+      const isAdmin = this.isAdmin();
+
+      if (feedbacks.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:60px 20px; grid-column: 1/-1;">
+            <p style="font-size:3rem; margin-bottom:16px;">💬</p>
+            <h3 style="font-family:var(--font-heading); color:#fff; margin-bottom:8px;">No Feedback Yet</h3>
+            <p style="color:var(--text-muted);">Be the first to share your experience with us!</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = feedbacks.map(fb => {
+          const rating = parseInt(fb.rating, 10) || 5;
+          const starsHtml = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+          const safeName = escapeHtml(fb.name || 'Client');
+          const initials = (fb.name || 'C').split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+          const safeMessage = escapeHtml(fb.message || '');
+          const safeService = escapeHtml(fb.service || 'Client');
+          const safeDate = escapeHtml(fb.date || '');
+
+          return `
+            <div class="glass-card feedback-card reveal" data-id="${fb.id}">
+              <span class="date">${safeDate}</span>
+              <div class="rating">${starsHtml}</div>
+              <p class="message">"${safeMessage}"</p>
+              <div class="author">
+                <div class="author-avatar">${escapeHtml(initials)}</div>
+                <div>
+                  <h4>${safeName}</h4>
+                  <span>${safeService}</span>
+                </div>
+              </div>
+              <button class="delete-btn" onclick="FeedbackSystem.deleteFeedback(${fb.id})" title="Delete Feedback">🗑</button>
+            </div>
+          `;
+        }).join('');
+
+        container.querySelectorAll('.feedback-card').forEach(card => {
+          if (typeof revealObserver !== 'undefined') revealObserver.observe(card);
+        });
+      }
+
+      if (isAdmin) {
+        document.body.classList.add('admin-mode');
+      }
+    }
+
+    // Always sync homepage slider too
+    this.renderHomepageSlider();
+  },
+
+  // Homepage testimonials (dynamic, real reviews only)
+  renderHomepageSlider() {
+    const track =
+      document.getElementById('testimonialsSliderTrack') ||
+      document.getElementById('homeTestimonials') ||
+      document.getElementById('testimonialsContainer');
+
+    if (!track) return;
 
     const feedbacks = this.getAll();
-    const isAdmin = this.isAdmin();
 
     if (feedbacks.length === 0) {
-      container.innerHTML = `
-        <div style="text-align:center; padding:60px 20px; grid-column: 1/-1;">
-          <p style="font-size:3rem; margin-bottom:16px;">💬</p>
-          <h3 style="font-family:var(--font-heading); color:#fff; margin-bottom:8px;">No Feedback Yet</h3>
-          <p style="color:var(--text-muted);">Be the first to share your experience with us!</p>
+      track.innerHTML = `
+        <div style="text-align:center; padding:40px 20px; width:100%;">
+          <p style="color:var(--text-muted, #94a3b8);">No client reviews yet. Be the first to share feedback on our Reviews page.</p>
         </div>
       `;
       return;
     }
 
-    container.innerHTML = feedbacks.map(fb => {
-      const starsHtml = '★'.repeat(fb.rating) + '☆'.repeat(5 - fb.rating);
-      const initials = fb.name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+    track.innerHTML = feedbacks.map(fb => {
+      const rating = parseInt(fb.rating, 10) || 5;
+      const starsHtml = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+      const safeName = escapeHtml(fb.name || 'Client');
+      const initials = (fb.name || 'C').split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+      const safeMessage = escapeHtml(fb.message || '');
+      const safeService = escapeHtml(fb.service || 'Verified Client');
+
       return `
-        <div class="glass-card feedback-card" data-id="${fb.id}">
-          <span class="date">${fb.date}</span>
-          <div class="rating">${starsHtml}</div>
-          <p class="message">"${fb.message}"</p>
-          <div class="author">
-            <div class="author-avatar">${initials}</div>
+        <div class="testimonial-card glass-card" style="min-width:min(320px, 85vw); max-width:400px; margin:10px; flex-shrink:0;">
+          <div class="rating" style="color:#f59e0b; letter-spacing:2px; margin-bottom:12px;">${starsHtml}</div>
+          <p class="message" style="color:#cbd5e1; font-style:italic; line-height:1.6; margin-bottom:16px;">"${safeMessage}"</p>
+          <div class="author" style="display:flex; align-items:center; gap:12px;">
+            <div class="author-avatar" style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#00d4ff,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;">${escapeHtml(initials)}</div>
             <div>
-              <h4>${fb.name}</h4>
-              <span>${fb.service || 'Client'}</span>
+              <h4 style="margin:0; color:#f8fafc; font-size:1rem;">${safeName}</h4>
+              <span style="color:#94a3b8; font-size:0.85rem;">${safeService}</span>
             </div>
           </div>
-          <button class="delete-btn" onclick="FeedbackSystem.deleteFeedback(${fb.id})" title="Delete Feedback">🗑</button>
         </div>
       `;
     }).join('');
-
-    // Re-observe for animations
-    container.querySelectorAll('.feedback-card').forEach(card => {
-      revealObserver.observe(card);
-    });
-
-    // Update admin mode
-    if (isAdmin) {
-      document.body.classList.add('admin-mode');
-    }
   },
 
-  // Delete with confirmation
   deleteFeedback(id) {
     if (confirm('Are you sure you want to delete this feedback?')) {
       this.delete(id);
       this.render();
     }
+  },
+
+  // Email copy to business inbox via Web3Forms
+  async sendEmailNotification(feedback) {
+    try {
+      const formData = new FormData();
+      formData.append('access_key', 'cdabd95e-b135-49fa-814a-f97f62c001e7');
+      formData.append('subject', `New Client Review — ${feedback.name}`);
+      formData.append('from_name', 'Rehmat Developers Reviews');
+      formData.append('Reviewer Name', feedback.name);
+      formData.append('Reviewer Email', feedback.email || 'Not provided');
+      formData.append('Service', feedback.service || 'General');
+      formData.append('Rating', `${feedback.rating} Stars`);
+      formData.append('Review', feedback.message);
+
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+    } catch (err) {
+      console.log('Review email notification error:', err);
+    }
   }
 };
 
-// Render feedbacks on page load
-if (document.getElementById('feedbackContainer')) {
-  FeedbackSystem.render();
-  if (FeedbackSystem.isAdmin()) {
-    document.body.classList.add('admin-mode');
-  }
+// Render on load (reviews page + homepage slider)
+FeedbackSystem.render();
+if (FeedbackSystem.isAdmin()) {
+  document.body.classList.add('admin-mode');
 }
 
 // ===== FEEDBACK FORM SUBMISSION =====
 const feedbackForm = document.getElementById('feedbackForm');
 if (feedbackForm) {
-  feedbackForm.addEventListener('submit', (e) => {
+  feedbackForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const name = document.getElementById('fbName').value.trim();
-    const email = document.getElementById('fbEmail').value.trim();
-    const service = document.getElementById('fbService').value.trim();
-    const message = document.getElementById('fbMessage').value.trim();
-    const rating = parseInt(document.getElementById('feedbackRating').value) || 0;
+    const nameEl = document.getElementById('fbName');
+    const emailEl = document.getElementById('fbEmail');
+    const serviceEl = document.getElementById('fbService');
+    const messageEl = document.getElementById('fbMessage');
+    const ratingEl = document.getElementById('feedbackRating');
+
+    const name = nameEl ? nameEl.value.trim() : '';
+    const email = emailEl ? emailEl.value.trim() : '';
+    const service = serviceEl ? serviceEl.value.trim() : '';
+    const message = messageEl ? messageEl.value.trim() : '';
+    const rating = parseInt(ratingEl ? ratingEl.value : '0', 10) || 0;
 
     if (!name || !message || rating === 0) {
       alert('Please fill in your name, message, and select a star rating.');
       return;
     }
 
-    FeedbackSystem.add({ name, email, service, message, rating });
-    FeedbackSystem.render();
+    const submitBtn = feedbackForm.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Publishing...';
+    }
 
-    // Reset form
+    const feedback = { name, email, service, message, rating };
+    FeedbackSystem.add(feedback);
+    FeedbackSystem.render(); // instant show on same page + homepage key sync
+
+    // background email to business inbox
+    await FeedbackSystem.sendEmailNotification(feedback);
+
     feedbackForm.reset();
     document.querySelectorAll('.star-rating .star').forEach(s => s.classList.remove('active'));
-    document.getElementById('feedbackRating').value = '0';
+    if (ratingEl) ratingEl.value = '0';
 
-    // Show success
     const successMsg = document.getElementById('feedbackSuccess');
     if (successMsg) {
       successMsg.style.display = 'block';
       setTimeout(() => { successMsg.style.display = 'none'; }, 4000);
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Submit Feedback';
+    }
+
+    // Scroll to list so user sees their review
+    const container = document.getElementById('feedbackContainer');
+    if (container) {
+      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+}
+
+// ===== CONTACT FORM (Web3Forms AJAX) =====
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const statusEl = document.getElementById('formStatus');
+    const btn = contactForm.querySelector('button[type="submit"]');
+
+    if (statusEl) {
+      statusEl.style.display = 'block';
+      statusEl.style.color = '#3b82f6';
+      statusEl.textContent = 'Sending message...';
+    }
+    if (btn) btn.disabled = true;
+
+    try {
+      const formData = new FormData(contactForm);
+      if (!formData.get('access_key')) {
+        formData.append('access_key', 'cdabd95e-b135-49fa-814a-f97f62c001e7');
+      }
+
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await res.json();
+
+      if (result.success) {
+        if (statusEl) {
+          statusEl.style.color = '#10b981';
+          statusEl.textContent = 'Thank you! Your message has been sent successfully.';
+        }
+        contactForm.reset();
+      } else {
+        throw new Error(result.message || 'Failed');
+      }
+    } catch (err) {
+      if (statusEl) {
+        statusEl.style.color = '#ef4444';
+        statusEl.textContent = 'Error sending message. Please try WhatsApp or email directly.';
+      }
+    } finally {
+      if (btn) btn.disabled = false;
     }
   });
 }
@@ -540,7 +687,6 @@ const adminLogoutBtn = document.getElementById('adminLogoutBtn');
 const adminPasswordInput = document.getElementById('adminPassword');
 const adminErrorMsg = document.querySelector('.admin-modal .error-msg');
 
-// Open admin modal: Ctrl + Shift + A
 document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.shiftKey && e.key === 'A') {
     e.preventDefault();
@@ -548,7 +694,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Also open by clicking footer logo 5 times
 let logoClickCount = 0;
 let logoClickTimer;
 const footerLogo = document.querySelector('.footer .logo');
@@ -565,24 +710,22 @@ if (footerLogo) {
   });
 }
 
-// Admin Login
 if (adminLoginBtn) {
   adminLoginBtn.addEventListener('click', () => {
-    const password = adminPasswordInput.value;
+    const password = adminPasswordInput ? adminPasswordInput.value : '';
     if (FeedbackSystem.login(password)) {
-      adminModal.classList.remove('show');
-      adminPasswordInput.value = '';
+      if (adminModal) adminModal.classList.remove('show');
+      if (adminPasswordInput) adminPasswordInput.value = '';
       if (adminErrorMsg) adminErrorMsg.style.display = 'none';
       FeedbackSystem.render();
       alert('✅ Admin Mode Activated! You can now delete feedbacks.');
     } else {
       if (adminErrorMsg) adminErrorMsg.style.display = 'block';
-      adminPasswordInput.value = '';
+      if (adminPasswordInput) adminPasswordInput.value = '';
     }
   });
 }
 
-// Admin Logout
 if (adminLogoutBtn) {
   adminLogoutBtn.addEventListener('click', () => {
     FeedbackSystem.logout();
@@ -591,7 +734,6 @@ if (adminLogoutBtn) {
   });
 }
 
-// Close modal on outside click
 if (adminModal) {
   adminModal.addEventListener('click', (e) => {
     if (e.target === adminModal) {
@@ -600,10 +742,9 @@ if (adminModal) {
   });
 }
 
-// Admin password enter key
 if (adminPasswordInput) {
   adminPasswordInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && adminLoginBtn) {
       adminLoginBtn.click();
     }
   });
