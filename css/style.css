@@ -2138,6 +2138,40 @@ body.admin-mode .feedback-card .delete-btn {
   transform: translateX(4px);
 }
 
+/* ===== FOOTER CONTACT ICON FIX (Email icon side-by-side) ===== */
+.footer ul li {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  margin-bottom: 14px !important;
+}
+
+.footer ul li i {
+  color: var(--cyan) !important;
+  font-size: 0.95rem !important;
+  width: 18px !important;
+  min-width: 18px !important;
+  flex-shrink: 0 !important;
+  margin-top: 4px !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+}
+
+.footer ul li a,
+.footer ul li span {
+  color: var(--text-secondary) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  word-break: break-word !important;
+  display: inline !important;
+}
+
+.footer ul li a:hover {
+  color: var(--cyan) !important;
+  transform: none !important; /* email pe left-slide band */
+}
+
 .footer-bottom {
   text-align: center;
   padding-top: 28px;
@@ -2163,38 +2197,6 @@ body.admin-mode .feedback-card .delete-btn {
   color: var(--pink);
 }
 
-
-/* FOOTER CONTACT ICON & EMAIL ALIGNMENT FIX */
-.footer-contact {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-contact li {
-    display: flex !important;
-    flex-direction: row !important; /* Icon aur text ko ek hi line me side-by-side laane ke liye */
-    align-items: flex-start !important; /* Top side se align rakhne ke liye */
-    gap: 12px !important; /* Icon aur text ke darmiyan space */
-    margin-bottom: 16px !important;
-}
-
-.footer-contact li i {
-    width: 22px !important;
-    min-width: 22px !important;
-    flex-shrink: 0 !important; /* Icon ko squeeze hone se bachane ke liye */
-    color: var(--primary-color) !important;
-    font-size: 1rem !important;
-    margin-top: 3px !important;
-}
-
-.footer-contact li a,
-.footer-contact li span {
-    color: var(--text-muted) !important;
-    font-size: 0.95rem !important;
-    line-height: 1.4 !important;
-    word-break: break-word !important; /* Email choti screen par wrap ho sake */
-}
 
 /* ===== WHATSAPP FLOAT ===== */
 .whatsapp-float {
