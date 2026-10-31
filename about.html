@@ -11,25 +11,28 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         * { box-sizing: border-box; }
-        
-        /* ABOUT GRIDS */
+
+        /* ===== ABOUT MAIN GRID: Image + Text side by side ===== */
         .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            display: grid !important;
+            grid-template-columns: minmax(280px, 420px) 1fr !important;
+            gap: 50px !important;
+            align-items: center !important;
+            width: 100% !important;
         }
 
-        /* CEO IMAGE CARD */
+        /* ===== CEO IMAGE ===== */
         .about-image-wrapper {
             position: relative;
             border-radius: 24px;
             overflow: hidden;
-            border: 1px solid rgba(0, 212, 255, 0.25);
+            border: 1px solid rgba(0, 212, 255, 0.3);
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(124, 58, 237, 0.08));
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 212, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(0, 212, 255, 0.1);
             aspect-ratio: 4 / 5;
             max-height: 520px;
+            width: 100%;
+            margin: 0;
         }
         .about-image-wrapper img.ceo-photo {
             width: 100%;
@@ -40,29 +43,7 @@
             transition: transform 0.5s ease;
         }
         .about-image-wrapper:hover img.ceo-photo {
-            transform: scale(1.04);
-        }
-        .ceo-badge {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 28px 24px 24px;
-            background: linear-gradient(to top, rgba(5, 10, 20, 0.95) 0%, rgba(5, 10, 20, 0.7) 60%, transparent 100%);
-            text-align: left;
-        }
-        .ceo-badge h3 {
-            font-size: 1.45rem;
-            color: #fff;
-            margin: 0 0 4px 0;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-        }
-        .ceo-badge p {
-            margin: 0;
-            color: #00d4ff;
-            font-size: 0.95rem;
-            font-weight: 600;
+            transform: scale(1.03);
         }
         .ceo-glow {
             position: absolute;
@@ -71,80 +52,144 @@
             pointer-events: none;
             box-shadow: inset 0 0 0 1px rgba(0, 212, 255, 0.15);
         }
-        
-        /* STATS GRID */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-top: 60px;
+
+        /* ===== RIGHT TEXT: SINGLE CLEAN COLUMN (fixes broken 4-box text) ===== */
+        .about-content {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            column-count: 1 !important;
+            columns: auto !important;
+            float: none !important;
+            position: relative !important;
         }
-        .stat-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 30px 20px;
-            text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+        .about-content .section-tag {
+            margin-bottom: 14px !important;
+            display: inline-block !important;
         }
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 212, 255, 0.3);
+        .about-content .section-title,
+        .about-content h2 {
+            text-align: left !important;
+            margin: 0 0 22px 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
+            line-height: 1.25 !important;
+            float: none !important;
+            column-span: all !important;
         }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 8px;
-            font-family: 'Space Grotesk', sans-serif;
+        .about-content p {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            float: none !important;
+            color: var(--text-secondary, #a0aec0) !important;
+            line-height: 1.75 !important;
+            margin: 0 0 16px 0 !important;
+            font-size: 1rem !important;
+            text-align: left !important;
+            column-count: 1 !important;
+            columns: auto !important;
         }
-        .stat-label {
-            color: var(--text-secondary, #a0aec0);
-            font-size: 0.95rem;
-            font-weight: 500;
+        .about-content .btn {
+            margin-top: 8px !important;
+            flex-shrink: 0;
         }
 
-        /* VALUES GRID */
+        /* ===== STATS: 4 CLEAR BOXES ===== */
+        .stats-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 20px !important;
+            margin-top: 60px !important;
+            width: 100% !important;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 20px !important;
+            padding: 28px 18px !important;
+            text-align: center !important;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 140px;
+        }
+        .stat-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 212, 255, 0.4) !important;
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.12);
+        }
+        .stat-icon {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        .stat-number {
+            font-size: 2.4rem !important;
+            font-weight: 800 !important;
+            margin-bottom: 8px !important;
+            font-family: 'Space Grotesk', sans-serif !important;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            line-height: 1.1 !important;
+        }
+        .stat-label {
+            color: #c0c8d4 !important;
+            font-size: 0.9rem !important;
+            font-weight: 600 !important;
+            line-height: 1.35 !important;
+        }
+
+        /* ===== VALUES GRID ===== */
         .values-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 24px;
             margin-top: 50px;
         }
         .value-card {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 20px;
-            padding: 40px 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 36px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
             transition: border-color 0.3s ease, transform 0.3s ease;
         }
         .value-card:hover {
-            border-color: rgba(0, 212, 255, 0.25);
+            border-color: rgba(0, 212, 255, 0.3);
             transform: translateY(-4px);
         }
         .value-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.3rem;
+            margin-bottom: 18px;
         }
         .value-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: #fff;
             margin-bottom: 12px;
         }
         .value-card p {
             color: var(--text-secondary, #a0aec0);
-            line-height: 1.6;
+            line-height: 1.65;
             font-size: 0.95rem;
+            margin: 0;
         }
 
-        /* CTA */
+        /* ===== CTA ===== */
         .about-cta {
             padding: 80px 0;
             text-align: center;
         }
         .about-cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.4rem;
+            margin-bottom: 18px;
         }
         .about-cta-buttons {
             display: flex;
@@ -153,27 +198,29 @@
             flex-wrap: wrap;
         }
 
-        /* --- MOBILE RESPONSIVE --- */
+        /* ===== MOBILE ===== */
         @media (max-width: 992px) {
             .about-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
+                gap: 36px !important;
                 text-align: center;
-                gap: 40px;
             }
             .about-image-wrapper {
-                max-width: 420px;
+                max-width: 380px;
                 margin: 0 auto;
-                aspect-ratio: 4 / 5;
-                max-height: 480px;
+                max-height: 460px;
             }
-            .ceo-badge {
-                text-align: center;
+            .about-content {
+                align-items: center !important;
+                text-align: center !important;
             }
-            .about-content .section-title {
+            .about-content .section-title,
+            .about-content h2,
+            .about-content p {
                 text-align: center !important;
             }
             .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr) !important;
             }
             .values-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -182,41 +229,39 @@
         @media (max-width: 768px) {
             .values-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 16px;
             }
             .value-card {
-                padding: 30px 20px;
+                padding: 28px 22px;
             }
             .about-image-wrapper {
                 max-width: 100%;
                 max-height: 420px;
             }
-            .ceo-badge h3 {
-                font-size: 1.25rem;
-            }
             .stat-card {
-                padding: 20px 15px;
+                min-height: 120px;
+                padding: 22px 14px !important;
             }
             .stat-number {
-                font-size: 2rem;
+                font-size: 2rem !important;
             }
             .about-cta h2 {
-                font-size: 1.8rem;
+                font-size: 1.75rem;
             }
         }
         @media (max-width: 480px) {
             .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
             }
             .stat-number {
-                font-size: 1.75rem;
+                font-size: 1.7rem !important;
             }
             .stat-label {
-                font-size: 0.8rem;
+                font-size: 0.78rem !important;
             }
             .about-image-wrapper {
-                max-height: 380px;
+                max-height: 360px;
                 border-radius: 18px;
             }
         }
@@ -281,48 +326,55 @@
     <section class="section">
         <div class="container">
             <div class="about-grid">
-                
-                <!-- Left: CEO Photo -->
+
+                <!-- LEFT: CEO Photo -->
                 <div class="about-image-wrapper reveal">
                     <img class="ceo-photo" src="images/waleed.jpg" alt="Muhammad Waleed — CEO of Rehmat Developers">
                     <div class="ceo-glow"></div>
-                    <div class="ceo-badge">
-                    </div>
                 </div>
 
-                <!-- Right: Content -->
+                <!-- RIGHT: One clean text column -->
                 <div class="about-content reveal reveal-delay-1">
-                    <span class="section-tag" style="margin-bottom: 12px; display:inline-block;">👋 Welcome</span>
-                    <h2 class="section-title" style="text-align:left; margin-bottom: 24px;">Built on Vision, <span class="gradient-text">Driven by Code</span></h2>
-                    <p style="color:var(--text-secondary); line-height:1.7; margin-bottom: 16px;">
+                    <span class="section-tag">👋 Welcome</span>
+
+                    <h2 class="section-title">Built on Vision, <span class="gradient-text">Driven by Code</span></h2>
+
+                    <p>
                         Founded and led by CEO <strong style="color:#fff;">Muhammad Waleed</strong>, Rehmat Developers operates out of Raja Jang, Kasur, Punjab, Pakistan. We started with a simple belief: high-quality web development should be accessible, modern, and built to perform.
                     </p>
-                    <p style="color:var(--text-secondary); line-height:1.7; margin-bottom: 16px;">
+
+                    <p>
                         We don't just build websites; we craft digital experiences. From high-converting landing pages to complex corporate platforms, our agency handles UI/UX design, frontend development, and rigorous performance optimization to ensure your brand stands out globally.
                     </p>
-                    <p style="color:var(--text-secondary); line-height:1.7; margin-bottom: 24px;">
-                        Every project is protected by our <strong style="color:#00d4ff;">100% Quality & Work Protection Policy</strong> — milestone payments, live preview links, and unlimited revisions during development. Your vision, delivered with full transparency.
+
+                    <p>
+                        Every project is protected by our <strong style="color:#00d4ff;">100% Quality &amp; Work Protection Policy</strong> — milestone payments, live preview links, and unlimited revisions during development. Your vision, delivered with full transparency.
                     </p>
+
                     <a href="contact.html" class="btn btn-primary">Work With Us →</a>
                 </div>
 
             </div>
 
-            <!-- Stats Grid -->
+            <!-- 4 STAT BOXES — clearly labeled -->
             <div class="stats-grid reveal">
                 <div class="stat-card">
+                    <div class="stat-icon">🚀</div>
                     <div class="stat-number">50+</div>
                     <div class="stat-label">Projects Completed</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-icon">❤️</div>
                     <div class="stat-number">100%</div>
                     <div class="stat-label">Client Satisfaction</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
                     <div class="stat-number">24/7</div>
                     <div class="stat-label">Dedicated Support</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
                     <div class="stat-number">5★</div>
                     <div class="stat-label">Rating Worldwide</div>
                 </div>
