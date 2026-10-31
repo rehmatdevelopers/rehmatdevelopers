@@ -2163,6 +2163,39 @@ body.admin-mode .feedback-card .delete-btn {
   color: var(--pink);
 }
 
+
+/* FOOTER CONTACT ICON & EMAIL ALIGNMENT FIX */
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact li {
+    display: flex !important;
+    flex-direction: row !important; /* Icon aur text ko ek hi line me side-by-side laane ke liye */
+    align-items: flex-start !important; /* Top side se align rakhne ke liye */
+    gap: 12px !important; /* Icon aur text ke darmiyan space */
+    margin-bottom: 16px !important;
+}
+
+.footer-contact li i {
+    width: 22px !important;
+    min-width: 22px !important;
+    flex-shrink: 0 !important; /* Icon ko squeeze hone se bachane ke liye */
+    color: var(--primary-color) !important;
+    font-size: 1rem !important;
+    margin-top: 3px !important;
+}
+
+.footer-contact li a,
+.footer-contact li span {
+    color: var(--text-muted) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+    word-break: break-word !important; /* Email choti screen par wrap ho sake */
+}
+
 /* ===== WHATSAPP FLOAT ===== */
 .whatsapp-float {
   position: fixed;
