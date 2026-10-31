@@ -12,12 +12,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* ===== FIX REVIEWS LAYOUT & HEADERS ===== */
-    
-    /* 1. Header Centering Fix */
+    /* ===== REVIEWS PAGE LAYOUT ===== */
+
     .review-section-header {
       text-align: center !important;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
     .review-section-header h2 {
       font-size: clamp(2rem, 4vw, 2.6rem);
@@ -31,74 +30,84 @@
       margin: 0 auto;
     }
 
-    /* 2. Feedback Grid Expansion Fix */
+    /* ONE CARD PER ROW — centered + long width */
     .feedback-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 30px;
-      margin-top: 20px;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 28px !important;
+      width: 100% !important;
+      max-width: 920px !important;
+      margin: 0 auto !important;
+      padding: 0 15px;
     }
 
-    /* 3. Premium Card Styling (No more small boxes) */
     .feedback-card {
-      background: rgba(30, 41, 59, 0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 30px;
+      width: 100% !important;
+      max-width: 920px !important;
+      min-height: auto !important;
+      height: auto !important;
+      background: rgba(30, 41, 59, 0.65);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      padding: 32px 36px;
       display: flex;
       flex-direction: column;
       position: relative;
       transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      height: 100%; /* Forces cards to be equal height */
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+      box-sizing: border-box;
     }
+
     .feedback-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0, 212, 255, 0.4);
-      box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
+      transform: translateY(-4px);
+      border-color: rgba(0, 212, 255, 0.45);
+      box-shadow: 0 16px 45px rgba(0, 212, 255, 0.12);
     }
-    
+
     .feedback-card .date {
       position: absolute;
-      top: 25px;
-      right: 25px;
-      font-size: 0.75rem;
+      top: 24px;
+      right: 28px;
+      font-size: 0.78rem;
       color: #94a3b8;
-      background: rgba(15, 23, 42, 0.6);
-      padding: 5px 12px;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 6px 14px;
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
-    
+
     .feedback-card .rating {
       color: #f59e0b;
-      font-size: 1.3rem;
-      letter-spacing: 2px;
-      margin-bottom: 18px;
-      margin-top: 8px;
+      font-size: 1.35rem;
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+      margin-top: 4px;
+      padding-right: 110px; /* date se overlap na ho */
     }
-    
+
     .feedback-card .message {
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 1.05rem;
+      line-height: 1.8;
       color: #cbd5e1;
       font-style: italic;
-      margin-bottom: 30px;
-      flex-grow: 1; /* Pushes author to bottom */
+      margin-bottom: 28px;
+      word-break: break-word;
     }
-    
+
     .feedback-card .author {
       display: flex;
       align-items: center;
       gap: 16px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding-top: 20px;
+      margin-top: auto;
     }
-    
+
     .feedback-card .author-avatar {
-      width: 50px;
-      height: 50px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       background: linear-gradient(135deg, #00d4ff, #7c3aed);
       display: flex;
@@ -106,35 +115,35 @@
       justify-content: center;
       color: #fff;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       flex-shrink: 0;
       box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
     }
-    
+
     .feedback-card .author h4 {
       margin: 0 0 4px 0;
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       color: #f8fafc;
     }
-    
+
     .feedback-card .author span {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: #94a3b8;
     }
 
     .feedback-card .delete-btn {
       position: absolute;
-      bottom: 25px;
-      right: 25px;
+      bottom: 24px;
+      right: 28px;
       background: rgba(239, 68, 68, 0.15);
       color: #f87171;
       border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 7px 14px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       display: none;
-      transition: all 0.3s;
+      transition: all 0.25s ease;
     }
     .feedback-card .delete-btn:hover {
       background: #ef4444;
@@ -143,45 +152,71 @@
     body.admin-mode .feedback-card .delete-btn {
       display: block;
     }
+
+    /* Empty state center */
+    .feedback-grid > div[style*="text-align:center"] {
+      width: 100%;
+      max-width: 920px;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .feedback-card {
+        padding: 24px 20px;
+      }
+      .feedback-card .date {
+        position: static;
+        align-self: flex-start;
+        margin-bottom: 12px;
+      }
+      .feedback-card .rating {
+        padding-right: 0;
+      }
+      .feedback-card .delete-btn {
+        position: static;
+        margin-top: 16px;
+        align-self: flex-end;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- ==================== PRELOADER ==================== -->
-    <div class="preloader">
-        <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
-        <div class="preloader-bar">
-            <div class="preloader-bar-fill"></div>
-        </div>
+  <div class="preloader">
+    <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
     </div>
+  </div>
 
-    <!-- ==================== CUSTOM CURSOR ==================== -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
+  <!-- ==================== CUSTOM CURSOR ==================== -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
 
-    <!-- ==================== SCROLL PROGRESS ==================== -->
-    <div class="scroll-progress"></div>
+  <!-- ==================== SCROLL PROGRESS ==================== -->
+  <div class="scroll-progress"></div>
 
-    <!-- ==================== PARTICLES ==================== -->
-    <canvas id="particles"></canvas>
+  <!-- ==================== PARTICLES ==================== -->
+  <canvas id="particles-canvas"></canvas>
 
-    <!-- ==================== NAVBAR ==================== -->
-    <nav class="navbar">
-        <a href="index.html" class="logo">
-            <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
-        </ul>
-        <div class="hamburger"><span></span><span></span><span></span></div>
-    </nav>
-
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="reviews.html" class="active">Reviews</a></li>
+      <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
+    </ul>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </nav>
 
   <!-- Hero Section -->
   <section class="page-hero">
@@ -193,7 +228,7 @@
 
   <section class="section">
     <div class="container">
-      
+
       <!-- FORM SECTION -->
       <div class="glass-card reveal" style="max-width:850px; margin:0 auto 60px; padding:40px; border-radius: 20px;">
         <div class="review-section-header" style="margin-bottom: 30px;">
@@ -245,15 +280,15 @@
         </form>
       </div>
 
-      <!-- REVIEWS GRID SECTION -->
+      <!-- REVIEWS LIST SECTION -->
       <div class="review-section-header reveal">
         <h2>What Clients Say</h2>
         <p>All submitted feedback from our verified clients</p>
       </div>
 
-      <!-- EXACT MATCH ID WITH JS -->
+      <!-- ONE CARD PER ROW — JS injects here -->
       <div id="feedbackContainer" class="feedback-grid">
-        <!-- Dynamic reviews inject here automatically by JS -->
+        <!-- Dynamic reviews -->
       </div>
 
       <div style="text-align:center; margin-top:40px;">
@@ -276,60 +311,60 @@
   </div>
 
   <!-- ==================== FOOTER ==================== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle; margin-bottom: 20px;">
-                    <p>Transforming ideas into powerful digital experiences. We build stunning, high-performance websites that help businesses grow and succeed in the modern digital landscape.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-                        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="services.html">Web Development</a></li>
-                        <li><a href="services.html">UI/UX Design</a></li>
-                        <li><a href="services.html">E-Commerce Solutions</a></li>
-                        <li><a href="services.html">SEO Optimization</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Info</h4>
-                    <ul class="contact-info">
-                        <li>📍 Raja Jang, Kasur, Punjab, Pakistan</li>
-                        <li>📧 <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
-                        <li>📞 <a href="tel:+923284461097">+92 (328) 446-1097</a></li>
-                        <li>💬 <a href="https://wa.me/923284461097">WhatsApp Us</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 Rehmat Developers. All Rights Reserved.</p>
-                <p>Made with ❤ by Muhammad Waleed</p>
-            </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle; margin-bottom: 20px;">
+          <p>Transforming ideas into powerful digital experiences. We build stunning, high-performance websites that help businesses grow and succeed in the modern digital landscape.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          </div>
         </div>
-    </footer>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="services.html">Web Development</a></li>
+            <li><a href="services.html">UI/UX Design</a></li>
+            <li><a href="services.html">E-Commerce Solutions</a></li>
+            <li><a href="services.html">SEO Optimization</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <ul class="contact-info">
+            <li>📍 Raja Jang, Kasur, Punjab, Pakistan</li>
+            <li>📧 <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
+            <li>📞 <a href="tel:+923284461097">+92 (328) 446-1097</a></li>
+            <li>💬 <a href="https://wa.me/923284461097">WhatsApp Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Rehmat Developers. All Rights Reserved.</p>
+        <p>Made with ❤ by Muhammad Waleed</p>
+      </div>
+    </div>
+  </footer>
 
   <button class="scroll-top" aria-label="Scroll to top">↑</button>
   <script src="js/script.js"></script>
   <script>
-    // Show logout btn only in admin mode
     setInterval(() => {
       const btn = document.getElementById('adminLogoutBtn');
       if (btn) btn.style.display = document.body.classList.contains('admin-mode') ? 'inline-block' : 'none';
