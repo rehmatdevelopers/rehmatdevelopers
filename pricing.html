@@ -138,9 +138,50 @@
             padding: 14px 20px;
         }
 
+        /* ===== DOMAIN & HOSTING NOTICE BOX ===== */
+        .domain-hosting-notice {
+            margin-top: 40px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px stroke rgba(0, 212, 255, 0.25);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 18px;
+            padding: 24px 28px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .domain-hosting-icon {
+            font-size: 2.2rem;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0,212,255,0.3);
+        }
+        .domain-hosting-text h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin: 0 0 6px 0;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .domain-hosting-text p {
+            color: #b0b8c4;
+            font-size: 0.92rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .domain-hosting-text strong {
+            color: #00d4ff;
+        }
+
         /* ===== WHY CHOOSE US: STRICT TOP-TO-BOTTOM VERTICAL LAYOUT ===== */
         .why-section {
-            margin-top: 100px;
+            margin-top: 90px;
             width: 100%;
         }
         .why-header {
@@ -337,6 +378,10 @@
             .policy-points {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .domain-hosting-notice {
+                flex-direction: column;
+                text-align: center;
+            }
         }
         @media (max-width: 640px) {
             .why-grid {
@@ -494,6 +539,17 @@
 
             </div>
 
+            <!-- ===== DOMAIN & HOSTING POLICY NOTICE ===== -->
+            <div class="domain-hosting-notice reveal">
+                <div class="domain-hosting-icon">🌐</div>
+                <div class="domain-hosting-text">
+                    <h4>Important Note Regarding Domain &amp; Hosting:</h4>
+                    <p>
+                        Our development packages cover complete website design, coding, testing, and deployment. <strong>Domain Name and Hosting Server fees are separate</strong> and paid directly to domain/hosting providers. Clients can bring their existing domain/hosting, or we will assist you 100% for free in purchasing them under <strong>your own account and name</strong> so you retain 100% legal ownership of your website assets.
+                    </p>
+                </div>
+            </div>
+
             <!-- ===== WHY CHOOSE US: TOP HEADING + TOP-TO-BOTTOM CARDS ===== -->
             <div class="why-section">
                 <div class="why-header">
@@ -595,6 +651,12 @@
                             <td>Up to 5</td>
                             <td>Up to 12</td>
                             <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Domain &amp; Hosting Fee</td>
+                            <td>Client Owned (Separate)</td>
+                            <td>Client Owned (Separate)</td>
+                            <td>Client Owned (Separate)</td>
                         </tr>
                         <tr>
                             <td>Custom UI/UX Design</td>
