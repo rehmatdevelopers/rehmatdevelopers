@@ -1,7 +1,33 @@
 /* ============================================
    REHMAT DEVELOPERS — PREMIUM JAVASCRIPT
    CEO: Muhammad Waleed
+   Global Reviews: Firebase Firestore
    ============================================ */
+
+// ===== FIREBASE CONFIG (YOUR PROJECT) =====
+const firebaseConfig = {
+  apiKey: "AIzaSyAILcD4WQVlf6_2qRUeecZYRjgD6CmnzhE",
+  authDomain: "rehmat-developers.firebaseapp.com",
+  projectId: "rehmat-developers",
+  storageBucket: "rehmat-developers.firebasestorage.app",
+  messagingSenderId: "70200725412",
+  appId: "1:70200725412:web:2f8353934bb2cfb996fb31",
+  measurementId: "G-0NKGMFJLLG"
+};
+
+let db = null;
+try {
+  if (typeof firebase !== 'undefined') {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    db = firebase.firestore();
+  } else {
+    console.warn('Firebase SDK missing. Add firebase-app-compat.js + firebase-firestore-compat.js before script.js');
+  }
+} catch (err) {
+  console.error('Firebase init error:', err);
+}
 
 // ===== PRELOADER =====
 window.addEventListener('load', () => {
@@ -52,7 +78,7 @@ if (cursorDot && cursorRing && window.innerWidth > 768) {
 }
 
 // ===== PARTICLES BACKGROUND =====
-const canvas = document.getElementById('particles-canvas');
+const canvas = document.getElementById('particles-canvas') || document.getElementById('particles');
 if (canvas) {
   const ctx = canvas.getContext('2d');
   let particles = [];
@@ -387,67 +413,54 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-// ===== FEEDBACK SYSTEM (localStorage) =====
+// ===== GLOBAL FEEDBACK SYSTEM (FIREBASE FIRESTORE) =====
 const FeedbackSystem = {
-  STORAGE_KEY: 'rd_feedbacks',
-  ADMIN_KEY: 'rd_admin',
-  ADMIN_PASSWORD: 'waleed2025',
+  COLLECTION: 'reviews',
 
-  getAll() {
+  async getAll() {
+    if (!db) return [];
     try {
-      const data = localStorage.getItem(this.STORAGE_KEY);
-      const parsed = data ? JSON.parse(data) : [];
-      return Array.isArray(parsed) ? parsed : [];
+      const snap = await db.collection(this.COLLECTION).orderBy('createdAt', 'desc').get();
+      return snap.docs.map(doc => ({
+        id: doc.id,
+        name: doc.data().name || 'Client',
+        email: doc.data().email || '',
+        service: doc.data().service || 'Client',
+        message: doc.data().message || '',
+        rating: parseInt(doc.data().rating, 10) || 5,
+        date: doc.data().date || ''
+      }));
     } catch (e) {
+      console.error('Error loading reviews:', e);
       return [];
     }
   },
 
-  add(feedback) {
-    const feedbacks = this.getAll();
-    feedback.id = Date.now();
-    feedback.date = new Date().toLocaleDateString('en-US', {
-      year: 'numeric', month: 'short', day: 'numeric'
-    });
-    feedbacks.unshift(feedback);
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(feedbacks));
-    return feedback;
+  async add(feedback) {
+    if (!db) throw new Error('Firebase not connected');
+    const payload = {
+      name: feedback.name,
+      email: feedback.email || '',
+      service: feedback.service || 'Client',
+      message: feedback.message,
+      rating: parseInt(feedback.rating, 10) || 5,
+      date: new Date().toLocaleDateString('en-US', {
+        year: 'numeric', month: 'short', day: 'numeric'
+      }),
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    const ref = await db.collection(this.COLLECTION).add(payload);
+    return { id: ref.id, ...payload };
   },
 
-  delete(id) {
-    let feedbacks = this.getAll();
-    feedbacks = feedbacks.filter(f => f.id !== id);
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(feedbacks));
-  },
-
-  isAdmin() {
-    return sessionStorage.getItem(this.ADMIN_KEY) === 'true';
-  },
-
-  login(password) {
-    if (password === this.ADMIN_PASSWORD) {
-      sessionStorage.setItem(this.ADMIN_KEY, 'true');
-      document.body.classList.add('admin-mode');
-      return true;
-    }
-    return false;
-  },
-
-  logout() {
-    sessionStorage.removeItem(this.ADMIN_KEY);
-    document.body.classList.remove('admin-mode');
-  },
-
-  // Reviews page grid
-  render() {
+  async render() {
     const container = document.getElementById('feedbackContainer');
-    if (container) {
-      const feedbacks = this.getAll();
-      const isAdmin = this.isAdmin();
+    const feedbacks = await this.getAll();
 
+    if (container) {
       if (feedbacks.length === 0) {
         container.innerHTML = `
-          <div style="text-align:center; padding:60px 20px; grid-column: 1/-1;">
+          <div style="text-align:center; padding:60px 20px; width:100%;">
             <p style="font-size:3rem; margin-bottom:16px;">💬</p>
             <h3 style="font-family:var(--font-heading); color:#fff; margin-bottom:8px;">No Feedback Yet</h3>
             <p style="color:var(--text-muted);">Be the first to share your experience with us!</p>
@@ -464,7 +477,7 @@ const FeedbackSystem = {
           const safeDate = escapeHtml(fb.date || '');
 
           return `
-            <div class="glass-card feedback-card reveal" data-id="${fb.id}">
+            <div class="glass-card feedback-card reveal" data-id="${escapeHtml(fb.id)}">
               <span class="date">${safeDate}</span>
               <div class="rating">${starsHtml}</div>
               <p class="message">"${safeMessage}"</p>
@@ -475,7 +488,6 @@ const FeedbackSystem = {
                   <span>${safeService}</span>
                 </div>
               </div>
-              <button class="delete-btn" onclick="FeedbackSystem.deleteFeedback(${fb.id})" title="Delete Feedback">🗑</button>
             </div>
           `;
         }).join('');
@@ -484,18 +496,12 @@ const FeedbackSystem = {
           if (typeof revealObserver !== 'undefined') revealObserver.observe(card);
         });
       }
-
-      if (isAdmin) {
-        document.body.classList.add('admin-mode');
-      }
     }
 
-    // Always sync homepage slider too
-    this.renderHomepageSlider();
+    this.renderHomepageSlider(feedbacks);
   },
 
-  // Homepage testimonials (dynamic, real reviews only)
-  renderHomepageSlider() {
+  renderHomepageSlider(feedbacks) {
     const track =
       document.getElementById('testimonialsSliderTrack') ||
       document.getElementById('homeTestimonials') ||
@@ -503,9 +509,9 @@ const FeedbackSystem = {
 
     if (!track) return;
 
-    const feedbacks = this.getAll();
+    const list = feedbacks || [];
 
-    if (feedbacks.length === 0) {
+    if (list.length === 0) {
       track.innerHTML = `
         <div style="text-align:center; padding:40px 20px; width:100%;">
           <p style="color:var(--text-muted, #94a3b8);">No client reviews yet. Be the first to share feedback on our Reviews page.</p>
@@ -514,7 +520,7 @@ const FeedbackSystem = {
       return;
     }
 
-    track.innerHTML = feedbacks.map(fb => {
+    track.innerHTML = list.map(fb => {
       const rating = parseInt(fb.rating, 10) || 5;
       const starsHtml = '★'.repeat(rating) + '☆'.repeat(5 - rating);
       const safeName = escapeHtml(fb.name || 'Client');
@@ -538,14 +544,6 @@ const FeedbackSystem = {
     }).join('');
   },
 
-  deleteFeedback(id) {
-    if (confirm('Are you sure you want to delete this feedback?')) {
-      this.delete(id);
-      this.render();
-    }
-  },
-
-  // Email copy to business inbox via Web3Forms
   async sendEmailNotification(feedback) {
     try {
       const formData = new FormData();
@@ -568,13 +566,10 @@ const FeedbackSystem = {
   }
 };
 
-// Render on load (reviews page + homepage slider)
+// Load global reviews on page open
 FeedbackSystem.render();
-if (FeedbackSystem.isAdmin()) {
-  document.body.classList.add('admin-mode');
-}
 
-// ===== FEEDBACK FORM SUBMISSION =====
+// ===== FEEDBACK FORM SUBMISSION (GLOBAL) =====
 const feedbackForm = document.getElementById('feedbackForm');
 if (feedbackForm) {
   feedbackForm.addEventListener('submit', async (e) => {
@@ -597,38 +592,45 @@ if (feedbackForm) {
       return;
     }
 
+    if (!db) {
+      alert('Database not connected. Make sure Firebase scripts are loaded before js/script.js');
+      return;
+    }
+
     const submitBtn = feedbackForm.querySelector('button[type="submit"]');
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.innerHTML = 'Publishing...';
     }
 
-    const feedback = { name, email, service, message, rating };
-    FeedbackSystem.add(feedback);
-    FeedbackSystem.render(); // instant show on same page + homepage key sync
+    try {
+      const feedback = { name, email, service, message, rating };
+      await FeedbackSystem.add(feedback);
+      await FeedbackSystem.render();
+      FeedbackSystem.sendEmailNotification(feedback);
 
-    // background email to business inbox
-    await FeedbackSystem.sendEmailNotification(feedback);
+      feedbackForm.reset();
+      document.querySelectorAll('.star-rating .star').forEach(s => s.classList.remove('active'));
+      if (ratingEl) ratingEl.value = '0';
 
-    feedbackForm.reset();
-    document.querySelectorAll('.star-rating .star').forEach(s => s.classList.remove('active'));
-    if (ratingEl) ratingEl.value = '0';
+      const successMsg = document.getElementById('feedbackSuccess');
+      if (successMsg) {
+        successMsg.style.display = 'block';
+        setTimeout(() => { successMsg.style.display = 'none'; }, 4000);
+      }
 
-    const successMsg = document.getElementById('feedbackSuccess');
-    if (successMsg) {
-      successMsg.style.display = 'block';
-      setTimeout(() => { successMsg.style.display = 'none'; }, 4000);
-    }
-
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Submit Feedback';
-    }
-
-    // Scroll to list so user sees their review
-    const container = document.getElementById('feedbackContainer');
-    if (container) {
-      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const container = document.getElementById('feedbackContainer');
+      if (container) {
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Could not publish review. Check internet / Firestore rules and try again.');
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit Feedback';
+      }
     }
   });
 }
@@ -676,76 +678,6 @@ if (contactForm) {
       }
     } finally {
       if (btn) btn.disabled = false;
-    }
-  });
-}
-
-// ===== ADMIN LOGIN MODAL =====
-const adminModal = document.querySelector('.admin-modal-overlay');
-const adminLoginBtn = document.getElementById('adminLoginBtn');
-const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-const adminPasswordInput = document.getElementById('adminPassword');
-const adminErrorMsg = document.querySelector('.admin-modal .error-msg');
-
-document.addEventListener('keydown', (e) => {
-  if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-    e.preventDefault();
-    if (adminModal) adminModal.classList.add('show');
-  }
-});
-
-let logoClickCount = 0;
-let logoClickTimer;
-const footerLogo = document.querySelector('.footer .logo');
-if (footerLogo) {
-  footerLogo.addEventListener('click', (e) => {
-    e.preventDefault();
-    logoClickCount++;
-    clearTimeout(logoClickTimer);
-    logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 2000);
-    if (logoClickCount >= 5) {
-      logoClickCount = 0;
-      if (adminModal) adminModal.classList.add('show');
-    }
-  });
-}
-
-if (adminLoginBtn) {
-  adminLoginBtn.addEventListener('click', () => {
-    const password = adminPasswordInput ? adminPasswordInput.value : '';
-    if (FeedbackSystem.login(password)) {
-      if (adminModal) adminModal.classList.remove('show');
-      if (adminPasswordInput) adminPasswordInput.value = '';
-      if (adminErrorMsg) adminErrorMsg.style.display = 'none';
-      FeedbackSystem.render();
-      alert('✅ Admin Mode Activated! You can now delete feedbacks.');
-    } else {
-      if (adminErrorMsg) adminErrorMsg.style.display = 'block';
-      if (adminPasswordInput) adminPasswordInput.value = '';
-    }
-  });
-}
-
-if (adminLogoutBtn) {
-  adminLogoutBtn.addEventListener('click', () => {
-    FeedbackSystem.logout();
-    FeedbackSystem.render();
-    alert('Admin Mode Deactivated.');
-  });
-}
-
-if (adminModal) {
-  adminModal.addEventListener('click', (e) => {
-    if (e.target === adminModal) {
-      adminModal.classList.remove('show');
-    }
-  });
-}
-
-if (adminPasswordInput) {
-  adminPasswordInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' && adminLoginBtn) {
-      adminLoginBtn.click();
     }
   });
 }
