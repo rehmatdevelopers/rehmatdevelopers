@@ -46,17 +46,19 @@
             background: rgba(5, 10, 24, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            z-index: 10000;
-            display: none;
+            z-index: 99999;
+            display: none; /* Changed dynamically by active class */
             align-items: center;
             justify-content: center;
             padding: 20px;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
         .blog-modal-overlay.active {
-            display: flex;
-            opacity: 1;
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
         .blog-modal-container {
             background: #0f172a;
@@ -130,6 +132,7 @@
             color: #cbd5e1;
             font-size: 1.05rem;
             line-height: 1.85;
+            word-wrap: break-word; /* Prevent overflow */
         }
         .blog-article-body h3 {
             color: #fff;
@@ -168,9 +171,10 @@
         }
         .blog-modal-container::-webkit-scrollbar-track {
             background: rgba(255,255,255,0.02);
+            border-radius: 4px;
         }
         .blog-modal-container::-webkit-scrollbar-thumb {
-            background: rgba(0,212,255,0.3);
+            background: rgba(0,212,255,0.4);
             border-radius: 4px;
         }
         
@@ -194,15 +198,11 @@
         </div>
     </div>
 
-    <!-- ==================== CUSTOM CURSOR ==================== -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-
-    <!-- ==================== SCROLL PROGRESS ==================== -->
-    <div class="scroll-progress"></div>
-
-    <!-- ==================== PARTICLES ==================== -->
-    <canvas id="particles"></canvas>
+    <!-- Background Elements Locked to Fixed Positioning to Fix Free Space Issue -->
+    <div class="cursor-dot" style="position:fixed; z-index:9999; pointer-events:none;"></div>
+    <div class="cursor-ring" style="position:fixed; z-index:9999; pointer-events:none;"></div>
+    <div class="scroll-progress" style="position:fixed; top:0; left:0; height:3px; background:#00d4ff; z-index:10000; pointer-events:none;"></div>
+    <canvas id="particles" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1; pointer-events:none;"></canvas>
 
     <!-- ==================== NAVBAR ==================== -->
     <nav class="navbar">
@@ -266,7 +266,7 @@
                 <div style="padding:36px 40px;">
                     <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:18px; font-size:0.85rem; color:var(--text-muted);">
                         <span style="background:linear-gradient(135deg, #00d4ff, #7c3aed); color:#fff; padding:5px 16px; border-radius:20px; font-weight:600; font-size:0.75rem;">⭐ Featured</span>
-                        <span>📅 Updated: Feb 2025</span>
+                        <span>📅 Updated: March 2026</span>
                         <span>⏱ 12 min read</span>
                         <span>👤 Muhammad Waleed</span>
                     </div>
@@ -314,11 +314,11 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">Web Development</span>
-                            <span>📅 Jan 2025</span>
+                            <span>📅 Feb 2026</span>
                         </div>
                         <h3>Why Responsive Web Design Is No Longer Optional</h3>
                         <p>With a majority of global web traffic coming from mobile devices, responsive design has shifted from a feature to an absolute necessity.</p>
-                        <button class="read-more open-article-btn" data-post-id="post-1" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0;">Read Full Article →</button>
+                        <button class="read-more open-article-btn" data-post-id="post-1" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0; z-index:2; position:relative;">Read Full Article →</button>
                     </div>
                 </article>
 
@@ -330,11 +330,11 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">UI/UX Design</span>
-                            <span>📅 Jan 2025</span>
+                            <span>📅 Feb 2026</span>
                         </div>
                         <h3>The Psychology of Color in Web Design</h3>
                         <p>Color is a powerful tool capable of influencing user emotions, maintaining brand consistency, and guiding navigation decisions seamlessly.</p>
-                        <button class="read-more open-article-btn" data-post-id="post-2" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0;">Read Full Article →</button>
+                        <button class="read-more open-article-btn" data-post-id="post-2" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0; z-index:2; position:relative;">Read Full Article →</button>
                     </div>
                 </article>
 
@@ -346,11 +346,11 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">SEO</span>
-                            <span>📅 Feb 2025</span>
+                            <span>📅 March 2026</span>
                         </div>
                         <h3>On-Page SEO: 25 Actionable Steps to Improve Search Rankings</h3>
                         <p>Search engine optimization remains a high-ROI digital strategy. Read our comprehensive checklist containing exactly 25 actionable on-page SEO steps.</p>
-                        <button class="read-more open-article-btn" data-post-id="post-3" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0;">Read Full Article →</button>
+                        <button class="read-more open-article-btn" data-post-id="post-3" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0; z-index:2; position:relative;">Read Full Article →</button>
                     </div>
                 </article>
 
@@ -362,11 +362,11 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">Business</span>
-                            <span>📅 Dec 2024</span>
+                            <span>📅 Jan 2026</span>
                         </div>
                         <h3>How a Professional Website Drives Revenue Growth</h3>
                         <p>Many view their website as just a digital business card. Learn how investing in modern web engineering turns your site into a trustworthy lead generation tool.</p>
-                        <button class="read-more open-article-btn" data-post-id="post-4" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0;">Read Full Article →</button>
+                        <button class="read-more open-article-btn" data-post-id="post-4" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0; z-index:2; position:relative;">Read Full Article →</button>
                     </div>
                 </article>
 
@@ -378,11 +378,11 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">Tutorials</span>
-                            <span>📅 Dec 2024</span>
+                            <span>📅 Jan 2026</span>
                         </div>
                         <h3>Guide: Deploying Your Static Website on GitHub Pages</h3>
                         <p>GitHub Pages is a highly reliable free hosting platform for static sites. Follow this step-by-step tutorial to deploy your website with SSL included.</p>
-                        <button class="read-more open-article-btn" data-post-id="post-5" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0;">Read Full Article →</button>
+                        <button class="read-more open-article-btn" data-post-id="post-5" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0; z-index:2; position:relative;">Read Full Article →</button>
                     </div>
                 </article>
 
@@ -394,11 +394,11 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">Web Development</span>
-                            <span>📅 Dec 2024</span>
+                            <span>📅 Jan 2026</span>
                         </div>
                         <h3>Web Security Fundamentals Every Business Must Understand</h3>
                         <p>Digital security is more critical than ever. Learn the essential security protocols, from HTTPS to Content Security Policies, that keep your website safe.</p>
-                        <button class="read-more open-article-btn" data-post-id="post-6" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0;">Read Full Article →</button>
+                        <button class="read-more open-article-btn" data-post-id="post-6" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0; z-index:2; position:relative;">Read Full Article →</button>
                     </div>
                 </article>
 
@@ -410,11 +410,11 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">UI/UX Design</span>
-                            <span>📅 Nov 2024</span>
+                            <span>📅 Dec 2025</span>
                         </div>
                         <h3>Micro-Interactions: Enhancing User Experiences</h3>
                         <p>Discover how tiny animation details and feedback moments seamlessly elevate user engagement and brand perception on modern digital platforms.</p>
-                        <button class="read-more open-article-btn" data-post-id="post-7" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0;">Read Full Article →</button>
+                        <button class="read-more open-article-btn" data-post-id="post-7" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0; z-index:2; position:relative;">Read Full Article →</button>
                     </div>
                 </article>
 
@@ -426,11 +426,11 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">SEO</span>
-                            <span>📅 Nov 2024</span>
+                            <span>📅 Dec 2025</span>
                         </div>
                         <h3>Voice Search Optimization: Preparing for Conversational SEO</h3>
                         <p>With smart speakers widely adapted, voice search is reshaping SEO. Learn how to structure your website content for natural language queries.</p>
-                        <button class="read-more open-article-btn" data-post-id="post-8" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0;">Read Full Article →</button>
+                        <button class="read-more open-article-btn" data-post-id="post-8" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0; z-index:2; position:relative;">Read Full Article →</button>
                     </div>
                 </article>
 
@@ -442,11 +442,11 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">Business</span>
-                            <span>📅 Nov 2024</span>
+                            <span>📅 Dec 2025</span>
                         </div>
                         <h3>Choosing a Web Development Partner: Red & Green Flags</h3>
                         <p>Selecting the wrong web partner can cost you time and resources. Learn the crucial indicators that separate reliable developers from unreliable ones.</p>
-                        <button class="read-more open-article-btn" data-post-id="post-9" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0;">Read Full Article →</button>
+                        <button class="read-more open-article-btn" data-post-id="post-9" style="background:none; border:none; cursor:pointer; font-family:inherit; font-weight:600; padding:0; z-index:2; position:relative;">Read Full Article →</button>
                     </div>
                 </article>
 
@@ -474,7 +474,7 @@
                 <h2 style="font-size:2.2rem; margin:16px 0 12px;">Subscribe to Our <span class="gradient-text">Newsletter</span></h2>
                 <p style="max-width:600px; margin:0 auto 30px; color:var(--text-secondary);">Get professional web development tips, design trends, and honest business insights. (Note: Email dispatch integrations are currently being finalized.)</p>
                 
-                <!-- Honest Newsletter Implementation: Alerting user instead of pretending it succeeded -->
+                <!-- Honest Newsletter Implementation -->
                 <form style="display:flex; gap:12px; max-width:500px; margin:0 auto; flex-wrap:wrap; justify-content:center;" onsubmit="event.preventDefault(); alert('Notice: Our newsletter backend is currently pending integration. We appreciate your interest and will enable this feature soon!'); this.reset();">
                     <input type="email" placeholder="Enter your email address" required aria-label="Email address" style="flex:1; min-width:250px; padding:16px 24px; border-radius:50px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:#fff; font-size:1rem; outline:none; font-family:var(--font-body);">
                     <button type="submit" class="btn btn-primary" style="border-radius:50px; padding:16px 32px;">Subscribe Free →</button>
@@ -508,7 +508,6 @@
                     <img src="images/logo.png.png" alt="Rehmat Developers Logo" style="height:120px; width:auto; vertical-align:middle;">
                     <p>Transforming ideas into powerful digital experiences. We build stunning, high-performance websites that help businesses grow and succeed in the modern digital landscape.</p>
                     <div class="social-links">
-                        <!-- Gracefully handling missing URLs with opacity and alert -->
                         <a href="javascript:void(0)" onclick="alert('Social media profiles are currently being updated. Please check back later!')" style="opacity:0.4; cursor:not-allowed;" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
                         <a href="javascript:void(0)" onclick="alert('Social media profiles are currently being updated. Please check back later!')" style="opacity:0.4; cursor:not-allowed;" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
                         <a href="javascript:void(0)" onclick="alert('Social media profiles are currently being updated. Please check back later!')" style="opacity:0.4; cursor:not-allowed;" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
@@ -578,7 +577,7 @@
     const blogArticles = {
         "post-0": {
             category: "⭐ Featured | Web Development",
-            date: "Updated: February 2025",
+            date: "Updated: March 2026",
             readTime: "8 min read",
             author: "Muhammad Waleed",
             title: "The Complete Guide to Building a High-Performance Website",
@@ -607,7 +606,7 @@
         },
         "post-1": {
             category: "Web Development",
-            date: "Jan 2025",
+            date: "Feb 2026",
             readTime: "5 min read",
             author: "Muhammad Waleed",
             title: "Why Responsive Web Design Is No Longer Optional",
@@ -629,7 +628,7 @@
         },
         "post-2": {
             category: "UI/UX Design",
-            date: "Jan 2025",
+            date: "Feb 2026",
             readTime: "6 min read",
             author: "Muhammad Waleed",
             title: "The Psychology of Color in Web Design",
@@ -650,7 +649,7 @@
         },
         "post-3": {
             category: "SEO",
-            date: "Updated: February 2025",
+            date: "Updated: March 2026",
             readTime: "9 min read",
             author: "Muhammad Waleed",
             title: "On-Page SEO: 25 Actionable Steps to Improve Search Rankings",
@@ -701,7 +700,7 @@
         },
         "post-4": {
             category: "Business",
-            date: "Dec 2024",
+            date: "Jan 2026",
             readTime: "5 min read",
             author: "Muhammad Waleed",
             title: "How a Professional Website Drives Revenue Growth",
@@ -719,7 +718,7 @@
         },
         "post-5": {
             category: "Tutorials",
-            date: "Dec 2024",
+            date: "Jan 2026",
             readTime: "6 min read",
             author: "Muhammad Waleed",
             title: "Guide: Deploying Your Static Website on GitHub Pages",
@@ -730,9 +729,9 @@
                 <ol>
                     <li><strong>Prepare Your Files:</strong> Ensure you have a standard directory structure featuring an <code>index.html</code> file in the root folder.</li>
                     <li><strong>Create a GitHub Repository:</strong> Log into GitHub, create a new public repository. For personal sites, naming it <code>username.github.io</code> allows for specialized hosting, but any repo name works.</li>
-                    <li><strong>Push Your Code:</strong> Use Git to commit and push your files to the `main` branch of your new repository.</li>
+                    <li><strong>Push Your Code:</strong> Use Git to commit and push your files to the \`main\` branch of your new repository.</li>
                     <li><strong>Enable GitHub Pages:</strong> Navigate to your repository's <em>Settings</em> tab. Scroll to the <em>Pages</em> section.</li>
-                    <li><strong>Select Source:</strong> Under "Build and deployment", choose "Deploy from a branch" and select your `main` branch.</li>
+                    <li><strong>Select Source:</strong> Under "Build and deployment", choose "Deploy from a branch" and select your \`main\` branch.</li>
                     <li><strong>Wait for Deployment:</strong> Within a minute or two, your site will be live and automatically secured with HTTPS!</li>
                 </ol>
                 <p>You can also map a custom domain (like <code>www.yourbrand.com</code>) by adding your domain in the Pages settings and configuring DNS records via your domain registrar.</p>
@@ -740,7 +739,7 @@
         },
         "post-6": {
             category: "Web Development",
-            date: "Dec 2024",
+            date: "Jan 2026",
             readTime: "6 min read",
             author: "Muhammad Waleed",
             title: "Web Security Fundamentals Every Business Must Understand",
@@ -758,7 +757,7 @@
         },
         "post-7": {
             category: "UI/UX Design",
-            date: "Nov 2024",
+            date: "Dec 2025",
             readTime: "4 min read",
             author: "Muhammad Waleed",
             title: "Micro-Interactions: Enhancing User Experiences",
@@ -771,7 +770,7 @@
         },
         "post-8": {
             category: "SEO",
-            date: "Nov 2024",
+            date: "Dec 2025",
             readTime: "5 min read",
             author: "Muhammad Waleed",
             title: "Voice Search Optimization: Preparing for Conversational SEO",
@@ -784,7 +783,7 @@
         },
         "post-9": {
             category: "Business",
-            date: "Nov 2024",
+            date: "Dec 2025",
             readTime: "6 min read",
             author: "Muhammad Waleed",
             title: "Choosing a Web Development Partner: Red & Green Flags",
@@ -807,17 +806,20 @@
         }
     };
 
-    // Modal & Filter Control Script
+    // Modal & Filter Control Script - REWRITTEN WITH EVENT DELEGATION
     document.addEventListener('DOMContentLoaded', function () {
         const modal = document.getElementById('blogModal');
         const modalContent = document.getElementById('blogModalContent');
         const closeBtn = document.getElementById('closeBlogModal');
 
-        // Attach click listeners to all open-article buttons
-        document.querySelectorAll('.open-article-btn').forEach(btn => {
-            btn.addEventListener('click', function (e) {
+        // Using Event Delegation to catch clicks securely anywhere on the document
+        document.body.addEventListener('click', function(e) {
+            // Find if clicked element or its parent has 'open-article-btn'
+            const targetBtn = e.target.closest('.open-article-btn');
+            
+            if (targetBtn) {
                 e.preventDefault();
-                const postId = this.getAttribute('data-post-id');
+                const postId = targetBtn.getAttribute('data-post-id');
                 const article = blogArticles[postId];
 
                 if (article) {
@@ -843,7 +845,7 @@
                     document.body.style.overflow = 'hidden'; // Prevent background scrolling
                     modalContent.parentElement.scrollTop = 0; // Reset scroll position inside modal
                 }
-            });
+            }
         });
 
         // Close Modal Event
