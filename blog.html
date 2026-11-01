@@ -6,11 +6,14 @@
     <title>Blog & Insights — Rehmat Developers</title>
     <meta name="description" content="Read expert insights, tutorials, and strategies on web development, UI/UX design, SEO, and digital business growth by Rehmat Developers.">
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://rehmatdevelopers.github.io/rehmatdevelopers/blog.html">
+
     <!-- Open Graph Metadata for Social Sharing -->
     <meta property="og:title" content="Blog & Insights — Rehmat Developers">
     <meta property="og:description" content="Actionable guides and professional insights on modern web development, SEO, and UI/UX design.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rehmatdevelopers.github.io/blog.html">
+    <meta property="og:url" content="https://rehmatdevelopers.github.io/rehmatdevelopers/blog.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,12 +27,13 @@
       "@type": "Blog",
       "name": "Rehmat Developers Blog",
       "description": "Expert web development, UI/UX, and SEO insights.",
+      "url": "https://rehmatdevelopers.github.io/rehmatdevelopers/blog.html",
       "publisher": {
         "@type": "Organization",
         "name": "Rehmat Developers",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://rehmatdevelopers.github.io/images/logo.png.png"
+          "url": "https://rehmatdevelopers.github.io/rehmatdevelopers/images/logo.png.png"
         }
       }
     }
@@ -47,7 +51,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 99999;
-            display: none; /* Changed dynamically by active class */
+            display: none;
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -132,7 +136,7 @@
             color: #cbd5e1;
             font-size: 1.05rem;
             line-height: 1.85;
-            word-wrap: break-word; /* Prevent overflow */
+            word-wrap: break-word;
         }
         .blog-article-body h3 {
             color: #fff;
@@ -160,12 +164,17 @@
             padding: 20px 40px 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .blog-article-footer-top {
+            display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 15px;
+            width: 100%;
         }
-        /* Custom scrollbar for modal */
         .blog-modal-container::-webkit-scrollbar {
             width: 8px;
         }
@@ -198,7 +207,7 @@
         </div>
     </div>
 
-    <!-- Background Elements Locked to Fixed Positioning to Fix Free Space Issue -->
+    <!-- Background Elements Locked to Fixed Positioning -->
     <div class="cursor-dot" style="position:fixed; z-index:9999; pointer-events:none;"></div>
     <div class="cursor-ring" style="position:fixed; z-index:9999; pointer-events:none;"></div>
     <div class="scroll-progress" style="position:fixed; top:0; left:0; height:3px; background:#00d4ff; z-index:10000; pointer-events:none;"></div>
@@ -246,7 +255,7 @@
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-tag">📝 Knowledge Hub</span>
-                <h2>Latest Articles & <span class="gradient-text">Insights</span></h2>
+                <h2>Articles & <span class="gradient-text">Insights</span></h2>
                 <p>Stay ahead of the curve with our carefully curated collection of articles covering web development best practices, design principles, search engine optimization, and business growth strategies.</p>
             </div>
         </div>
@@ -256,18 +265,16 @@
     <section class="section" style="padding-top:0;">
         <div class="container">
             <div class="reveal" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:24px; overflow:hidden; transition:all 0.4s ease;">
-                <!-- Sleek Gradient Banner -->
                 <div style="background: linear-gradient(135deg, rgba(0,212,255,0.18), rgba(124,58,237,0.22), rgba(244,63,94,0.15)); height:160px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(255,255,255,0.05); position:relative; overflow:hidden;">
                     <div style="position:absolute; top:-50px; left:-50px; width:200px; height:200px; background:radial-gradient(circle, rgba(0,212,255,0.3), transparent); border-radius:50%; filter:blur(40px);"></div>
                     <div style="position:absolute; bottom:-50px; right:-50px; width:200px; height:200px; background:radial-gradient(circle, rgba(244,63,94,0.3), transparent); border-radius:50%; filter:blur(40px);"></div>
                     <span style="font-size:60px; filter:drop-shadow(0 0 20px rgba(0,212,255,0.6)); position:relative; z-index:2;">🚀</span>
                 </div>
-                <!-- Body -->
                 <div style="padding:36px 40px;">
                     <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:18px; font-size:0.85rem; color:var(--text-muted);">
                         <span style="background:linear-gradient(135deg, #00d4ff, #7c3aed); color:#fff; padding:5px 16px; border-radius:20px; font-weight:600; font-size:0.75rem;">⭐ Featured</span>
-                        <span>📅 Updated: March 2026</span>
-                        <span>⏱ 12 min read</span>
+                        <span>📅 Updated: February 2026</span>
+                        <span>⏱ 5 min read</span>
                         <span>👤 Muhammad Waleed</span>
                     </div>
                     <h3 style="font-size:1.8rem; margin-bottom:16px; color:#fff; line-height:1.3;">The Complete Guide to Building a High-Performance Website</h3>
@@ -283,11 +290,10 @@
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-tag">📚 All Articles</span>
-                <h2>Explore Our <span class="gradient-text">Latest Posts</span></h2>
-                <p>Browse through our growing library of carefully researched articles organized by category. Expand your knowledge on digital success.</p>
+                <h2>Explore Our <span class="gradient-text">Posts</span></h2>
+                <p>Browse through our library of carefully researched articles organized by category. Expand your knowledge on digital success.</p>
             </div>
 
-            <!-- Category Filter -->
             <div class="blog-filters reveal" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:50px;">
                 <button class="filter-btn active" data-filter="all">All Posts</button>
                 <button class="filter-btn" data-filter="web">Web Development</button>
@@ -297,7 +303,6 @@
                 <button class="filter-btn" data-filter="tutorials">Tutorials</button>
             </div>
             
-            <!-- Empty State for Filters -->
             <div id="no-articles-msg" style="display:none; text-align:center; padding: 40px 20px; color: #94a3b8; background: rgba(255,255,255,0.02); border-radius: 20px; border: 1px dashed rgba(255,255,255,0.1); margin-bottom: 40px;">
                 <span style="font-size: 48px; display:block; margin-bottom: 15px;">📭</span>
                 <h3 style="color:#fff; margin-bottom: 10px;">No articles found</h3>
@@ -306,7 +311,6 @@
 
             <div class="blog-grid" id="blog-grid-container">
 
-                <!-- Blog Card 1 -->
                 <article class="blog-card reveal" data-category="web">
                     <div class="blog-thumb" style="background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(0,102,255,0.15));">
                         <span style="font-size:48px;" aria-hidden="true">💻</span>
@@ -314,7 +318,7 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">Web Development</span>
-                            <span>📅 Feb 2026</span>
+                            <span>📅 February 2026</span>
                         </div>
                         <h3>Why Responsive Web Design Is No Longer Optional</h3>
                         <p>With a majority of global web traffic coming from mobile devices, responsive design has shifted from a feature to an absolute necessity.</p>
@@ -322,7 +326,6 @@
                     </div>
                 </article>
 
-                <!-- Blog Card 2 -->
                 <article class="blog-card reveal" data-category="design">
                     <div class="blog-thumb" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(244,63,94,0.15));">
                         <span style="font-size:48px;" aria-hidden="true">🎨</span>
@@ -330,7 +333,7 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">UI/UX Design</span>
-                            <span>📅 Feb 2026</span>
+                            <span>📅 January 2026</span>
                         </div>
                         <h3>The Psychology of Color in Web Design</h3>
                         <p>Color is a powerful tool capable of influencing user emotions, maintaining brand consistency, and guiding navigation decisions seamlessly.</p>
@@ -338,7 +341,6 @@
                     </div>
                 </article>
 
-                <!-- Blog Card 3 -->
                 <article class="blog-card reveal" data-category="seo">
                     <div class="blog-thumb" style="background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(0,212,255,0.15));">
                         <span style="font-size:48px;" aria-hidden="true">🔍</span>
@@ -346,7 +348,7 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">SEO</span>
-                            <span>📅 March 2026</span>
+                            <span>📅 Updated: February 2026</span>
                         </div>
                         <h3>On-Page SEO: 25 Actionable Steps to Improve Search Rankings</h3>
                         <p>Search engine optimization remains a high-ROI digital strategy. Read our comprehensive checklist containing exactly 25 actionable on-page SEO steps.</p>
@@ -354,7 +356,6 @@
                     </div>
                 </article>
 
-                <!-- Blog Card 4 -->
                 <article class="blog-card reveal" data-category="business">
                     <div class="blog-thumb" style="background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(244,63,94,0.15));">
                         <span style="font-size:48px;" aria-hidden="true">📈</span>
@@ -362,7 +363,7 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">Business</span>
-                            <span>📅 Jan 2026</span>
+                            <span>📅 December 2025</span>
                         </div>
                         <h3>How a Professional Website Drives Revenue Growth</h3>
                         <p>Many view their website as just a digital business card. Learn how investing in modern web engineering turns your site into a trustworthy lead generation tool.</p>
@@ -370,7 +371,6 @@
                     </div>
                 </article>
 
-                <!-- Blog Card 5 -->
                 <article class="blog-card reveal" data-category="tutorials">
                     <div class="blog-thumb" style="background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.15));">
                         <span style="font-size:48px;" aria-hidden="true">⚡</span>
@@ -378,7 +378,7 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">Tutorials</span>
-                            <span>📅 Jan 2026</span>
+                            <span>📅 December 2025</span>
                         </div>
                         <h3>Guide: Deploying Your Static Website on GitHub Pages</h3>
                         <p>GitHub Pages is a highly reliable free hosting platform for static sites. Follow this step-by-step tutorial to deploy your website with SSL included.</p>
@@ -386,7 +386,6 @@
                     </div>
                 </article>
 
-                <!-- Blog Card 6 -->
                 <article class="blog-card reveal" data-category="web">
                     <div class="blog-thumb" style="background: linear-gradient(135deg, rgba(236,72,153,0.2), rgba(124,58,237,0.15));">
                         <span style="font-size:48px;" aria-hidden="true">🔒</span>
@@ -394,7 +393,7 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">Web Development</span>
-                            <span>📅 Jan 2026</span>
+                            <span>📅 November 2025</span>
                         </div>
                         <h3>Web Security Fundamentals Every Business Must Understand</h3>
                         <p>Digital security is more critical than ever. Learn the essential security protocols, from HTTPS to Content Security Policies, that keep your website safe.</p>
@@ -402,7 +401,6 @@
                     </div>
                 </article>
 
-                <!-- Blog Card 7 -->
                 <article class="blog-card reveal" data-category="design">
                     <div class="blog-thumb" style="background: linear-gradient(135deg, rgba(20,184,166,0.2), rgba(6,182,212,0.15));">
                         <span style="font-size:48px;" aria-hidden="true">✨</span>
@@ -410,7 +408,7 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">UI/UX Design</span>
-                            <span>📅 Dec 2025</span>
+                            <span>📅 November 2025</span>
                         </div>
                         <h3>Micro-Interactions: Enhancing User Experiences</h3>
                         <p>Discover how tiny animation details and feedback moments seamlessly elevate user engagement and brand perception on modern digital platforms.</p>
@@ -418,7 +416,6 @@
                     </div>
                 </article>
 
-                <!-- Blog Card 8 -->
                 <article class="blog-card reveal" data-category="seo">
                     <div class="blog-thumb" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(234,179,8,0.15));">
                         <span style="font-size:48px;" aria-hidden="true">🗣️</span>
@@ -426,7 +423,7 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">SEO</span>
-                            <span>📅 Dec 2025</span>
+                            <span>📅 October 2025</span>
                         </div>
                         <h3>Voice Search Optimization: Preparing for Conversational SEO</h3>
                         <p>With smart speakers widely adapted, voice search is reshaping SEO. Learn how to structure your website content for natural language queries.</p>
@@ -434,7 +431,6 @@
                     </div>
                 </article>
 
-                <!-- Blog Card 9 -->
                 <article class="blog-card reveal" data-category="business">
                     <div class="blog-thumb" style="background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(236,72,153,0.15));">
                         <span style="font-size:48px;" aria-hidden="true">🤝</span>
@@ -442,7 +438,7 @@
                     <div class="blog-body">
                         <div class="blog-meta">
                             <span class="category">Business</span>
-                            <span>📅 Dec 2025</span>
+                            <span>📅 October 2025</span>
                         </div>
                         <h3>Choosing a Web Development Partner: Red & Green Flags</h3>
                         <p>Selecting the wrong web partner can cost you time and resources. Learn the crucial indicators that separate reliable developers from unreliable ones.</p>
@@ -458,9 +454,7 @@
     <div id="blogModal" class="blog-modal-overlay" role="dialog" aria-modal="true">
         <div class="blog-modal-container">
             <button class="blog-modal-close" id="closeBlogModal" aria-label="Close Article">&times;</button>
-            <div id="blogModalContent">
-                <!-- Dynamically populated article content -->
-            </div>
+            <div id="blogModalContent"></div>
         </div>
     </div>
 
@@ -472,14 +466,13 @@
                 <div class="hero-orb orb-2" style="width:150px; height:150px; opacity:0.2;"></div>
                 <span class="section-tag">📬 Stay Updated</span>
                 <h2 style="font-size:2.2rem; margin:16px 0 12px;">Subscribe to Our <span class="gradient-text">Newsletter</span></h2>
-                <p style="max-width:600px; margin:0 auto 30px; color:var(--text-secondary);">Get professional web development tips, design trends, and honest business insights. (Note: Email dispatch integrations are currently being finalized.)</p>
+                <p style="max-width:600px; margin:0 auto 30px; color:var(--text-secondary);">Get professional web development tips, design trends, and honest business insights when this feature goes live.</p>
                 
-                <!-- Honest Newsletter Implementation -->
-                <form style="display:flex; gap:12px; max-width:500px; margin:0 auto; flex-wrap:wrap; justify-content:center;" onsubmit="event.preventDefault(); alert('Notice: Our newsletter backend is currently pending integration. We appreciate your interest and will enable this feature soon!'); this.reset();">
+                <form style="display:flex; gap:12px; max-width:500px; margin:0 auto; flex-wrap:wrap; justify-content:center;" onsubmit="event.preventDefault(); alert('Notice: Newsletter subscriptions are currently pending backend integration. We will enable this feature soon!');">
                     <input type="email" placeholder="Enter your email address" required aria-label="Email address" style="flex:1; min-width:250px; padding:16px 24px; border-radius:50px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:#fff; font-size:1rem; outline:none; font-family:var(--font-body);">
-                    <button type="submit" class="btn btn-primary" style="border-radius:50px; padding:16px 32px;">Subscribe Free →</button>
+                    <button type="submit" class="btn btn-primary" style="border-radius:50px; padding:16px 32px; opacity: 0.9;">Subscribe (Pending) →</button>
                 </form>
-                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:16px;">🔒 We respect your privacy. Form requires secure backend integration to collect data.</p>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:16px;">🔒 We respect your privacy. Form requires secure backend integration to collect data. No email is stored until that is ready.</p>
             </div>
         </div>
     </section>
@@ -507,12 +500,7 @@
                 <div class="footer-col">
                     <img src="images/logo.png.png" alt="Rehmat Developers Logo" style="height:120px; width:auto; vertical-align:middle;">
                     <p>Transforming ideas into powerful digital experiences. We build stunning, high-performance websites that help businesses grow and succeed in the modern digital landscape.</p>
-                    <div class="social-links">
-                        <a href="javascript:void(0)" onclick="alert('Social media profiles are currently being updated. Please check back later!')" style="opacity:0.4; cursor:not-allowed;" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-                        <a href="javascript:void(0)" onclick="alert('Social media profiles are currently being updated. Please check back later!')" style="opacity:0.4; cursor:not-allowed;" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
-                        <a href="javascript:void(0)" onclick="alert('Social media profiles are currently being updated. Please check back later!')" style="opacity:0.4; cursor:not-allowed;" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-                        <a href="javascript:void(0)" onclick="alert('Social media profiles are currently being updated. Please check back later!')" style="opacity:0.4; cursor:not-allowed;" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-                    </div>
+                    <!-- Social icons intentionally omitted until real profile URLs are available -->
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
@@ -553,15 +541,12 @@
         </div>
     </footer>
 
-    <!-- ==================== WHATSAPP FLOAT ==================== -->
     <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%20read%20your%20blog%20and%20want%20to%20discuss%20a%20project." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
-    <!-- ==================== SCROLL TOP ==================== -->
     <button class="scroll-top" aria-label="Scroll to top">↑</button>
 
-    <!-- Fail-safe preloader -->
     <script>
         setTimeout(function() {
             var pl = document.querySelector('.preloader');
@@ -571,284 +556,317 @@
     
     <script src="js/script.js"></script>
 
-    <!-- ==================== BLOG MODAL SCRIPT & DATABASE ==================== -->
     <script>
-    // Comprehensive Articles Database
     const blogArticles = {
         "post-0": {
             category: "⭐ Featured | Web Development",
-            date: "Updated: March 2026",
-            readTime: "8 min read",
+            date: "Updated: February 2026",
+            readTime: "5 min read",
             author: "Muhammad Waleed",
             title: "The Complete Guide to Building a High-Performance Website",
             content: `
-                <p>In today's highly competitive digital landscape, having a website is no longer sufficient — you need an engineering foundation that performs exceptionally well across every metric that matters. Search engines prioritize fast, accessible sites, while visitors expect instant interactivity.</p>
+                <p>In today's competitive digital landscape, having a website is no longer enough — you need an engineering foundation that performs well across the metrics that matter. Search engines reward fast, accessible sites, and visitors expect pages to feel responsive almost immediately.</p>
                 
                 <h3>1. Optimizing Core Web Vitals</h3>
-                <p>Google's Core Web Vitals measure loading performance (LCP), interactivity (INP), and visual stability (CLS). To score highly on Google PageSpeed Insights, websites must serve lightweight code, minimize render-blocking stylesheets, and defer non-critical JavaScript.</p>
-                
-                <blockquote>"Every extra second of page load time can directly impact user retention. Speed is not merely a technical checkbox; it is a foundational component of user experience."</blockquote>
-
-                <h3>2. Mobile-First Engineering Framework</h3>
-                <p>With mobile device usage accounting for a vast majority of web traffic, building a high-performance site requires adopting a mobile-first mindset. This involves writing base CSS styles for mobile layouts and scaling up utilizing CSS Flexbox, Grid, and modern Container Queries for larger displays.</p>
-
-                <h3>3. Actionable Optimization Techniques</h3>
+                <p>Google's Core Web Vitals are practical measures of user experience. The main metrics to watch are:</p>
                 <ul>
-                    <li><strong>Modern Asset Compression:</strong> Transitioning from heavy PNGs/JPEGs to next-gen formats like WebP or AVIF to reduce file sizes without visual loss.</li>
-                    <li><strong>Lazy Loading:</strong> Deferring off-screen images and embedded iframes until the user scrolls near them.</li>
-                    <li><strong>Writing Clean Code:</strong> Avoiding bloated, heavy third-party plugins or redundant libraries when vanilla HTML/CSS/JavaScript can achieve the same goal securely and efficiently.</li>
-                    <li><strong>Effective Caching Strategies:</strong> Structuring assets so browsers locally store unchanged files, enabling near-instant loads for returning visitors.</li>
+                    <li><strong>LCP (Largest Contentful Paint):</strong> How quickly the main visible content appears.</li>
+                    <li><strong>INP (Interaction to Next Paint):</strong> How quickly the page responds after clicks, taps, or key presses.</li>
+                    <li><strong>CLS (Cumulative Layout Shift):</strong> How much the layout jumps unexpectedly while loading.</li>
+                </ul>
+                
+                <blockquote>"Speed is not only a technical checkbox. It is part of trust, usability, and whether someone stays long enough to contact you."</blockquote>
+
+                <h3>2. Mobile-First Engineering</h3>
+                <p>Because Google predominantly uses the mobile version of a site for indexing and ranking, design and development should start from the small screen. Write solid base styles for mobile, then enhance layouts with Flexbox, Grid, and carefully chosen breakpoints for larger screens.</p>
+
+                <h3>3. Practical Optimization Techniques</h3>
+                <ul>
+                    <li><strong>Modern image formats:</strong> Prefer WebP or AVIF where supported instead of oversized PNG/JPEG files.</li>
+                    <li><strong>Lazy loading:</strong> Load off-screen images only when the user scrolls near them.</li>
+                    <li><strong>Lean code:</strong> Avoid heavy unused libraries when simple HTML, CSS, and JavaScript can do the job.</li>
+                    <li><strong>Caching &amp; CDN:</strong> Cache static assets and serve them from a location close to the visitor when possible.</li>
                 </ul>
 
                 <h3>Conclusion</h3>
-                <p>Investing in high-performance web engineering pays long-term dividends in search visibility, user retention, and accessibility. Whether you need an audit or a complete structural revamp, Rehmat Developers ensures every line of code serves a purpose.</p>
+                <p>High-performance engineering helps search visibility, user comfort, and conversion. At Rehmat Developers we treat performance as part of the product — not an afterthought.</p>
             `
         },
         "post-1": {
             category: "Web Development",
-            date: "Feb 2026",
-            readTime: "5 min read",
+            date: "February 2026",
+            readTime: "3 min read",
             author: "Muhammad Waleed",
             title: "Why Responsive Web Design Is No Longer Optional",
             content: `
-                <p>Mobile internet usage has fundamentally changed how users interact with online content. If your business website requires pinching or zooming on a mobile screen, users will likely abandon your site in favor of a competitor.</p>
+                <p>Most people browse on phones first. If a business site forces pinching, horizontal scrolling, or tiny tap targets, many visitors leave before they ever see your offer.</p>
                 
-                <h3>The Importance of Mobile User Experience</h3>
-                <p>When a smartphone user encounters broken layouts or unreadable fonts, frustration peaks immediately. Furthermore, Google employs <strong>Mobile-First Indexing</strong>, meaning search algorithms rank your website based entirely on how the mobile version performs.</p>
+                <h3>Mobile experience and search</h3>
+                <p>Responsive design is both a UX requirement and an SEO requirement. With Google's mobile-first approach, the mobile version of your content is the primary version used for indexing and ranking in most cases. A broken mobile layout can therefore hurt both usability and discoverability.</p>
 
-                <h3>Key Responsive Design Principles:</h3>
+                <h3>Key responsive design principles</h3>
                 <ul>
-                    <li><strong>Fluid Typography:</strong> Using responsive units (like <code>vw</code>, <code>vh</code>, or CSS <code>clamp()</code>) to ensure text scales gracefully.</li>
-                    <li><strong>Touch-Friendly Interfaces:</strong> Ensuring buttons and links have adequate tap targets (at least 48x48 pixels) to prevent accidental mis-taps.</li>
-                    <li><strong>Adaptive Grid Systems:</strong> Implementing layouts that transform seamlessly from a single vertical column on smartphones to complex, multi-column arrays on desktop monitors.</li>
+                    <li><strong>Fluid type and spacing:</strong> Use relative units and techniques like <code>clamp()</code> so text stays readable on small and large screens.</li>
+                    <li><strong>Touch-friendly targets:</strong> Keep buttons and links large enough to tap comfortably (around 48×48px is a common guideline).</li>
+                    <li><strong>Flexible layouts:</strong> Stack content in one column on phones, then expand to multi-column grids on tablets and desktops.</li>
+                    <li><strong>Real device checks:</strong> Test on actual phones, not only a resized desktop browser.</li>
                 </ul>
 
-                <p>At Rehmat Developers, we believe responsive design is foundational. We meticulously test layouts across device viewports to guarantee uniform functionality.</p>
+                <p>At Rehmat Developers, responsive behavior is part of every build checklist — not an optional upgrade.</p>
             `
         },
         "post-2": {
             category: "UI/UX Design",
-            date: "Feb 2026",
-            readTime: "6 min read",
+            date: "January 2026",
+            readTime: "3 min read",
             author: "Muhammad Waleed",
             title: "The Psychology of Color in Web Design",
             content: `
-                <p>Color is one of the most immediate visual triggers for human interaction. Strategic color selection directly influences brand perception, accessibility, and user navigation patterns.</p>
+                <p>Color is one of the fastest signals users notice. It shapes first impressions, highlights actions, and supports brand recognition when used with consistency.</p>
                 
-                <h3>Common Color Associations:</h3>
+                <h3>Common associations (context still matters)</h3>
                 <ul>
-                    <li><strong>Blue/Cyan:</strong> Instills trust, security, and technological competence. Widely used in corporate, tech, and financial sectors.</li>
-                    <li><strong>Purple:</strong> Signals creativity, innovation, and premium quality.</li>
-                    <li><strong>Red/Pink:</strong> Drives urgency, passion, and high energy. Excellent for specific alert badges or primary action buttons.</li>
-                    <li><strong>Green:</strong> Associated with growth, success, and positivity. Often used for confirmation messaging.</li>
+                    <li><strong>Blue / cyan:</strong> Often linked with trust, calm, and technology.</li>
+                    <li><strong>Purple:</strong> Frequently used for creativity or premium positioning.</li>
+                    <li><strong>Red / strong warm tones:</strong> Draw attention and urgency; useful for warnings or key CTAs when not overused.</li>
+                    <li><strong>Green:</strong> Common for success states, growth, and confirmation messages.</li>
                 </ul>
 
-                <h3>Contrast and Accessibility (WCAG)</h3>
-                <p>Beyond aesthetics, color must serve accessibility. Proper contrast ratios between background colors and typography (adhering to WCAG guidelines) ensure visually impaired users or users in bright environments can seamlessly read your content.</p>
+                <h3>Contrast and accessibility</h3>
+                <p>Beautiful colors fail if text is hard to read. Aim for strong contrast between text and background. WCAG-style contrast targets (for example about 4.5:1 for normal text) help more people read your content in bright light, on cheap screens, or with vision limitations.</p>
+
+                <h3>Practical tip</h3>
+                <p>Pick a small palette: one primary brand color, one accent for buttons/links, neutral surfaces, and clear success/error colors. Reuse them everywhere instead of inventing new shades on each page.</p>
             `
         },
         "post-3": {
             category: "SEO",
-            date: "Updated: March 2026",
-            readTime: "9 min read",
+            date: "Updated: February 2026",
+            readTime: "6 min read",
             author: "Muhammad Waleed",
             title: "On-Page SEO: 25 Actionable Steps to Improve Search Rankings",
             content: `
-                <p>Securing visibility on search engines requires diligent on-page optimization. Below are 25 focused steps to ensure your web pages communicate effectively with search engine crawlers.</p>
+                <p>On-page SEO is the work you do on the page itself so both people and search engines understand the topic clearly. Below are 25 practical steps. They do not guarantee rankings, but they remove common self-inflicted problems.</p>
 
-                <h3>Metadata & Structure</h3>
+                <h3>Metadata &amp; structure</h3>
                 <ol>
-                    <li><strong>Identify Primary Keyword:</strong> Determine one primary user-intent keyword per page.</li>
-                    <li><strong>Optimize Title Tag:</strong> Keep it under 60 characters and place keywords near the front.</li>
-                    <li><strong>Write Compelling Meta Description:</strong> Summarize content persuasively under 155 characters.</li>
-                    <li><strong>Use Only One H1 Tag:</strong> Clearly state the page's main topic.</li>
-                    <li><strong>Structure with H2s and H3s:</strong> Break content into logical, scannable sub-topics.</li>
-                    <li><strong>Create Clean URLs:</strong> Keep permalinks short, readable, and keyword-relevant.</li>
+                    <li><strong>Primary keyword:</strong> Choose one clear main topic/intent per page.</li>
+                    <li><strong>Title tag:</strong> Keep it focused (often under ~60 characters) with the main topic near the front.</li>
+                    <li><strong>Meta description:</strong> Write an honest summary that encourages a click (roughly under ~155 characters).</li>
+                    <li><strong>Single H1:</strong> Use one H1 that states the page topic.</li>
+                    <li><strong>H2 / H3 structure:</strong> Break the page into scannable sections.</li>
+                    <li><strong>Clean URLs:</strong> Short, readable paths beat long coded URLs.</li>
                 </ol>
 
-                <h3>Content & Context</h3>
+                <h3>Content &amp; context</h3>
                 <ol start="7">
-                    <li><strong>Optimize Image Alt Text:</strong> Provide descriptive text for screen readers and image search.</li>
-                    <li><strong>Rename Image Files:</strong> Use descriptive filenames (e.g., <code>web-design-services.jpg</code>) before uploading.</li>
-                    <li><strong>Add Internal Links:</strong> Link to related pages within your own site.</li>
-                    <li><strong>Include Credible Outbound Links:</strong> Reference authoritative external sources where appropriate.</li>
-                    <li><strong>Natural Keyword Placement:</strong> Avoid "keyword stuffing." Write naturally for humans first.</li>
-                    <li><strong>Use LSI/Synonym Keywords:</strong> Include related terms to build topical relevance.</li>
-                    <li><strong>Improve Readability:</strong> Use short paragraphs, bullet points, and clear language.</li>
-                    <li><strong>Provide Comprehensive Depth:</strong> Ensure the page fully satisfies the user's search query.</li>
+                    <li><strong>Image alt text:</strong> Describe images usefully for accessibility and context.</li>
+                    <li><strong>Descriptive file names:</strong> Name images before upload (e.g. <code>kasur-web-design-hero.webp</code>).</li>
+                    <li><strong>Internal links:</strong> Link to related pages on your own site.</li>
+                    <li><strong>Outbound links:</strong> Cite solid sources when you reference facts or standards.</li>
+                    <li><strong>Natural wording:</strong> Write for humans; avoid stuffing the same phrase repeatedly.</li>
+                    <li><strong>Related terms:</strong> Use natural synonyms and supporting topics.</li>
+                    <li><strong>Readability:</strong> Short paragraphs, lists, and plain language help.</li>
+                    <li><strong>Complete answers:</strong> Cover the query thoroughly instead of thin filler.</li>
                 </ol>
 
-                <h3>Technical & Performance Elements</h3>
+                <h3>Technical &amp; performance</h3>
                 <ol start="15">
-                    <li><strong>Ensure Mobile Responsiveness:</strong> Verify the page functions flawlessly on mobile.</li>
-                    <li><strong>Optimize Page Speed:</strong> Minimize code and defer unnecessary scripts.</li>
-                    <li><strong>Compress Images (WebP/AVIF):</strong> Drastically lower file sizes for faster paints.</li>
-                    <li><strong>Pass Core Web Vitals:</strong> Monitor LCP, INP, and CLS scores.</li>
-                    <li><strong>Implement SSL (HTTPS):</strong> Ensure data encryption is active.</li>
-                    <li><strong>Add Schema Markup:</strong> Use JSON-LD to help search engines understand context (LocalBusiness, Article, FAQ).</li>
-                    <li><strong>Implement Social Open Graph Tags:</strong> Control how links preview on social media platforms.</li>
-                    <li><strong>Fix Broken Links:</strong> Regularly audit the page for 404 errors.</li>
-                    <li><strong>Configure Canonical Tags:</strong> Prevent duplicate content indexing.</li>
+                    <li><strong>Mobile usability:</strong> Ensure layout, type size, and taps work on phones.</li>
+                    <li><strong>Page speed:</strong> Reduce unused JS/CSS and avoid blocking resources.</li>
+                    <li><strong>Compressed media:</strong> Optimize images (WebP/AVIF where appropriate).</li>
+                    <li><strong>Core Web Vitals:</strong> Watch LCP, INP, and CLS in field/lab tools.</li>
+                    <li><strong>HTTPS:</strong> Serve the site over SSL.</li>
+                    <li><strong>Schema where useful:</strong> Add accurate JSON-LD (Article, FAQ, LocalBusiness, etc.).</li>
+                    <li><strong>Open Graph tags:</strong> Control link previews on social platforms.</li>
+                    <li><strong>Fix broken links:</strong> Remove or redirect 404s.</li>
+                    <li><strong>Canonical tags:</strong> Point to the preferred URL when duplicates exist.</li>
                 </ol>
 
                 <h3>Maintenance</h3>
                 <ol start="24">
-                    <li><strong>Include an Author Byline:</strong> Boost E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signals.</li>
-                    <li><strong>Update Regularly:</strong> Revisit older content to ensure information remains accurate and fresh.</li>
+                    <li><strong>Clear authorship:</strong> Show who wrote the content when expertise matters.</li>
+                    <li><strong>Periodic updates:</strong> Refresh outdated sections instead of leaving stale advice online.</li>
                 </ol>
             `
         },
         "post-4": {
             category: "Business",
-            date: "Jan 2026",
-            readTime: "5 min read",
+            date: "December 2025",
+            readTime: "3 min read",
             author: "Muhammad Waleed",
             title: "How a Professional Website Drives Revenue Growth",
             content: `
-                <p>Treating a business website merely as an online business card is a missed opportunity. A professionally engineered web application operates as a 24/7 lead generation asset.</p>
+                <p>A website is more useful than a digital business card when it is built to create trust and capture demand. For many local and service businesses, the site is the first serious conversation with a buyer.</p>
 
-                <h3>Building Trust and Credibility</h3>
-                <p>First impressions online matter immensely. A clean, modern interface signals to potential clients that your business is established, professional, and attentive to detail. Outdated designs can actively deter serious inquiries.</p>
+                <h3>Trust before the sale</h3>
+                <p>Clean layout, clear services, real contact details, and fast loading all signal professionalism. Visitors decide quickly whether you look organized enough to hire.</p>
 
-                <h3>Frictionless Lead Generation</h3>
-                <p>By streamlining navigation, implementing clear Calls-To-Action (CTAs), and providing direct contact methods (like integrated WhatsApp buttons or fast-loading email forms), you remove the friction between a potential client discovering your services and actively reaching out.</p>
+                <h3>Remove friction from inquiries</h3>
+                <p>Make the next step obvious: strong calls-to-action, simple contact forms, click-to-call, and WhatsApp where your audience actually messages. Every extra confusing step costs leads.</p>
 
-                <p>A functional website doesn't just display information; it actively guides the user through an intended sales or inquiry funnel.</p>
+                <h3>Support the sales process</h3>
+                <p>Good pages answer objections early — scope, process, location, and proof of work. That shortens back-and-forth and helps serious clients reach out ready to discuss a project.</p>
             `
         },
         "post-5": {
             category: "Tutorials",
-            date: "Jan 2026",
-            readTime: "6 min read",
+            date: "December 2025",
+            readTime: "4 min read",
             author: "Muhammad Waleed",
             title: "Guide: Deploying Your Static Website on GitHub Pages",
             content: `
-                <p>GitHub Pages offers highly reliable, free hosting for static HTML/CSS/JS websites with integrated SSL and global CDN capabilities. It is ideal for agency landing pages, personal portfolios, and small business sites.</p>
+                <p>GitHub Pages is a solid free option for static sites (HTML, CSS, JavaScript). It includes HTTPS and is well suited to portfolios, documentation, and simple business marketing sites. It is not a host for server languages like PHP or a custom Node backend.</p>
 
-                <h3>Step-by-Step Deployment:</h3>
+                <h3>Step-by-step</h3>
                 <ol>
-                    <li><strong>Prepare Your Files:</strong> Ensure you have a standard directory structure featuring an <code>index.html</code> file in the root folder.</li>
-                    <li><strong>Create a GitHub Repository:</strong> Log into GitHub, create a new public repository. For personal sites, naming it <code>username.github.io</code> allows for specialized hosting, but any repo name works.</li>
-                    <li><strong>Push Your Code:</strong> Use Git to commit and push your files to the \`main\` branch of your new repository.</li>
-                    <li><strong>Enable GitHub Pages:</strong> Navigate to your repository's <em>Settings</em> tab. Scroll to the <em>Pages</em> section.</li>
-                    <li><strong>Select Source:</strong> Under "Build and deployment", choose "Deploy from a branch" and select your \`main\` branch.</li>
-                    <li><strong>Wait for Deployment:</strong> Within a minute or two, your site will be live and automatically secured with HTTPS!</li>
+                    <li><strong>Prepare files:</strong> Keep a clear folder structure with <code>index.html</code> at the root (or the publishing folder you choose).</li>
+                    <li><strong>Create a GitHub repository:</strong> Public repos work with GitHub Pages on the standard free plan.</li>
+                    <li><strong>Push your code:</strong> Commit and push to the branch you will publish (often <code>main</code>).</li>
+                    <li><strong>Enable Pages:</strong> Repo → Settings → Pages.</li>
+                    <li><strong>Choose source:</strong> Select “Deploy from a branch”, then the branch and folder.</li>
+                    <li><strong>Wait for the build:</strong> After a short deploy, open the provided <code>*.github.io</code> URL over HTTPS.</li>
                 </ol>
-                <p>You can also map a custom domain (like <code>www.yourbrand.com</code>) by adding your domain in the Pages settings and configuring DNS records via your domain registrar.</p>
+
+                <h3>Custom domain</h3>
+                <p>You can attach a domain you own by adding it in Pages settings and creating the DNS records your registrar requires. Keep domain ownership and billing under the client’s account whenever you build for a customer.</p>
             `
         },
         "post-6": {
             category: "Web Development",
-            date: "Jan 2026",
-            readTime: "6 min read",
+            date: "November 2025",
+            readTime: "4 min read",
             author: "Muhammad Waleed",
             title: "Web Security Fundamentals Every Business Must Understand",
             content: `
-                <p>Digital security is more critical than ever. Whether you run a simple portfolio or a complex business application, adhering to security fundamentals protects your users and your reputation.</p>
+                <p>You do not need to become a security engineer to avoid basic mistakes. A few fundamentals protect visitors, form data, and your brand reputation.</p>
                 
-                <h3>Essential Security Protocols:</h3>
+                <h3>Essentials worth implementing</h3>
                 <ul>
-                    <li><strong>Enforce HTTPS/SSL:</strong> Encrypts the data transferred between the user's browser and your server, preventing unauthorized interception.</li>
-                    <li><strong>Input Sanitization:</strong> Ensuring that contact forms and search inputs are strictly validated to prevent malicious code injection (like Cross-Site Scripting or XSS).</li>
-                    <li><strong>Content Security Policy (CSP):</strong> Implementing headers that dictate exactly which external scripts and resources are allowed to load on your site, heavily mitigating third-party vulnerabilities.</li>
-                    <li><strong>Routine Updates:</strong> Consistently updating any dependencies, server software, and frameworks to patch known vulnerabilities before they can be exploited.</li>
+                    <li><strong>HTTPS everywhere:</strong> Encrypt traffic between browser and server. Mixed or missing SSL also damages trust.</li>
+                    <li><strong>Careful form handling:</strong> Validate and sanitize input. Never trust data only because it came from your own frontend.</li>
+                    <li><strong>Least privilege third parties:</strong> Every embedded script, pixel, or plugin expands attack surface. Load only what you need.</li>
+                    <li><strong>Content Security Policy (CSP):</strong> When configured properly, CSP limits which scripts and origins can run.</li>
+                    <li><strong>Dependency hygiene:</strong> Keep libraries and tooling updated so known vulnerabilities are patched.</li>
                 </ul>
+
+                <p>Security is ongoing maintenance, not a one-time plugin install. Build simple, keep software current, and be cautious with user-submitted content.</p>
             `
         },
         "post-7": {
             category: "UI/UX Design",
-            date: "Dec 2025",
-            readTime: "4 min read",
+            date: "November 2025",
+            readTime: "3 min read",
             author: "Muhammad Waleed",
             title: "Micro-Interactions: Enhancing User Experiences",
             content: `
-                <p>Micro-interactions are subtle, functional animations and visual feedback moments—such as a button subtly changing color when hovered over, or a form field briefly glowing when clicked.</p>
+                <p>Micro-interactions are small pieces of feedback: a button state change, a subtle success animation, a field highlight, or a progress cue after submit.</p>
                 
-                <h3>The Value of Subtlety</h3>
-                <p>While large animations can distract, micro-interactions serve practical purposes. They visually confirm to the user that their action (a click, a swipe, a form submission) has been successfully registered by the system. This tactile feeling creates a more intuitive and premium digital experience that users appreciate instinctively.</p>
+                <h3>Why they matter</h3>
+                <p>They answer a simple user question: “Did the interface notice what I just did?” Without feedback, people double-click, refresh, or assume the site is broken.</p>
+
+                <h3>Good examples</h3>
+                <ul>
+                    <li>Hover/focus styles on buttons and links</li>
+                    <li>Inline validation as someone completes a form</li>
+                    <li>A clear loading state on slow actions</li>
+                    <li>A quiet confirmation after a message is sent</li>
+                </ul>
+
+                <h3>Keep them useful</h3>
+                <p>Prefer short, purposeful motion over decorative noise. If an animation delays the task or distracts from content, remove it.</p>
             `
         },
         "post-8": {
             category: "SEO",
-            date: "Dec 2025",
-            readTime: "5 min read",
+            date: "October 2025",
+            readTime: "3 min read",
             author: "Muhammad Waleed",
             title: "Voice Search Optimization: Preparing for Conversational SEO",
             content: `
-                <p>With the widespread adoption of smart speakers and mobile voice assistants, users are increasingly querying search engines using natural, conversational language rather than fragmented keywords.</p>
+                <p>Voice queries are often longer and more conversational than typed keywords. People ask full questions: “How do I deploy a site on GitHub Pages?” rather than only “GitHub Pages host”.</p>
                 
-                <h3>How to Adapt Content:</h3>
-                <p>Optimize for voice search by integrating direct, concise answers to common questions within your content. Utilizing FAQ sections (with appropriate FAQ Schema Markup) allows search algorithms to easily extract and read your answers aloud when users ask conversational questions like "How do I..." or "What is the best way to..."</p>
+                <h3>How to prepare content</h3>
+                <ul>
+                    <li>Add clear question-and-answer style sections where they fit naturally.</li>
+                    <li>Use plain language that matches how customers actually speak.</li>
+                    <li>Give direct answers near the top of a section, then expand with detail.</li>
+                    <li>Consider FAQ schema only when the on-page FAQ content is real and visible.</li>
+                </ul>
+
+                <p>Voice search is not a separate trick. It rewards the same fundamentals: fast pages, clear structure, and content that answers real questions.</p>
             `
         },
         "post-9": {
             category: "Business",
-            date: "Dec 2025",
-            readTime: "6 min read",
+            date: "October 2025",
+            readTime: "4 min read",
             author: "Muhammad Waleed",
             title: "Choosing a Web Development Partner: Red & Green Flags",
             content: `
-                <p>Selecting the right development partner is a major business decision. Knowing what to look out for saves time, money, and structural headaches.</p>
+                <p>The wrong partner costs more than a delayed launch. It can mean lost access, unclear ownership, or a site nobody can maintain.</p>
                 
-                <h3>Green Flags (What to Look For):</h3>
+                <h3>Green flags</h3>
                 <ul>
-                    <li><strong>Transparent Pricing:</strong> Fixed packages or clear quotes with zero hidden "setup" fees.</li>
-                    <li><strong>Asset Ownership:</strong> They ensure you are the legal owner of your domain name and hosting accounts.</li>
-                    <li><strong>Direct Communication:</strong> You speak directly with the engineers or lead developer responsible for your project.</li>
+                    <li><strong>Clear pricing:</strong> Packages or written quotes with scope boundaries.</li>
+                    <li><strong>Client-owned assets:</strong> Domain and hosting billed under the client’s accounts.</li>
+                    <li><strong>Visible process:</strong> Milestones, staging previews, and structured revision rounds.</li>
+                    <li><strong>Direct communication:</strong> You can reach the people doing the work.</li>
                 </ul>
 
-                <h3>Red Flags (What to Avoid):</h3>
+                <h3>Red flags</h3>
                 <ul>
-                    <li><strong>Withheld Source Code:</strong> Refusal to hand over full administrative access or project files upon completion.</li>
-                    <li><strong>Vague Timelines:</strong> Inability to provide clear milestones or staging preview links during the development process.</li>
+                    <li><strong>Source code or admin lock-in:</strong> Refusal to hand over full access after payment milestones are met.</li>
+                    <li><strong>Vague timelines:</strong> No preview links and no written phases.</li>
+                    <li><strong>Unlimited promises:</strong> “Unlimited pages/revisions” often hides unclear scope and future conflict.</li>
+                    <li><strong>Pressure without a contract/scope:</strong> Big payments before requirements are written down.</li>
                 </ul>
+
+                <p>A reliable partner protects your ownership, explains trade-offs honestly, and delivers through a transparent process.</p>
             `
         }
     };
 
-    // Modal & Filter Control Script - REWRITTEN WITH EVENT DELEGATION
     document.addEventListener('DOMContentLoaded', function () {
         const modal = document.getElementById('blogModal');
         const modalContent = document.getElementById('blogModalContent');
         const closeBtn = document.getElementById('closeBlogModal');
 
-        // Using Event Delegation to catch clicks securely anywhere on the document
         document.body.addEventListener('click', function(e) {
-            // Find if clicked element or its parent has 'open-article-btn'
             const targetBtn = e.target.closest('.open-article-btn');
-            
-            if (targetBtn) {
-                e.preventDefault();
-                const postId = targetBtn.getAttribute('data-post-id');
-                const article = blogArticles[postId];
+            if (!targetBtn) return;
 
-                if (article) {
-                    modalContent.innerHTML = `
-                        <div class="blog-article-header">
-                            <div class="blog-article-meta">
-                                <span class="cat-badge">${article.category}</span>
-                                <span>📅 ${article.date}</span>
-                                <span>⏱ ${article.readTime}</span>
-                                <span>👤 ${article.author}</span>
-                            </div>
-                            <h2 class="blog-article-title">${article.title}</h2>
-                        </div>
-                        <div class="blog-article-body">
-                            ${article.content}
-                        </div>
-                        <div class="blog-article-footer">
-                            <span style="color:var(--text-muted); font-size:0.9rem;">Written by Lead Engineer Muhammad Waleed</span>
-                            <a href="contact.html" class="btn btn-primary btn-sm" style="border-radius:50px; padding:10px 24px;">Discuss Your Project →</a>
-                        </div>
-                    `;
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                    modalContent.parentElement.scrollTop = 0; // Reset scroll position inside modal
-                }
-            }
+            e.preventDefault();
+            const postId = targetBtn.getAttribute('data-post-id');
+            const article = blogArticles[postId];
+            if (!article) return;
+
+            modalContent.innerHTML = `
+                <div class="blog-article-header">
+                    <div class="blog-article-meta">
+                        <span class="cat-badge">${article.category}</span>
+                        <span>📅 ${article.date}</span>
+                        <span>⏱ ${article.readTime}</span>
+                        <span>👤 ${article.author}</span>
+                    </div>
+                    <h2 class="blog-article-title">${article.title}</h2>
+                </div>
+                <div class="blog-article-body">
+                    ${article.content}
+                </div>
+                <div class="blog-article-footer">
+                    <div class="blog-article-footer-top">
+                        <span style="color:var(--text-muted); font-size:0.9rem;">Written by Muhammad Waleed</span>
+                        <a href="contact.html" class="btn btn-primary btn-sm" style="border-radius:50px; padding:10px 24px;">Discuss Your Project →</a>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #64748b; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px; width: 100%; margin:0;"><em>Note: Full article text opens in this reader on the blog page. Individual shareable article URLs are planned for a future update and are not separate indexable pages yet.</em></p>
+                </div>
+            `;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            modalContent.parentElement.scrollTop = 0;
         });
 
-        // Close Modal Event
         function closeModal() {
             modal.classList.remove('active');
             document.body.style.overflow = '';
@@ -862,7 +880,6 @@
             if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
         });
 
-        // Category Filter Script with Empty State logic
         const filterBtns = document.querySelectorAll('.filter-btn');
         const blogCards = document.querySelectorAll('.blog-card');
         const emptyMsg = document.getElementById('no-articles-msg');
@@ -871,26 +888,18 @@
             btn.addEventListener('click', function () {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-
                 const filter = this.getAttribute('data-filter');
                 let visibleCount = 0;
-
                 blogCards.forEach(card => {
                     const category = card.getAttribute('data-category');
                     if (filter === 'all' || category === filter) {
-                        card.style.display = 'block';
+                        card.style.display = '';
                         visibleCount++;
                     } else {
                         card.style.display = 'none';
                     }
                 });
-                
-                // Toggle empty state message
-                if (visibleCount === 0) {
-                    emptyMsg.style.display = 'block';
-                } else {
-                    emptyMsg.style.display = 'none';
-                }
+                emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
             });
         });
     });
