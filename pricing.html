@@ -281,6 +281,77 @@
             line-height: 1.55;
         }
 
+        /* ===== REVISION POLICY (within policy box) ===== */
+        .revision-policy {
+            margin-top: 28px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: left;
+        }
+        .revision-policy h3 {
+            color: #00d4ff;
+            font-size: 1.15rem;
+            margin: 0 0 12px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+        .revision-policy > p {
+            color: #b0b8c4;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin: 0 0 18px 0;
+        }
+        .revision-rounds {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .revision-round-item {
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+        .revision-round-item strong {
+            display: block;
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .revision-round-item span {
+            color: #00d4ff;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+        .revision-notes {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .revision-notes li {
+            color: #b0b8c4;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .revision-notes li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .revision-notes li .note-icon {
+            color: #00d4ff;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
         /* ===== COMPARISON TABLE ===== */
         .compare-section {
             margin-top: 80px;
@@ -366,6 +437,9 @@
             }
             .policy-points {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .revision-rounds {
+                grid-template-columns: 1fr;
             }
             .domain-hosting-notice {
                 flex-direction: column;
@@ -600,13 +674,55 @@
                         <span>Test and review your live website link on private servers before authorizing the next phase.</span>
                     </div>
                     <div class="policy-point">
-                        <strong>🔄 Active Phase Revisions</strong>
-                        <span>Unlimited refinements during active development until the design and features match your vision.</span>
+                        <strong>🔄 Structured Revision Rounds</strong>
+                        <span>Each package includes a clear number of revision rounds during active development — fair, focused, and scope-aware.</span>
                     </div>
                     <div class="policy-point">
                         <strong>✅ Approval Control</strong>
                         <span>Work moves forward only when you give official approval on each phase of execution.</span>
                     </div>
+                </div>
+
+                <!-- ===== FAIR & STRUCTURED REVISION POLICY ===== -->
+                <div class="revision-policy">
+                    <h3>🔄 Fair &amp; Structured Revision Policy</h3>
+                    <p>
+                        We want your website to feel right — and we also want timelines and expectations to stay realistic. That is why every package includes a defined number of revision rounds during active development, instead of open-ended unlimited changes.
+                    </p>
+
+                    <div class="revision-rounds">
+                        <div class="revision-round-item">
+                            <strong>Starter ($299)</strong>
+                            <span>2 Revision Rounds</span>
+                        </div>
+                        <div class="revision-round-item">
+                            <strong>Professional ($799)</strong>
+                            <span>3 Revision Rounds</span>
+                        </div>
+                        <div class="revision-round-item">
+                            <strong>Enterprise ($2,499)</strong>
+                            <span>4 Revision Rounds</span>
+                        </div>
+                    </div>
+
+                    <ul class="revision-notes">
+                        <li>
+                            <span class="note-icon">✓</span>
+                            <span><strong style="color:#fff;">Within approved scope:</strong> Revisions cover refinements inside the originally approved project scope — such as layout polish, content updates, spacing, colors, and typography adjustments.</span>
+                        </li>
+                        <li>
+                            <span class="note-icon">✓</span>
+                            <span><strong style="color:#fff;">Quoted separately:</strong> Major design overhauls, brand-new features, extra pages, or anything outside the agreed scope is treated as additional work and quoted separately before we proceed.</span>
+                        </li>
+                        <li>
+                            <span class="note-icon">✓</span>
+                            <span><strong style="color:#fff;">Consolidated feedback:</strong> For each revision round, please send one clear, combined feedback list. Grouping your notes together keeps changes organized, avoids conflicting requests, and helps us deliver faster.</span>
+                        </li>
+                        <li>
+                            <span class="note-icon">✓</span>
+                            <span><strong style="color:#fff;">Friendly &amp; transparent:</strong> If you are ever unsure whether a request fits inside a revision round or needs a separate quote, just ask — we will guide you honestly before any extra work begins.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
