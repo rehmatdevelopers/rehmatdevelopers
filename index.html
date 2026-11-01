@@ -48,6 +48,7 @@
       <li><a href="blog.html">Blog</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="faq.html">FAQ</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
       <li><a href="admin.html">Admin</a></li>
       <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
     </ul>
@@ -257,7 +258,7 @@
     <!-- DYNAMIC SLIDER -->
     <div class="testimonials-wrapper reveal">
       <div class="testimonials-track" id="dynamicTestimonialsTrack">
-        <!-- JS will inject Real Feedbacks Here -->
+        <!-- JS will inject Real Feedbacks Here from Firebase -->
       </div>
     </div>
     
@@ -267,67 +268,8 @@
     </div>
   </section>
 
-  <!-- ===== FEEDBACK SUBMISSION SECTION ===== -->
-  <section class="section feedback-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge reveal">⭐ Share Feedback</div>
-        <h2 class="reveal reveal-delay-1">Submit Your <span class="gradient-text">Review</span></h2>
-      </div>
-
-      <!-- Hidden container so old script.js doesn't crash if it tries to render grid here -->
-      <div class="feedback-grid" id="feedbackContainer" style="display:none;"></div>
-
-      <!-- Feedback Form -->
-      <div class="feedback-form-wrapper reveal" style="margin-top:0;">
-        <div id="feedbackSuccess" class="form-success" style="display:none;">
-          <div class="icon">✅</div>
-          <h3>Thank You!</h3>
-          <p>Your feedback has been submitted and is now live on our website.</p>
-        </div>
-        <form id="feedbackForm" class="contact-form">
-          <input type="hidden" id="feedbackRating" name="rating" value="5">
-          <div class="star-rating">
-            <span class="star active" data-value="1">★</span>
-            <span class="star active" data-value="2">★</span>
-            <span class="star active" data-value="3">★</span>
-            <span class="star active" data-value="4">★</span>
-            <span class="star active" data-value="5">★</span>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fbName">Your Name *</label>
-              <input type="text" id="fbName" placeholder="John Doe" required>
-            </div>
-            <div class="form-group">
-              <label for="fbEmail">Email (Optional)</label>
-              <input type="email" id="fbEmail" placeholder="john@example.com">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="fbService">Service Used</label>
-            <select id="fbService">
-              <option value="">-- Select Service --</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Full-Stack App">Full-Stack Application</option>
-              <option value="E-Commerce">E-Commerce</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="Landing Page">Landing Page</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="fbMessage">Your Feedback *</label>
-            <textarea id="fbMessage" placeholder="Tell us about your experience..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;">Submit Feedback ⭐</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== CTA SECTION ===== -->
-  <section class="section section-alt cta-section">
+  <section class="section cta-section">
     <div class="cta-orb o1"></div>
     <div class="cta-orb o2"></div>
     <div class="container">
@@ -360,6 +302,7 @@
                       <li><a href="blog.html">Blog</a></li>
                       <li><a href="pricing.html">Pricing</a></li>
                       <li><a href="faq.html">FAQ</a></li>
+                      <li><a href="reviews.html">Client Reviews</a></li>
                       <li><a href="contact.html">Contact</a></li>
                   </ul>
               </div>
@@ -392,82 +335,81 @@
   <a href="https://wa.me/923284461097" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
   <button class="scroll-top" title="Back to Top">↑</button>
 
-  <div class="admin-modal-overlay">
-    <div class="admin-modal">
-      <h3>🔐 Admin Login</h3>
-      <input type="password" id="adminPassword" placeholder="••••••••">
-      <div class="error-msg">❌ Incorrect password.</div>
-      <div class="btn-row">
-        <button class="btn btn-secondary btn-sm" onclick="document.querySelector('.admin-modal-overlay').classList.remove('show')">Cancel</button>
-        <button class="btn btn-primary btn-sm" id="adminLoginBtn">Login</button>
-      </div>
-    </div>
-  </div>
-
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="js/script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  
+  <!-- Main Script (Initializes Firebase) -->
+  <script src="js/script.js"></script>
 
-  <!-- Custom Script: Inject Real Feedbacks into Slider -->
+  <!-- Custom Script: Inject Real Feedbacks into Slider from Firebase -->
   <script>
-    function loadSliderFeedbacks() {
+    document.addEventListener('DOMContentLoaded', () => {
       const track = document.getElementById('dynamicTestimonialsTrack');
       if (!track) return;
       
-      let feedbacks = JSON.parse(localStorage.getItem('rehmat_feedbacks')) || [];
-      
-      if (feedbacks.length === 0) {
-        track.innerHTML = `
-          <div class="glass-card testimonial-card">
-            <div class="stars">★★★★★</div>
-            <blockquote>"No reviews yet. Submit your feedback below and be the first to feature here!"</blockquote>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">RD</div>
-              <div>
-                <h4>Rehmat Developers</h4>
-                <span>System</span>
+      // Firebase is already initialized in js/script.js
+      const db = firebase.firestore();
+
+      // Listen for real-time updates from Firestore
+      db.collection('reviews')
+        .orderBy('timestamp', 'desc')
+        .onSnapshot((snapshot) => {
+          let feedbacks = [];
+          
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            // Filter: Only keep reviews with 3 to 5 stars
+            if (data.rating && data.rating >= 3) {
+              feedbacks.push(data);
+            }
+          });
+
+          // Limit to top 10 latest good reviews
+          let sliderFeeds = feedbacks.slice(0, 10);
+
+          if (sliderFeeds.length === 0) {
+            track.innerHTML = `
+              <div class="glass-card testimonial-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"No reviews yet. Visit our Reviews page to submit your feedback and be the first to feature here!"</blockquote>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">RD</div>
+                  <div>
+                    <h4>Rehmat Developers</h4>
+                    <span>System</span>
+                  </div>
+                </div>
+              </div>`;
+            return;
+          }
+
+          let html = '';
+          sliderFeeds.forEach(fb => {
+            let stars = '★'.repeat(fb.rating || 5) + '☆'.repeat(5 - (fb.rating || 5));
+            let initial = fb.name ? fb.name.charAt(0).toUpperCase() : 'C';
+            html += `
+              <div class="glass-card testimonial-card">
+                <div class="stars">${stars}</div>
+                <blockquote>"${fb.message}"</blockquote>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">${initial}</div>
+                  <div>
+                    <h4>${fb.name}</h4>
+                    <span>${fb.service || 'Valued Client'}</span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>`;
-        return;
-      }
+            `;
+          });
 
-      // Show latest 8 feedbacks in the slider
-      let sliderFeeds = feedbacks.slice().reverse().slice(0, 8); 
-      let html = '';
-
-      sliderFeeds.forEach(fb => {
-        let stars = '★'.repeat(fb.rating || 5) + '☆'.repeat(5 - (fb.rating || 5));
-        let initial = fb.name ? fb.name.charAt(0).toUpperCase() : 'C';
-        html += `
-          <div class="glass-card testimonial-card">
-            <div class="stars">${stars}</div>
-            <blockquote>"${fb.message}"</blockquote>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">${initial}</div>
-              <div>
-                <h4>${fb.name}</h4>
-                <span>${fb.service || 'Valued Client'}</span>
-              </div>
-            </div>
-          </div>
-        `;
-      });
-
-      // HTML 2 dafa repeat kiya taa ke CSS marquee effect smooth loop chalta rahay
-      track.innerHTML = html + html;
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadSliderFeedbacks();
-      
-      // Update slider immediately when a new review is submitted
-      const form = document.getElementById('feedbackForm');
-      if (form) {
-        form.addEventListener('submit', () => {
-          setTimeout(loadSliderFeedbacks, 500); 
+          // HTML ko 3 dafa repeat kiya taa ke CSS marquee effect smooth loop chalta rahay
+          // Agar cards kam hon toh slider break na ho
+          track.innerHTML = html + html + html;
+          
+        }, (error) => {
+          console.error("Error fetching reviews for slider: ", error);
         });
-      }
     });
   </script>
 </body>
