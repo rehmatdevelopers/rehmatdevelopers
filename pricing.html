@@ -97,20 +97,10 @@
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1;
         }
-        .plan-price .price-range-tag {
-            display: inline-block;
-            margin-top: 8px;
-            font-size: 0.82rem;
-            color: #b0b8c4;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
         .plan-features {
             list-style: none;
             padding: 0;
-            margin: 16px 0 32px 0;
+            margin: 24px 0 32px 0;
             flex-grow: 1;
         }
         .plan-features li {
@@ -438,6 +428,7 @@
             <li><a href="pricing.html" class="active">Pricing</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="admin.html">Admin</a></li>
             <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
         </ul>
         <div class="hamburger"><span></span><span></span><span></span></div>
@@ -471,14 +462,13 @@
 
             <div class="pricing-grid">
 
-                <!-- STARTER -->
+                <!-- STARTER PLAN ($299) -->
                 <div class="price-card reveal">
                     <div class="plan-name">Starter Web Plan</div>
                     <div class="plan-desc">Ideal for startups, personal brands &amp; high-converting landing pages.</div>
                     <div class="plan-price">
-                        <span class="starting-label">Starting From</span>
+                        <span class="starting-label">Package Price</span>
                         <span class="currency">$</span><span class="amount">299</span>
-                        <div><span class="price-range-tag">Project Range: $250 – $400</span></div>
                     </div>
                     <ul class="plan-features">
                         <li><span class="check">✓</span> Up to 5 Custom Pages</li>
@@ -489,21 +479,20 @@
                         <li><span class="check">✓</span> 30 Days Free Support</li>
                         <li><span class="check">✓</span> Secure Milestone Payments</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-outline">Get Started</a>
+                    <a href="contact.html?package=starter" class="btn btn-outline">Get Started</a>
                 </div>
 
-                <!-- PROFESSIONAL -->
+                <!-- PROFESSIONAL PLAN ($799) - FEATURED -->
                 <div class="price-card featured reveal reveal-delay-1">
                     <div class="popular-badge">⭐ MOST POPULAR CHOICE</div>
                     <div class="plan-name">Professional Plan</div>
                     <div class="plan-desc">For growing businesses needing a multi-page corporate web platform.</div>
                     <div class="plan-price">
-                        <span class="starting-label">Starting From</span>
+                        <span class="starting-label">Package Price</span>
                         <span class="currency">$</span><span class="amount">799</span>
-                        <div><span class="price-range-tag">Project Range: $600 – $1,000</span></div>
                     </div>
                     <ul class="plan-features">
-                        <li><span class="check">✓</span> Up to 12 Custom Pages</li>
+                        <li><span class="check">✓</span> Up to 10 Custom Pages</li>
                         <li><span class="check">✓</span> Premium Custom UI/UX Design</li>
                         <li><span class="check">✓</span> Sleek Interactive Animations</li>
                         <li><span class="check">✓</span> Blog / Portfolio Engine</li>
@@ -512,17 +501,16 @@
                         <li><span class="check">✓</span> 60 Days Free Support</li>
                         <li><span class="check">✓</span> Live Staging Preview Links</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                    <a href="contact.html?package=professional" class="btn btn-primary">Get Started</a>
                 </div>
 
-                <!-- ENTERPRISE -->
+                <!-- ENTERPRISE / E-COMMERCE ($2,499) -->
                 <div class="price-card reveal reveal-delay-2">
                     <div class="plan-name">Enterprise / E-Commerce</div>
                     <div class="plan-desc">Full-scale online stores, custom web apps &amp; complex business systems.</div>
                     <div class="plan-price">
-                        <span class="starting-label">Starting From</span>
+                        <span class="starting-label">Package Price</span>
                         <span class="currency">$</span><span class="amount">2,499</span>
-                        <div><span class="price-range-tag">Project Range: $2,000 – $3,000</span></div>
                     </div>
                     <ul class="plan-features">
                         <li><span class="check">✓</span> Unlimited Pages / Products</li>
@@ -534,12 +522,12 @@
                         <li><span class="check">✓</span> 90 Days Priority Support</li>
                         <li><span class="check">✓</span> Priority Development Queue</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-outline">Get Started</a>
+                    <a href="contact.html?package=enterprise" class="btn btn-outline">Get Started</a>
                 </div>
 
             </div>
 
-            <!-- DOMAIN & HOSTING -->
+            <!-- ===== DOMAIN & HOSTING POLICY NOTICE ===== -->
             <div class="domain-hosting-notice reveal">
                 <div class="domain-hosting-icon">🌐</div>
                 <div class="domain-hosting-text">
@@ -550,7 +538,7 @@
                 </div>
             </div>
 
-            <!-- WHY US -->
+            <!-- ===== WHY CHOOSE US ===== -->
             <div class="why-section">
                 <div class="why-header">
                     <span class="section-tag">✨ Why Rehmat Developers</span>
@@ -563,26 +551,31 @@
                         <h3>No Hidden Fees</h3>
                         <p>The price quoted is the price you pay. No unexpected charges for essential features, stock assets, or deployment setup. Complete transparency from initial quote to launch.</p>
                     </div>
+
                     <div class="why-card reveal reveal-delay-1">
                         <div class="why-icon">🎯</div>
                         <h3>Results-Focused Code</h3>
                         <p>We do not just build pretty layouts — we engineer high-converting digital platforms built to generate leads, drive revenue, and deliver clear ROI for your business.</p>
                     </div>
+
                     <div class="why-card reveal reveal-delay-2">
                         <div class="why-icon">⚡</div>
                         <h3>Lightning Fast Delivery</h3>
                         <p>Time is money. Our experienced team builds clean custom code quickly without cutting corners, delivering weeks ahead of traditional agency timelines.</p>
                     </div>
+
                     <div class="why-card reveal">
                         <div class="why-icon">🛡️</div>
                         <h3>Quality Protection Promise</h3>
                         <p>Your complete satisfaction is guaranteed during active development. Live preview links and milestone sign-offs ensure you stay in total control of every feature.</p>
                     </div>
+
                     <div class="why-card reveal reveal-delay-1">
                         <div class="why-icon">🔧</div>
                         <h3>Free Post-Launch Support</h3>
                         <p>We stay by your side after launch. Depending on your chosen package, receive 30 to 90 days of complimentary maintenance, bug fixes, and operational support.</p>
                     </div>
+
                     <div class="why-card reveal reveal-delay-2">
                         <div class="why-icon">📞</div>
                         <h3>Direct Communication</h3>
@@ -591,7 +584,7 @@
                 </div>
             </div>
 
-            <!-- POLICY -->
+            <!-- ===== 100% QUALITY & WORK PROTECTION POLICY ===== -->
             <div class="policy-box reveal">
                 <h2>🛡️ 100% Quality &amp; Work Protection Policy</h2>
                 <p>
@@ -617,7 +610,7 @@
                 </div>
             </div>
 
-            <!-- COMPARISON -->
+            <!-- ===== COMPARISON TABLE ===== -->
             <div class="compare-section reveal">
                 <div style="text-align:center; margin-bottom:36px;">
                     <span class="section-tag">📊 Side by Side</span>
@@ -627,22 +620,22 @@
                     <thead>
                         <tr>
                             <th>Feature</th>
-                            <th>Starter ($250–$400)</th>
-                            <th>Professional ($600–$1k)</th>
-                            <th>Enterprise ($2k–$3k)</th>
+                            <th>Starter</th>
+                            <th>Professional</th>
+                            <th>Enterprise</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Starting Price</td>
-                            <td><strong style="color:#fff;">$299</strong></td>
-                            <td><strong style="color:#fff;">$799</strong></td>
-                            <td><strong style="color:#fff;">$2,499</strong></td>
+                            <td>Package Price</td>
+                            <td><strong style="color:#00d4ff; font-size:1.1rem;">$299</strong></td>
+                            <td><strong style="color:#00d4ff; font-size:1.1rem;">$799</strong></td>
+                            <td><strong style="color:#00d4ff; font-size:1.1rem;">$2,499</strong></td>
                         </tr>
                         <tr>
                             <td>Number of Pages</td>
                             <td>Up to 5</td>
-                            <td>Up to 12</td>
+                            <td>Up to 10</td>
                             <td>Unlimited</td>
                         </tr>
                         <tr>
@@ -703,7 +696,7 @@
                 </table>
             </div>
 
-            <!-- CUSTOM QUOTE -->
+            <!-- ===== CUSTOM QUOTE ===== -->
             <div class="custom-quote reveal">
                 <h2>Need a <span class="gradient-text">Custom Proposal?</span></h2>
                 <p>Have complex web application requirements, custom software architecture, or unique scope needs? CEO Muhammad Waleed will personally prepare a tailored strategy and proposal.</p>
@@ -770,5 +763,454 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="js/script.js"></script>
+</body>
+</html>
+```
+
+---
+
+### 2. `services.html` (100% Complete Code)
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Rehmat Developers</title>
+  <meta name="description" content="Explore our premium web development, full-stack application, and e-commerce services tailored for your business growth.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== PRELOADER ===== -->
+  <div class="preloader">
+    <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ===== CUSTOM CURSOR ===== -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div class="scroll-progress"></div>
+
+  <!-- ===== PARTICLES ===== -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <header class="page-header">
+    <div class="container">
+      <h1 class="reveal">Our Premium <span class="gradient-text">Services</span></h1>
+      <p class="reveal reveal-delay-1">We provide comprehensive digital solutions, from stunning web designs to complex full-stack architectures, crafted to elevate your brand.</p>
+    </div>
+  </header>
+
+  <!-- ===== SERVICES DETAILS ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="services-grid" style="grid-template-columns: 1fr;">
+        
+        <!-- Service 1 -->
+        <div class="glass-card reveal" style="display:flex; flex-wrap:wrap; gap:30px; align-items:center; padding:40px;">
+          <div style="flex:1; min-width:300px;">
+            <div style="font-size:3rem; margin-bottom:20px;">🌐</div>
+            <h3 style="font-size:1.8rem; margin-bottom:15px;">Custom Web Development</h3>
+            <p style="color:var(--text-secondary); margin-bottom:20px; line-height:1.8;">Your website is your digital storefront. We build fully custom, highly responsive, and blazing fast websites tailored perfectly to your brand identity. Using modern technologies like React, Next.js, and clean HTML/CSS/JS, we ensure cross-browser compatibility and pixel-perfect precision.</p>
+            <ul style="list-style:none; padding:0; color:var(--text-secondary);">
+              <li style="margin-bottom:10px;"><span style="color:var(--primary-color);">✔</span> Responsive Mobile-First Design</li>
+              <li style="margin-bottom:10px;"><span style="color:var(--primary-color);">✔</span> SEO Optimized Architecture</li>
+              <li><span style="color:var(--primary-color);">✔</span> W3C Validated Clean Code</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="glass-card reveal" style="display:flex; flex-wrap:wrap; gap:30px; align-items:center; padding:40px; flex-direction:row-reverse;">
+          <div style="flex:1; min-width:300px;">
+            <div style="font-size:3rem; margin-bottom:20px;">⚙️</div>
+            <h3 style="font-size:1.8rem; margin-bottom:15px;">Full-Stack Applications</h3>
+            <p style="color:var(--text-secondary); margin-bottom:20px; line-height:1.8;">Need more than just a static website? We develop robust web applications with powerful backend logic, secure user authentication, and dynamic database integrations. We turn your complex business ideas into scalable software solutions.</p>
+            <ul style="list-style:none; padding:0; color:var(--text-secondary);">
+              <li style="margin-bottom:10px;"><span style="color:var(--primary-color);">✔</span> Custom API Development</li>
+              <li style="margin-bottom:10px;"><span style="color:var(--primary-color);">✔</span> Secure Database Management (MongoDB, SQL)</li>
+              <li><span style="color:var(--primary-color);">✔</span> Real-Time Features & Dashboards</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="glass-card reveal" style="display:flex; flex-wrap:wrap; gap:30px; align-items:center; padding:40px;">
+          <div style="flex:1; min-width:300px;">
+            <div style="font-size:3rem; margin-bottom:20px;">🛒</div>
+            <h3 style="font-size:1.8rem; margin-bottom:15px;">E-Commerce Solutions</h3>
+            <p style="color:var(--text-secondary); margin-bottom:20px; line-height:1.8;">Start selling online globally. We build secure, feature-rich e-commerce stores designed specifically to maximize conversions. From product management to secure checkout gateways, we handle the entire shopping experience.</p>
+            <ul style="list-style:none; padding:0; color:var(--text-secondary);">
+              <li style="margin-bottom:10px;"><span style="color:var(--primary-color);">✔</span> Secure Payment Gateway Integration</li>
+              <li style="margin-bottom:10px;"><span style="color:var(--primary-color);">✔</span> Inventory & Order Management</li>
+              <li><span style="color:var(--primary-color);">✔</span> High-Conversion UI/UX Design</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MINI PRICING OVERVIEW ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge reveal">💳 Clear Pricing</div>
+        <h2 class="reveal reveal-delay-1">Packages Overview</h2>
+        <p class="reveal reveal-delay-2">Consistent and transparent pricing tailored to your needs.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        <div class="glass-card reveal" style="text-align:center; padding: 30px;">
+          <h3 style="font-size:1.5rem;">Starter</h3>
+          <h4 style="font-size:2.2rem; color:var(--primary-color); margin:15px 0;">$299</h4>
+          <p style="color:var(--text-secondary); font-size:0.9rem;">Up to 5 Pages, 1-2 Weeks Delivery, 30 Days Free Support.</p>
+        </div>
+        <div class="glass-card reveal reveal-delay-1" style="text-align:center; padding: 30px; border-color:var(--primary-color);">
+          <h3 style="font-size:1.5rem;">Professional</h3>
+          <h4 style="font-size:2.2rem; color:var(--primary-color); margin:15px 0;">$799</h4>
+          <p style="color:var(--text-secondary); font-size:0.9rem;">Up to 10 Pages, 2-4 Weeks Delivery, 60 Days Free Support.</p>
+        </div>
+        <div class="glass-card reveal reveal-delay-2" style="text-align:center; padding: 30px;">
+          <h3 style="font-size:1.5rem;">Enterprise</h3>
+          <h4 style="font-size:2.2rem; color:var(--primary-color); margin:15px 0;">$2,499</h4>
+          <p style="color:var(--text-secondary); font-size:0.9rem;">Full-Stack/E-Commerce, 4-8 Weeks Delivery, 90 Days Priority Support.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="text-align: center; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 30px;">
+        <em>* Note: Domain name and web hosting costs are separate. Clients purchase these under their own accounts for full legal ownership.</em>
+      </div>
+
+      <div style="text-align:center;" class="reveal">
+        <a href="pricing.html" class="btn btn-secondary">View Detailed Pricing →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="section cta-section">
+    <div class="cta-orb o1"></div>
+    <div class="cta-orb o2"></div>
+    <div class="container">
+      <div class="reveal">
+        <h2>Ready to Build Something <span class="gradient-text">Extraordinary?</span></h2>
+        <p>Let's discuss your project and turn your vision into a stunning digital reality.</p>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary btn-lg">📞 Get Free Quote</a>
+          <a href="https://wa.me/923284461097" class="btn btn-whatsapp btn-lg" target="_blank">💬 WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+      <div class="container">
+          <div class="footer-grid">
+              <div class="footer-col">
+                  <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle; margin-bottom: 20px;">
+                  <p>Transforming ideas into powerful digital experiences. We build stunning, high-performance websites that help businesses grow and succeed in the modern digital landscape.</p>
+              </div>
+              <div class="footer-col">
+                  <h4>Quick Links</h4>
+                  <ul>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="about.html">About Us</a></li>
+                      <li><a href="services.html">Services</a></li>
+                      <li><a href="portfolio.html">Portfolio</a></li>
+                      <li><a href="blog.html">Blog</a></li>
+                      <li><a href="pricing.html">Pricing</a></li>
+                      <li><a href="faq.html">FAQ</a></li>
+                      <li><a href="reviews.html">Client Reviews</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Our Services</h4>
+                  <ul>
+                      <li><a href="services.html">Web Development</a></li>
+                      <li><a href="services.html">UI/UX Design</a></li>
+                      <li><a href="services.html">E-Commerce Solutions</a></li>
+                      <li><a href="services.html">SEO Optimization</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Contact Info</h4>
+                  <ul class="contact-info">
+                      <li>📍 Raja Jang, Kasur, Punjab, Pakistan</li>
+                      <li>📧 <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
+                      <li>📞 <a href="tel:+923284461097">+92 (328) 446-1097</a></li>
+                      <li>💬 <a href="https://wa.me/923284461097">WhatsApp Us</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="footer-bottom">
+              <p>© 2026 Rehmat Developers. All Rights Reserved.</p>
+              <p>Made with ❤ by Muhammad Waleed</p>
+          </div>
+      </div>
+  </footer>
+
+  <a href="https://wa.me/923284461097" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
+  <button class="scroll-top" title="Back to Top">↑</button>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
+```
+
+---
+
+### 3. `faq.html` (100% Complete Code)
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Rehmat Developers</title>
+  <meta name="description" content="Got questions? Find answers to frequently asked questions about web development, pricing, timelines, and hosting policies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== PRELOADER ===== -->
+  <div class="preloader">
+    <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ===== CUSTOM CURSOR ===== -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div class="scroll-progress"></div>
+
+  <!-- ===== PARTICLES ===== -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html" class="active">FAQ</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <header class="page-header">
+    <div class="container">
+      <h1 class="reveal">Frequently Asked <span class="gradient-text">Questions</span></h1>
+      <p class="reveal reveal-delay-1">Find clear answers to common questions regarding our web development process, pricing, timelines, and policies.</p>
+    </div>
+  </header>
+
+  <!-- ===== FAQ SECTION ===== -->
+  <section class="section">
+    <div class="container" style="max-width: 800px;">
+      
+      <div class="faq-container reveal">
+        
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>How much does a website cost?</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Our pricing is completely fixed and transparent: The <strong>Starter</strong> package is <strong>$299</strong> (up to 5 pages), the <strong>Professional</strong> package is <strong>$799</strong> (up to 10 pages), and the <strong>Enterprise / E-Commerce</strong> package is <strong>$2,499</strong> (unlimited pages/products). You can review all details on our Pricing page.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>Are domain and hosting included in the package?</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p><strong>No, domain and hosting are separate.</strong> Clients purchase their domain name and web hosting directly under their own accounts. This guarantees 100% legal ownership and control over your digital assets forever. We assist you free of charge in setting them up.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>How long does it take to build a website?</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Delivery timelines depend on your package: Starter websites take 1-2 weeks, Professional websites take 2-4 weeks, and Enterprise or E-commerce solutions take 4-8 weeks to complete.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>Do you offer refunds if I am not satisfied?</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>We follow a strict <strong>100% Quality & Work Protection Policy</strong>. We do not offer post-delivery cash refunds. Instead, we use milestone payments, provide live staging links for real-time testing, and offer unlimited revisions during the active development phase so you are fully satisfied before final delivery.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>Do you provide ongoing support after the website is launched?</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We provide complimentary post-launch support based on your plan: <strong>30 Days</strong> for Starter, <strong>60 Days</strong> for Professional, and <strong>90 Days Priority Support</strong> for Enterprise.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>What information do I need to provide to start?</h4>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>To begin, we need a brief overview of your business, your logo/branding files, preferred colors, specific features required, and text/images for the pages. If you don't have text or images, we can guide you or use professional placeholder content.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="section section-alt cta-section">
+    <div class="cta-orb o1"></div>
+    <div class="cta-orb o2"></div>
+    <div class="container">
+      <div class="reveal">
+        <h2>Still Have <span class="gradient-text">Questions?</span></h2>
+        <p>We are here to help. Reach out to us directly and we'll clear all your doubts instantly.</p>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary btn-lg">📧 Contact Support</a>
+          <a href="https://wa.me/923284461097" class="btn btn-whatsapp btn-lg" target="_blank">💬 WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+      <div class="container">
+          <div class="footer-grid">
+              <div class="footer-col">
+                  <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle; margin-bottom: 20px;">
+                  <p>Transforming ideas into powerful digital experiences. We build stunning, high-performance websites that help businesses grow and succeed in the modern digital landscape.</p>
+              </div>
+              <div class="footer-col">
+                  <h4>Quick Links</h4>
+                  <ul>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="about.html">About Us</a></li>
+                      <li><a href="services.html">Services</a></li>
+                      <li><a href="portfolio.html">Portfolio</a></li>
+                      <li><a href="blog.html">Blog</a></li>
+                      <li><a href="pricing.html">Pricing</a></li>
+                      <li><a href="faq.html">FAQ</a></li>
+                      <li><a href="reviews.html">Client Reviews</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Our Services</h4>
+                  <ul>
+                      <li><a href="services.html">Web Development</a></li>
+                      <li><a href="services.html">UI/UX Design</a></li>
+                      <li><a href="services.html">E-Commerce Solutions</a></li>
+                      <li><a href="services.html">SEO Optimization</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Contact Info</h4>
+                  <ul class="contact-info">
+                      <li>📍 Raja Jang, Kasur, Punjab, Pakistan</li>
+                      <li>📧 <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
+                      <li>📞 <a href="tel:+923284461097">+92 (328) 446-1097</a></li>
+                      <li>💬 <a href="https://wa.me/923284461097">WhatsApp Us</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="footer-bottom">
+              <p>© 2026 Rehmat Developers. All Rights Reserved.</p>
+              <p>Made with ❤ by Muhammad Waleed</p>
+          </div>
+      </div>
+  </footer>
+
+  <a href="https://wa.me/923284461097" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
+  <button class="scroll-top" title="Back to Top">↑</button>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
