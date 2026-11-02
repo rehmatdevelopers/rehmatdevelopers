@@ -37,13 +37,6 @@
     </script>
 
     <style>
-        .blog-modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 10, 24, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            z-index: 99999; display: none; align-items: center; justify-content: center;
-            padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        .blog-modal-overlay.active { display: flex !important; opacity: 1 !important; visibility: visible !important; }
         .blog-modal-container {
             background: #0f172a; border: 1px solid rgba(0, 212, 255, 0.25); border-radius: 24px;
             max-width: 850px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative;
@@ -129,11 +122,11 @@
                     <div style="padding:36px 40px;">
                         <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:18px; font-size:0.85rem; color:var(--text-muted);">
                             <span style="background:linear-gradient(135deg, #00d4ff, #7c3aed); color:#fff; padding:5px 16px; border-radius:20px; font-weight:600; font-size:0.75rem;">⭐ Featured</span>
-                            <span>📅 Updated: February 2026</span><span>⏱ 2 min read</span><span>👤 Muhammad Waleed</span>
+                            <span>📅 February 2026</span><span>⏱ 2 min read</span><span>👤 Muhammad Waleed</span>
                         </div>
                         <h3 style="font-size:1.8rem; margin-bottom:16px; color:#fff; line-height:1.3;">The Complete Guide to Building a High-Performance Website</h3>
                         <p style="color:var(--text-secondary); line-height:1.8; margin-bottom:24px; font-size:1rem;">In today's competitive digital landscape, having a website is no longer enough. From optimizing Core Web Vitals to ensuring pristine mobile responsiveness, discover the foundational engineering practices required to build web applications that rank well and load instantly.</p>
-                        <a href="post-high-performance.html" class="btn btn-primary open-article-btn" data-post-id="post-0" style="padding:12px 28px; border-radius:50px; cursor:pointer; display:inline-block; text-decoration:none;">Read Full Article →</a>
+                        <a href="post-high-performance.html" class="btn btn-primary" style="padding:12px 28px; border-radius:50px; cursor:pointer; display:inline-block; text-decoration:none;">Read Full Article →</a>
                     </div>
                 </div>
             </div>
@@ -168,8 +161,8 @@
                         <div class="blog-body">
                             <div class="blog-meta"><span class="category">Web Development</span><span>📅 February 2026</span></div>
                             <h3>Why Responsive Web Design Is No Longer Optional</h3>
-                            <p>With a majority of global web traffic coming from mobile devices, responsive design has shifted from a feature to an absolute necessity.</p>
-                            <a href="post-responsive-design.html" class="read-more open-article-btn" data-post-id="post-1">Read Full Article →</a>
+                            <p>Many visitors browse on phones, so responsive design is essential for a usable business website.</p>
+                            <a href="post-responsive-design.html" class="read-more">Read Full Article →</a>
                         </div>
                     </article>
 
@@ -179,17 +172,17 @@
                             <div class="blog-meta"><span class="category">UI/UX Design</span><span>📅 January 2026</span></div>
                             <h3>The Psychology of Color in Web Design</h3>
                             <p>Color is a powerful tool capable of influencing user emotions, maintaining brand consistency, and guiding navigation decisions seamlessly.</p>
-                            <a href="post-color-psychology.html" class="read-more open-article-btn" data-post-id="post-2">Read Full Article →</a>
+                            <a href="post-color-psychology.html" class="read-more">Read Full Article →</a>
                         </div>
                     </article>
 
                     <article class="blog-card reveal" data-category="seo">
                         <div class="blog-thumb" style="background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(0,212,255,0.15));"><span style="font-size:48px;" aria-hidden="true">🔍</span></div>
                         <div class="blog-body">
-                            <div class="blog-meta"><span class="category">SEO</span><span>📅 Updated: February 2026</span></div>
+                            <div class="blog-meta"><span class="category">SEO</span><span>📅 February 2026</span></div>
                             <h3>On-Page SEO: 25 Actionable Steps to Improve Search Rankings</h3>
-                            <p>Search engine optimization remains a high-ROI digital strategy. Read our comprehensive checklist containing exactly 25 actionable on-page SEO steps.</p>
-                            <a href="post-on-page-seo.html" class="read-more open-article-btn" data-post-id="post-3">Read Full Article →</a>
+                            <p>On-page SEO helps visitors and search engines understand what each page covers. Read our comprehensive checklist containing exactly 25 actionable on-page SEO steps.</p>
+                            <a href="post-on-page-seo.html" class="read-more">Read Full Article →</a>
                         </div>
                     </article>
 
@@ -199,7 +192,7 @@
                             <div class="blog-meta"><span class="category">Business</span><span>📅 December 2025</span></div>
                             <h3>How a Professional Website Drives Revenue Growth</h3>
                             <p>Many view their website as just a digital business card. Learn how investing in modern web engineering turns your site into a trustworthy lead generation tool.</p>
-                            <a href="post-revenue-growth.html" class="read-more open-article-btn" data-post-id="post-4">Read Full Article →</a>
+                            <a href="post-revenue-growth.html" class="read-more">Read Full Article →</a>
                         </div>
                     </article>
 
@@ -208,8 +201,8 @@
                         <div class="blog-body">
                             <div class="blog-meta"><span class="category">Tutorials</span><span>📅 December 2025</span></div>
                             <h3>Guide: Deploying Your Static Website on GitHub Pages</h3>
-                            <p>GitHub Pages is a highly reliable free hosting platform for static sites. Follow this step-by-step tutorial to deploy your website with SSL included.</p>
-                            <a href="post-github-pages.html" class="read-more open-article-btn" data-post-id="post-5">Read Full Article →</a>
+                            <p>GitHub Pages offers hosting for static websites at no cost on supported plans. Follow this step-by-step tutorial to deploy your website with SSL included.</p>
+                            <a href="post-github-pages.html" class="read-more">Read Full Article →</a>
                         </div>
                     </article>
 
@@ -219,7 +212,7 @@
                             <div class="blog-meta"><span class="category">Web Development</span><span>📅 November 2025</span></div>
                             <h3>Web Security Fundamentals Every Business Must Understand</h3>
                             <p>Digital security is more critical than ever. Learn the essential security protocols, from HTTPS to Content Security Policies, that keep your website safe.</p>
-                            <a href="post-web-security.html" class="read-more open-article-btn" data-post-id="post-6">Read Full Article →</a>
+                            <a href="post-web-security.html" class="read-more">Read Full Article →</a>
                         </div>
                     </article>
 
@@ -229,7 +222,7 @@
                             <div class="blog-meta"><span class="category">UI/UX Design</span><span>📅 November 2025</span></div>
                             <h3>Micro-Interactions: Enhancing User Experiences</h3>
                             <p>Discover how tiny animation details and feedback moments seamlessly elevate user engagement and brand perception on modern digital platforms.</p>
-                            <a href="post-micro-interactions.html" class="read-more open-article-btn" data-post-id="post-7">Read Full Article →</a>
+                            <a href="post-micro-interactions.html" class="read-more">Read Full Article →</a>
                         </div>
                     </article>
 
@@ -238,8 +231,8 @@
                         <div class="blog-body">
                             <div class="blog-meta"><span class="category">SEO</span><span>📅 October 2025</span></div>
                             <h3>Voice Search Optimization: Preparing for Conversational SEO</h3>
-                            <p>With smart speakers widely adapted, voice search is reshaping SEO. Learn how to structure your website content for natural language queries.</p>
-                            <a href="post-voice-search.html" class="read-more open-article-btn" data-post-id="post-8">Read Full Article →</a>
+                            <p>As people use voice assistants and conversational searches, clear answers can make website content easier to understand. Learn how to structure your website content for natural language queries.</p>
+                            <a href="post-voice-search.html" class="read-more">Read Full Article →</a>
                         </div>
                     </article>
 
@@ -249,7 +242,7 @@
                             <div class="blog-meta"><span class="category">Business</span><span>📅 October 2025</span></div>
                             <h3>Choosing a Web Development Partner: Red & Green Flags</h3>
                             <p>Selecting the wrong web partner can cost you time and resources. Learn the crucial indicators that separate reliable developers from unreliable ones.</p>
-                            <a href="post-development-partner.html" class="read-more open-article-btn" data-post-id="post-9">Read Full Article →</a>
+                            <a href="post-development-partner.html" class="read-more">Read Full Article →</a>
                         </div>
                     </article>
                 </div>
@@ -299,89 +292,16 @@
             </div>
         </footer>
     </div> <!-- End main-wrapper -->
-
-    <!-- Accessible Modal Overlay -->
-    <div id="blogModal" class="blog-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
-        <div class="blog-modal-container">
-            <button class="blog-modal-close" id="closeBlogModal" aria-label="Close Article">&times;</button>
-            <div id="blogModalContent"></div>
-        </div>
-    </div>
+</div>
 
     <script>setTimeout(function() { var pl = document.querySelector('.preloader'); if(pl) pl.style.display = 'none'; }, 1500);</script>
     <script src="js/script.js"></script>
 
     <script>
-    const blogArticles = {
-        "post-0": { category: "⭐ Featured | Web Development", date: "Updated: February 2026", readTime: "2 min read", author: "Muhammad Waleed", title: "The Complete Guide to Building a High-Performance Website", content: `<p>In today's competitive digital landscape, having a website is no longer enough — you need an engineering foundation that performs well across the metrics that matter. Search engines reward fast, accessible sites, and visitors expect pages to feel responsive almost immediately.</p><h3>1. Optimizing Core Web Vitals</h3><p>Google's Core Web Vitals are practical measures of user experience. The main metrics to watch are:</p><ul><li><strong>LCP (Largest Contentful Paint):</strong> How quickly the main visible content appears. Optimize hero images and server response times (TTFB).</li><li><strong>INP (Interaction to Next Paint):</strong> How quickly the page responds after clicks, taps, or key presses. Minimize heavy JavaScript execution.</li><li><strong>CLS (Cumulative Layout Shift):</strong> How much the layout jumps unexpectedly. Define explicit width/height on images.</li></ul><blockquote>"Speed is not only a technical checkbox. It is part of trust, usability, and whether someone stays long enough to contact you."</blockquote><h3>2. Mobile-First Engineering</h3><p>Because Google predominantly uses the mobile version of a site for indexing and ranking, design and development should start from the small screen. Write solid base styles for mobile, then enhance layouts with Flexbox, Grid, and carefully chosen breakpoints for larger screens.</p><h3>3. Practical Optimization Techniques</h3><ul><li><strong>Modern image formats:</strong> Prefer WebP or AVIF where supported instead of oversized PNG/JPEG files.</li><li><strong>Lazy loading:</strong> Load off-screen images only when the user scrolls near them.</li><li><strong>Lean code:</strong> Avoid heavy unused libraries when simple HTML, CSS, and JavaScript can do the job.</li><li><strong>Caching &amp; CDN:</strong> Cache static assets and serve them from a location close to the visitor when possible.</li></ul>`},
-        "post-1": { category: "Web Development", date: "February 2026", readTime: "1 min read", author: "Muhammad Waleed", title: "Why Responsive Web Design Is No Longer Optional", content: `<p>Most people browse on phones first. If a business site forces pinching, horizontal scrolling, or tiny tap targets, many visitors leave before they ever see your offer.</p><h3>Mobile experience and search</h3><p>Responsive design is both a UX requirement and an SEO requirement. With Google's mobile-first approach, the mobile version of your content is the primary version used for indexing and ranking in most cases. A broken mobile layout can therefore hurt both usability and discoverability.</p><h3>Key responsive design principles</h3><ul><li><strong>Fluid type and spacing:</strong> Use relative units and techniques like <code>clamp()</code> so text stays readable on small and large screens.</li><li><strong>Touch-friendly targets:</strong> Keep buttons and links large enough to tap comfortably (around 48×48px is a common guideline).</li><li><strong>Flexible layouts:</strong> Stack content in one column on phones, then expand to multi-column grids on tablets and desktops.</li><li><strong>Real device checks:</strong> Test on actual phones, not only a resized desktop browser.</li></ul><p>At Rehmat Developers, responsive behavior is part of every build checklist — not an optional upgrade.</p>`},
-        "post-2": { category: "UI/UX Design", date: "January 2026", readTime: "1 min read", author: "Muhammad Waleed", title: "The Psychology of Color in Web Design", content: `<p>Color is one of the fastest signals users notice. It shapes first impressions, highlights actions, and supports brand recognition when used with consistency.</p><h3>Common associations (context matters)</h3><ul><li><strong>Blue / cyan:</strong> Often linked with trust, calm, and technology.</li><li><strong>Purple:</strong> Frequently used for creativity or premium positioning.</li><li><strong>Red / strong warm tones:</strong> Draw attention and urgency; useful for warnings or key CTAs when not overused.</li><li><strong>Green:</strong> Common for success states, growth, and confirmation messages.</li></ul><h3>Contrast and accessibility</h3><p>Beautiful colors fail if text is hard to read. Aim for strong contrast between text and background. WCAG-style contrast targets (for example about 4.5:1 for normal text) help more people read your content in bright light, on cheap screens, or with vision limitations.</p><h3>Practical tip</h3><p>Pick a small palette: one primary brand color, one accent for buttons/links, neutral surfaces, and clear success/error colors. Reuse them everywhere instead of inventing new shades on each page.</p>`},
-        "post-3": { category: "SEO", date: "Updated: February 2026", readTime: "2 min read", author: "Muhammad Waleed", title: "On-Page SEO: 25 Actionable Steps to Improve Search Rankings", content: `<p>On-page SEO is the work you do on the page itself so both people and search engines understand the topic clearly. Below are exactly 25 actionable steps.</p><h3>Metadata &amp; Structure</h3><ol><li><strong>Primary keyword:</strong> Map one core user intent per page.</li><li><strong>Title tag:</strong> Place your keyword near the front; keep under 60 characters.</li><li><strong>Meta description:</strong> Write a compelling 150-character summary to boost CTR.</li><li><strong>Single H1:</strong> Use exactly one H1 to define the main topic.</li><li><strong>H2/H3 structure:</strong> Organize nested subheadings logically.</li><li><strong>Clean URLs:</strong> Use short, hyphen-separated URLs (e.g., /seo-tips).</li></ol><h3>Content &amp; Context</h3><ol start="7"><li><strong>Image alt text:</strong> Describe images accurately for screen readers and search.</li><li><strong>Descriptive file names:</strong> Rename images (e.g., seo-guide.jpg) before uploading.</li><li><strong>Internal links:</strong> Connect related content to pass link equity.</li><li><strong>Outbound links:</strong> Cite authoritative external sources to build trust.</li><li><strong>Natural wording:</strong> Write for humans; avoid keyword stuffing.</li><li><strong>Related terms:</strong> Include LSI keywords and natural synonyms.</li><li><strong>Readability:</strong> Use short paragraphs and bullet points.</li><li><strong>Complete answers:</strong> Ensure the content fully satisfies the search intent.</li></ol><h3>Technical &amp; Performance</h3><ol start="15"><li><strong>Mobile usability:</strong> Verify tap targets and viewport scaling.</li><li><strong>Page speed:</strong> Optimize Time to First Byte (TTFB) and render-blocking resources.</li><li><strong>Compressed media:</strong> Serve next-gen formats like WebP.</li><li><strong>Core Web Vitals:</strong> Optimize LCP, INP, and CLS metrics.</li><li><strong>HTTPS:</strong> Secure your site with an SSL certificate.</li><li><strong>Schema markup:</strong> Add JSON-LD structured data (Article, FAQ, etc.).</li><li><strong>Open Graph tags:</strong> Control social media link previews.</li><li><strong>Fix broken links:</strong> Regularly audit and 301 redirect dead pages.</li><li><strong>Canonical tags:</strong> Specify the master version of duplicate pages.</li></ol><h3>Maintenance</h3><ol start="24"><li><strong>Clear authorship:</strong> Display author bios to build E-E-A-T.</li><li><strong>Periodic updates:</strong> Refresh older content to maintain relevance.</li></ol>`},
-        "post-4": { category: "Business", date: "December 2025", readTime: "1 min read", author: "Muhammad Waleed", title: "How a Professional Website Drives Revenue Growth", content: `<p>A website is more useful than a digital business card when it is built to create trust and capture demand. For many local and service businesses, the site is the first serious conversation with a buyer.</p><h3>Trust before the sale</h3><p>Clean layout, clear services, real contact details, and fast loading all signal professionalism. Visitors decide quickly whether you look organized enough to hire.</p><h3>Remove friction from inquiries</h3><p>Make the next step obvious: strong calls-to-action, simple contact forms, click-to-call, and WhatsApp where your audience actually messages. Every extra confusing step costs leads.</p><h3>Support the sales process</h3><p>Good pages answer objections early — scope, process, location, and proof of work. That shortens back-and-forth and helps serious clients reach out ready to discuss a project.</p>`},
-        "post-5": { category: "Tutorials", date: "December 2025", readTime: "1 min read", author: "Muhammad Waleed", title: "Guide: Deploying Your Static Website on GitHub Pages", content: `<p>GitHub Pages is a solid free option for static sites (HTML, CSS, JavaScript). It includes HTTPS and is well suited to portfolios, documentation, and simple business marketing sites. It is not a host for server languages like PHP or a custom Node backend.</p><h3>Step-by-step</h3><ol><li><strong>Prepare files:</strong> Keep a clear folder structure with <code>index.html</code> at the root.</li><li><strong>Create a GitHub repository:</strong> Public repos work with GitHub Pages on the standard free plan.</li><li><strong>Push your code:</strong> Commit and push to the branch you will publish (often <code>main</code>).</li><li><strong>Enable Pages:</strong> Repo → Settings → Pages.</li><li><strong>Choose source:</strong> Select “Deploy from a branch”, then the branch and folder.</li><li><strong>Wait for the build:</strong> After a short deploy, open the provided <code>*.github.io</code> URL over HTTPS.</li></ol><h3>Custom domain</h3><p>You can attach a domain you own by adding it in Pages settings and creating the DNS records (like CNAME or A records) your registrar requires.</p>`},
-        "post-6": { category: "Web Development", date: "November 2025", readTime: "1 min read", author: "Muhammad Waleed", title: "Web Security Fundamentals Every Business Must Understand", content: `<p>You do not need to become a security engineer to avoid basic mistakes. A few fundamentals protect visitors, form data, and your brand reputation.</p><h3>Essentials worth implementing</h3><ul><li><strong>HTTPS everywhere:</strong> Encrypt traffic between browser and server. Mixed or missing SSL also damages trust.</li><li><strong>Careful form handling:</strong> Validate and sanitize input to prevent Cross-Site Scripting (XSS). Never trust data only because it came from your frontend.</li><li><strong>Least privilege third parties:</strong> Every embedded script, pixel, or plugin expands attack surface. Load only what you need.</li><li><strong>Content Security Policy (CSP):</strong> When configured properly, CSP limits which scripts and origins can run.</li><li><strong>Dependency hygiene:</strong> Keep libraries and tooling updated so known vulnerabilities are patched.</li></ul>`},
-        "post-7": { category: "UI/UX Design", date: "November 2025", readTime: "1 min read", author: "Muhammad Waleed", title: "Micro-Interactions: Enhancing User Experiences", content: `<p>Micro-interactions are small pieces of feedback: a button state change, a subtle success animation, a field highlight, or a progress cue after submit.</p><h3>Why they matter</h3><p>They answer a simple user question: “Did the interface notice what I just did?” Without feedback, people double-click, refresh, or assume the site is broken.</p><h3>Good examples</h3><ul><li>Hover/focus styles on buttons and links</li><li>Inline validation as someone completes a form</li><li>A clear loading state (skeleton loader or spinner) on slow actions</li><li>A quiet confirmation badge after a message is sent</li></ul><h3>Keep them useful</h3><p>Prefer short, purposeful motion over decorative noise. If an animation delays the task or distracts from content, remove it.</p>`},
-        "post-8": { category: "SEO", date: "October 2025", readTime: "1 min read", author: "Muhammad Waleed", title: "Voice Search Optimization: Preparing for Conversational SEO", content: `<p>Voice queries are often longer and more conversational than typed keywords. People ask full questions: “How do I deploy a site on GitHub Pages?” rather than only “GitHub Pages host”.</p><h3>How to prepare content</h3><ul><li>Add clear question-and-answer style sections where they fit naturally.</li><li>Use plain language that matches how customers actually speak.</li><li>Give direct answers near the top of a section, then expand with detail.</li><li>Consider FAQ schema only when the on-page FAQ content is real and visible.</li></ul><p>Voice search is not a separate trick. It rewards the same fundamentals: fast pages, clear structure, and content that answers real questions.</p>`},
-        "post-9": { category: "Business", date: "October 2025", readTime: "1 min read", author: "Muhammad Waleed", title: "Choosing a Web Development Partner: Red & Green Flags", content: `<p>The wrong partner costs more than a delayed launch. It can mean lost access, unclear ownership, or a site nobody can maintain.</p><h3>Green flags</h3><ul><li><strong>Clear pricing:</strong> Packages or written quotes with exact scope boundaries.</li><li><strong>Client-owned assets:</strong> Domain and hosting billed under the client’s accounts.</li><li><strong>Visible process:</strong> Milestones, staging previews, and structured revision rounds.</li></ul><h3>Red flags</h3><ul><li><strong>Source code or admin lock-in:</strong> Refusal to hand over full access after payment milestones are met.</li><li><strong>Proprietary CMS Lock-in:</strong> Forcing you onto a custom platform you cannot export from.</li><li><strong>Vague timelines:</strong> No preview links and no written phases.</li><li><strong>Unlimited promises:</strong> “Unlimited pages/revisions” often hides unclear scope and guarantees future conflict.</li></ul>`}
-    };
-
     document.addEventListener('DOMContentLoaded', function () {
-        const modal = document.getElementById('blogModal');
-        const modalContent = document.getElementById('blogModalContent');
-        const closeBtn = document.getElementById('closeBlogModal');
-        const mainWrapper = document.getElementById('main-wrapper');
-        let lastFocusedElement;
-
-        document.body.addEventListener('click', function(e) {
-            const targetBtn = e.target.closest('.open-article-btn');
-            if (!targetBtn) return;
-            
-            // Allow native link behavior if opened in a new tab
-            if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
-
-            e.preventDefault();
-            const postId = targetBtn.getAttribute('data-post-id');
-            const article = blogArticles[postId];
-            if (!article) return;
-
-            lastFocusedElement = targetBtn;
-
-            modalContent.innerHTML = `
-                <div class="blog-article-header">
-                    <div class="blog-article-meta"><span class="cat-badge">${article.category}</span><span>📅 ${article.date}</span><span>⏱ ${article.readTime}</span><span>👤 ${article.author}</span></div>
-                    <h2 id="modalTitle" class="blog-article-title" tabindex="-1">${article.title}</h2>
-                </div>
-                <div class="blog-article-body">${article.content}</div>
-                <div class="blog-article-footer"><div class="blog-article-footer-top"><span style="color:var(--text-muted); font-size:0.9rem;">Written by Muhammad Waleed</span><a href="contact.html" class="btn btn-primary btn-sm" style="border-radius:50px; padding:10px 24px;">Discuss Your Project →</a></div></div>
-            `;
-            
-            modal.classList.add('active');
-            modal.setAttribute('aria-hidden', 'false');
-            if (mainWrapper) mainWrapper.setAttribute('inert', ''); // Traps focus and makes background unclickable natively
-            document.body.style.overflow = 'hidden';
-            modalContent.parentElement.scrollTop = 0;
-            
-            // Focus close button for accessibility
-            setTimeout(() => closeBtn.focus(), 50);
-        });
-
-        function closeModal() {
-            modal.classList.remove('active');
-            modal.setAttribute('aria-hidden', 'true');
-            if (mainWrapper) mainWrapper.removeAttribute('inert');
-            document.body.style.overflow = '';
-            if (lastFocusedElement) lastFocusedElement.focus();
-        }
-
-        if (closeBtn) closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
-        modal.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
-
-        // Category Filter
         const filterBtns = document.querySelectorAll('.filter-btn');
         const blogCards = document.querySelectorAll('.blog-card');
         const emptyMsg = document.getElementById('no-articles-msg');
-
         filterBtns.forEach(btn => {
             btn.addEventListener('click', function () {
                 filterBtns.forEach(b => b.classList.remove('active'));
@@ -389,10 +309,11 @@
                 const filter = this.getAttribute('data-filter');
                 let visibleCount = 0;
                 blogCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) { card.style.display = ''; visibleCount++; } 
-                    else { card.style.display = 'none'; }
+                    const show = filter === 'all' || card.getAttribute('data-category') === filter;
+                    card.style.display = show ? '' : 'none';
+                    if (show) visibleCount++;
                 });
-                emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+                if (emptyMsg) emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
             });
         });
     });
