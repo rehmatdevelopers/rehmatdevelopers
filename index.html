@@ -245,25 +245,34 @@
     </div>
   </section>
 
-  <!-- ===== DYNAMIC SLIDING TESTIMONIALS ===== -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge reveal">💬 Testimonials</div>
-        <h2 class="reveal reveal-delay-1">What Our <span class="gradient-text">Clients Say</span></h2>
-        <p class="reveal reveal-delay-2">Real reviews from our amazing clients sliding dynamically.</p>
-      </div>
-    </div>
-
-    <!-- DYNAMIC SLIDER -->
-    <section class="testimonials-section section-padding">
+ <!-- DYNAMIC REVIEWS SLIDER SECTION -->
+<section class="testimonials-section section-padding" style="position: relative; overflow: hidden;">
     <div class="container text-center">
-        
-        <!-- YAHAN ID LAZMI 'testimonialsSliderTrack' HONI CHAHIYE -->
-        <div id="testimonialsSliderTrack" style="display: flex; overflow-x: auto; padding: 20px 0; gap: 20px; scroll-snap-type: x mandatory; scrollbar-width: none;">
-            <!-- Reviews JS se yahan aayenge -->
+        <h2 class="section-title">What Our <span>Clients</span> Say</h2>
+        <p style="color: var(--text-muted, #94a3b8); margin-bottom: 20px;">Real feedback from clients around the world</p>
+
+        <!-- Slider Wrapper with Navigation Arrows -->
+        <div class="slider-wrapper" style="position: relative; margin-top: 30px; display: flex; align-items: center;">
+            
+            <!-- Left Arrow Button -->
+            <button id="testimonialPrevBtn" aria-label="Previous Review" style="position: absolute; left: 0px; z-index: 10; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 212, 255, 0.5); color: #00d4ff; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s;">
+                <i class="fas fa-chevron-left" style="font-size: 1.1rem;"></i>
+            </button>
+
+            <!-- Slider Track -->
+            <div id="testimonialsSliderTrack" style="display: flex; overflow-x: auto; scroll-behavior: smooth; padding: 20px 10px; gap: 20px; scrollbar-width: none; -ms-overflow-style: none; width: 100%;">
+                <!-- Reviews JS se auto-load aur slide honge -->
+            </div>
+
+            <!-- Right Arrow Button -->
+            <button id="testimonialNextBtn" aria-label="Next Review" style="position: absolute; right: 0px; z-index: 10; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 212, 255, 0.5); color: #00d4ff; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s;">
+                <i class="fas fa-chevron-right" style="font-size: 1.1rem;"></i>
+            </button>
         </div>
-        
+
+        <div style="margin-top: 35px;">
+            <a href="reviews.html" class="btn btn-primary">See All Client Reviews</a>
+        </div>
     </div>
 </section>
     
