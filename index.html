@@ -25,6 +25,31 @@
     </div>
   </div>
 
+  <!-- Preloader safety fallback: never leave the page covered if another script fails. -->
+  <script>
+    (function () {
+      var preloaderHidden = false;
+      function hidePreloader() {
+        if (preloaderHidden) return;
+        var preloader = document.querySelector('.preloader');
+        if (!preloader) return;
+        preloaderHidden = true;
+        preloader.style.transition = 'opacity 0.4s ease, visibility 0.4s ease';
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+        preloader.style.pointerEvents = 'none';
+        window.setTimeout(function () {
+          preloader.style.display = 'none';
+        }, 450);
+      }
+      window.addEventListener('load', function () {
+        window.setTimeout(hidePreloader, 250);
+      }, { once: true });
+      // Fallback also runs if a remote script never finishes loading.
+      window.setTimeout(hidePreloader, 5000);
+    })();
+  </script>
+
   <!-- ===== CUSTOM CURSOR ===== -->
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
@@ -245,28 +270,25 @@
     </div>
   </section>
 
-  <!-- ===== DYNAMIC SLIDING TESTIMONIALS ===== -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge reveal">💬 Testimonials</div>
-        <h2 class="reveal reveal-delay-1">What Our <span class="gradient-text">Clients Say</span></h2>
-        <p class="reveal reveal-delay-2">Real reviews from our amazing clients sliding dynamically.</p>
-      </div>
-    </div>
+ <!-- ULTRA-SMOOTH INFINITE REVIEWS MARQUEE -->
+<section class="testimonials-section section-padding" style="position: relative; overflow: hidden; padding: 60px 0;">
+    <div class="container text-center">
+        <h2 style="text-align:center;" class="section-title">What Our <span>Clients</span> Say</h2>
+        <p style="color: var(--text-muted, #94a3b8); margin-bottom: 30px;text-align:center;">Real feedback from clients around the world</p>
 
-    <!-- DYNAMIC SLIDER -->
-    <div class="testimonials-wrapper reveal">
-      <div class="testimonials-track" id="dynamicTestimonialsTrack">
-        <!-- JS will inject Real Feedbacks Here from Firebase -->
-      </div>
+        <!-- Smooth Ticker Outer Container (Faded edges for premium feel) -->
+        <div class="reviews-marquee-container">
+            <div id="dynamicTestimonialsTrack" class="reviews-marquee-track">
+                <!-- Live Firebase Reviews JavaScript se yahan continuous infinite loop banayenge -->
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; text-align:center;">
+            <a href="reviews.html" class="btn btn-primary">See All Client Reviews</a>
+        </div>
     </div>
+</section>
     
-    <!-- View All Reviews Button -->
-    <div style="text-align:center; margin-top:40px;" class="reveal">
-        <a href="reviews.html" class="btn btn-secondary">View All Client Reviews →</a>
-    </div>
-  </section>
 
   <!-- ===== CTA SECTION ===== -->
   <section class="section cta-section">
@@ -290,7 +312,7 @@
           <div class="footer-grid">
               <div class="footer-col">
                   <img src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle; margin-bottom: 20px;">
-                  <p>Transforming ideas into powerful digital experiences. We build stunning, high-performance websites that help businesses grow and succeed in the modern digital landscape.</p>
+                  <p style="text-align:justify;">Transforming ideas into powerful digital experiences. We build stunning, high-performance websites that help businesses grow and succeed in the modern digital landscape.</p>
               </div>
               <div class="footer-col">
                   <h4>Quick Links</h4>
@@ -318,7 +340,7 @@
               <div class="footer-col">
                   <h4>Contact Info</h4>
                   <ul class="contact-info">
-                      <li>📍 Raja Jang, Kasur, Punjab, Pakistan</li>
+                      <li>📍 <a href="https://maps.app.goo.gl/6MBJ13cBZTisaQM1A">Raja Jang, Kasur, Punjab, Pakistan</a></li>
                       <li>📧 <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
                       <li>📞 <a href="tel:+923284461097">+92 (328) 446-1097</a></li>
                       <li>💬 <a href="https://wa.me/923284461097">WhatsApp Us</a></li>
@@ -342,74 +364,97 @@
   <!-- Main Script (Initializes Firebase) -->
   <script src="js/script.js"></script>
 
-  <!-- Custom Script: Inject Real Feedbacks into Slider from Firebase -->
+  <!-- Custom Script: Load reviews safely from Firebase -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const track = document.getElementById('dynamicTestimonialsTrack');
+    document.addEventListener('DOMContentLoaded', function () {
+      var track = document.getElementById('dynamicTestimonialsTrack');
       if (!track) return;
-      
-      // Firebase is already initialized in js/script.js
-      const db = firebase.firestore();
 
-      // Listen for real-time updates from Firestore
-      db.collection('reviews')
-        .orderBy('timestamp', 'desc')
-        .onSnapshot((snapshot) => {
-          let feedbacks = [];
-          
-          snapshot.forEach((doc) => {
-            const data = doc.data();
-            // Filter: Only keep reviews with 3 to 5 stars
-            if (data.rating && data.rating >= 3) {
-              feedbacks.push(data);
+      // Do not let a missing Firebase setup break the homepage or its preloader.
+      if (!window.firebase || !firebase.apps || !firebase.apps.length || typeof firebase.firestore !== 'function') {
+        console.warn('Firebase is not initialized; homepage reviews were not loaded.');
+        return;
+      }
+
+      function makeCard(review) {
+        var card = document.createElement('div');
+        card.className = 'glass-card testimonial-card';
+
+        var rating = Math.max(1, Math.min(5, Number(review.rating) || 5));
+        var stars = document.createElement('div');
+        stars.className = 'stars';
+        stars.textContent = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+        var message = document.createElement('blockquote');
+        message.textContent = '“' + String(review.message || '') + '”';
+
+        var author = document.createElement('div');
+        author.className = 'testimonial-author';
+        var avatar = document.createElement('div');
+        avatar.className = 'testimonial-avatar';
+        var name = String(review.name || 'Client');
+        avatar.textContent = name.charAt(0).toUpperCase();
+
+        var details = document.createElement('div');
+        var heading = document.createElement('h4');
+        heading.textContent = name;
+        var service = document.createElement('span');
+        service.textContent = String(review.service || 'Valued Client');
+        details.appendChild(heading);
+        details.appendChild(service);
+        author.appendChild(avatar);
+        author.appendChild(details);
+
+        card.appendChild(stars);
+        card.appendChild(message);
+        card.appendChild(author);
+        return card;
+      }
+
+      function showEmptyState() {
+        var emptyReview = {
+          rating: 5,
+          message: 'No reviews yet. Visit our Reviews page to submit your feedback and be the first to feature here!',
+          name: 'Rehmat Developers',
+          service: 'System'
+        };
+        track.replaceChildren(makeCard(emptyReview));
+      }
+
+      try {
+        firebase.firestore().collection('reviews')
+          .orderBy('timestamp', 'desc')
+          .limit(30)
+          .onSnapshot(function (snapshot) {
+            var reviews = [];
+            snapshot.forEach(function (doc) {
+              var data = doc.data() || {};
+              var rating = Number(data.rating);
+              if (rating >= 3 && rating <= 5) reviews.push(data);
+            });
+
+            var selected = reviews.slice(0, 10);
+            if (!selected.length) {
+              showEmptyState();
+              return;
             }
+
+            var cards = selected.map(makeCard);
+            track.replaceChildren();
+            // Duplicate the cards for the existing continuous marquee animation.
+            for (var copy = 0; copy < 3; copy++) {
+              cards.forEach(function (card) {
+                track.appendChild(card.cloneNode(true));
+              });
+            }
+          }, function (error) {
+            console.error('Error fetching homepage reviews:', error);
+            showEmptyState();
           });
-
-          // Limit to top 10 latest good reviews
-          let sliderFeeds = feedbacks.slice(0, 10);
-
-          if (sliderFeeds.length === 0) {
-            track.innerHTML = `
-              <div class="glass-card testimonial-card">
-                <div class="stars">★★★★★</div>
-                <blockquote>"No reviews yet. Visit our Reviews page to submit your feedback and be the first to feature here!"</blockquote>
-                <div class="testimonial-author">
-                  <div class="testimonial-avatar">RD</div>
-                  <div>
-                    <h4>Rehmat Developers</h4>
-                    <span>System</span>
-                  </div>
-                </div>
-              </div>`;
-            return;
-          }
-
-          let html = '';
-          sliderFeeds.forEach(fb => {
-            let stars = '★'.repeat(fb.rating || 5) + '☆'.repeat(5 - (fb.rating || 5));
-            let initial = fb.name ? fb.name.charAt(0).toUpperCase() : 'C';
-            html += `
-              <div class="glass-card testimonial-card">
-                <div class="stars">${stars}</div>
-                <blockquote>"${fb.message}"</blockquote>
-                <div class="testimonial-author">
-                  <div class="testimonial-avatar">${initial}</div>
-                  <div>
-                    <h4>${fb.name}</h4>
-                    <span>${fb.service || 'Valued Client'}</span>
-                  </div>
-                </div>
-              </div>
-            `;
-          });
-
-          // HTML ko 3 dafa repeat kiya taa ke CSS marquee effect smooth loop chalta rahay
-          // Agar cards kam hon toh slider break na ho
-          track.innerHTML = html + html + html;
-          
-        }, (error) => {
-          console.error("Error fetching reviews for slider: ", error);
-        });
+      } catch (error) {
+        console.error('Unable to initialize homepage reviews:', error);
+        showEmptyState();
+      }
     });
   </script>
 </body>
