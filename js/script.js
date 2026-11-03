@@ -514,7 +514,7 @@ const FeedbackSystem = {
     const track = document.getElementById('testimonialsSliderTrack');
     if (!track) return;
 
-    // Latest 10 reviews tak limit rakhi hai
+    // Top 10 latest reviews tak limit
     const list = (feedbacks || []).slice(0, 10);
 
     if (list.length === 0) {
@@ -526,7 +526,8 @@ const FeedbackSystem = {
       return;
     }
 
-    track.innerHTML = list.map(fb => {
+    // Single Card Builder
+    const createCardHtml = (fb) => {
       const rating = parseInt(fb.rating, 10) || 5;
       const starsHtml = '★'.repeat(rating) + '☆'.repeat(5 - rating);
       const safeName = escapeHtml(fb.name || 'Client');
@@ -535,7 +536,7 @@ const FeedbackSystem = {
       const safeService = escapeHtml(fb.service || 'Verified Client');
 
       return `
-        <div class="testimonial-card glass-card" style="min-width:min(320px, 85vw); max-width:380px; width:340px; margin:5px; flex-shrink:0;">
+        <div class="testimonial-card glass-card" style="min-width:320px; max-width:360px; width:340px; margin:0; flex-shrink:0;">
           <div class="rating" style="color:#f59e0b; letter-spacing:2px; margin-bottom:12px; font-size:1.1rem;">${starsHtml}</div>
           <p class="message" style="color:#cbd5e1; font-style:italic; line-height:1.6; margin-bottom:16px; font-size:0.95rem;">"${safeMessage}"</p>
           <div class="author" style="display:flex; align-items:center; gap:12px;">
@@ -547,7 +548,24 @@ const FeedbackSystem = {
           </div>
         </div>
       `;
-    }).join('');
+    };
+
+    const cardsHtml = list.map(fb => createCardHtml(fb)).join('');
+
+    // SEAMLESS INFINITE LOOP: Single Set Ko Double (Clone) Kiya Hai Taake Smooth Transition Ho
+    // Agar reviews 4 se kam hon toh 4 baar repeat karega taake screen empty na lagay
+    const repeatCount = list.length < 4 ? 4 : 2;
+    let fullHtml = '';
+    for (let i = 0; i < repeatCount; i++) {
+      fullHtml += cardsHtml;
+    }
+
+    track.innerHTML = fullHtml;
+
+    // Adjust Speed According to Number of Items (Ideal: 35s smooth glide)
+    const speedInSeconds = Math.max(25, list.length * 5);
+    track.style.animationDuration = `${speedInSeconds}s`;
+  },
 
     // --- SLIDER CONTROLS & AUTO-PLAY LOGIC ---
     const prevBtn = document.getElementById('testimonialPrevBtn');
