@@ -20,13 +20,38 @@
 </head>
 <body>
 
-  <!-- ==================== PRELOADER ==================== -->
-    <div class="preloader">
-        <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers Logo" style="height:120px; width:auto; vertical-align:middle;">
-        <div class="preloader-bar">
-            <div class="preloader-bar-fill"></div>
-        </div>
+  <!-- ===== PRELOADER ===== -->
+  <div class="preloader">
+    <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers" style="height:120px; width:auto; vertical-align:middle;">
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
     </div>
+  </div>
+
+  <!-- Preloader safety fallback: prevent an endless loading screen if another script fails. -->
+  <script>
+    (() => {
+      const hidePreloader = () => {
+        const preloader = document.querySelector('.preloader');
+        if (!preloader || preloader.dataset.dismissed === 'true') return;
+        preloader.dataset.dismissed = 'true';
+        preloader.style.transition = 'opacity 0.4s ease';
+        preloader.style.opacity = '0';
+        preloader.style.pointerEvents = 'none';
+        window.setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 450);
+      };
+
+      // Start the fallback immediately, even if a later external script hangs.
+      window.setTimeout(hidePreloader, 4000);
+      if (document.readyState === 'complete') {
+        hidePreloader();
+      } else {
+        window.addEventListener('load', hidePreloader, { once: true });
+      }
+    })();
+  </script>
 
   <!-- ===== CUSTOM CURSOR ===== -->
   <div class="cursor-dot"></div>
