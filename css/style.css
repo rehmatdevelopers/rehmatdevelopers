@@ -2498,3 +2498,38 @@ body.admin-mode .feedback-card .delete-btn {
     margin-left: 5px !important; /* Emoji aur text ke beech thora space */
     line-height: 1.4 !important;
 }
+/* =======================================================
+   ULTRA-SMOOTH INFINITE REVIEWS SLIDER (MARQUEE)
+   ======================================================= */
+.reviews-marquee-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 20px 0;
+    /* Soft edge gradient effect on left and right */
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.reviews-marquee-track {
+    display: flex;
+    gap: 25px;
+    width: max-content;
+    animation: smoothMarquee 30s linear infinite;
+    will-change: transform;
+}
+
+/* Mouse Hover karne par review pause ho jayega taake aaram se padha ja sake */
+.reviews-marquee-container:hover .reviews-marquee-track {
+    animation-play-state: paused;
+}
+
+/* Smooth Right to Left Keyframe Animation */
+@keyframes smoothMarquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
