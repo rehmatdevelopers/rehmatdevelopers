@@ -278,12 +278,21 @@ if (window.innerWidth > 768) {
   });
 }
 
-// ===== ACTIVE NAV LINK =====
+/* =======================================================
+   ✅ ACTIVE NAV LINK (FIXED DUAL BUBBLES) 
+   ======================================================= */
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.nav-links a').forEach(link => {
+document.querySelectorAll('.nav-links a:not(.btn)').forEach(link => {
+  // 1. Sabse pehle copy-paste ki gayi hardcoded 'active' class ko remove karein
+  link.classList.remove('active');
+  
+  // 2. Sirf jo page open hai, usi link ko 'active' karein
   const href = link.getAttribute('href');
-  if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-    link.classList.add('active');
+  if (href) {
+    const linkPath = href.split('/').pop();
+    if (linkPath === currentPage || (currentPage === '' && linkPath === 'index.html')) {
+      link.classList.add('active');
+    }
   }
 });
 
@@ -635,7 +644,9 @@ if (feedbackForm) {
   });
 }
 
-// ===== CONTACT FORM (Web3Forms AJAX) =====
+/* =======================================================
+   ✅ CONTACT FORM (Google Apps Script / Web3Forms Fix)
+   ======================================================= */
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
@@ -652,24 +663,24 @@ if (contactForm) {
 
     try {
       const formData = new FormData(contactForm);
-      if (!formData.get('access_key')) {
-        formData.append('access_key', 'cdabd95e-b135-49fa-814a-f97f62c001e7');
-      }
+      const scriptURL = contactForm.getAttribute('action'); // HTML form ka action lay ga (Google Apps Script URL)
 
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch(scriptURL || 'https://api.web3forms.com/submit', {
         method: 'POST',
         body: formData
       });
+      
       const result = await res.json();
 
-      if (result.success) {
+      // Check success for both Google Apps Script and Web3Forms response styles
+      if (result.result === "success" || result.result === "bot_detected" || result.success) {
         if (statusEl) {
           statusEl.style.color = '#10b981';
           statusEl.textContent = 'Thank you! Your message has been sent successfully.';
         }
         contactForm.reset();
       } else {
-        throw new Error(result.message || 'Failed');
+        throw new Error(result.error || result.message || 'Failed');
       }
     } catch (err) {
       if (statusEl) {
