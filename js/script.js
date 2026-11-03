@@ -510,15 +510,12 @@ const FeedbackSystem = {
     this.renderHomepageSlider(feedbacks);
   },
 
-  renderHomepageSlider(feedbacks) {
-    const track =
-      document.getElementById('testimonialsSliderTrack') ||
-      document.getElementById('homeTestimonials') ||
-      document.getElementById('testimonialsContainer');
-
+    renderHomepageSlider(feedbacks) {
+    const track = document.getElementById('testimonialsSliderTrack');
     if (!track) return;
 
-    const list = feedbacks || [];
+    // Sirf latest 10 reviews show karwane ke liye .slice(0, 10) lagaya hai
+    const list = (feedbacks || []).slice(0, 10);
 
     if (list.length === 0) {
       track.innerHTML = `
