@@ -40,6 +40,22 @@ window.addEventListener('load', () => {
   }, 1800);
 });
 
+// ===== PRELOADER (FAILSAFE - KABHI ATKE NAHI) =====
+(function hidePreloader() {
+  const hide = () => {
+    const preloader = document.querySelector('.preloader');
+    if (!preloader) return;
+    preloader.classList.add('hidden');
+    setTimeout(() => preloader.remove(), 600);
+  };
+
+  // Normal: page load ke 1.2s baad
+  window.addEventListener('load', () => setTimeout(hide, 1200));
+
+  // Failsafe: agar load event hang ho jaye to 2.5s baad zabardasti hide
+  setTimeout(hide, 2500);
+})();
+
 // ===== CUSTOM CURSOR =====
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorRing = document.querySelector('.cursor-ring');
