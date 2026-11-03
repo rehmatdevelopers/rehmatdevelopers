@@ -2,9 +2,43 @@
    REHMAT DEVELOPERS — PREMIUM JAVASCRIPT
    CEO: Muhammad Waleed
    Global Reviews: Firebase Firestore
+   FIXED: syntax error + preloader + content reveal
    ============================================ */
 
-// ===== FIREBASE CONFIG (YOUR PROJECT) =====
+// ===== 0. FORCE SHOW PAGE (preloader + invisible content fix) =====
+(function () {
+  function forceShowPage() {
+    var preloader = document.querySelector('.preloader');
+    if (preloader) {
+      preloader.classList.add('hidden', 'is-done');
+      preloader.style.opacity = '0';
+      preloader.style.visibility = 'hidden';
+      preloader.style.pointerEvents = 'none';
+      preloader.style.display = 'none';
+      try { preloader.remove(); } catch (e) {}
+    }
+    document.documentElement.classList.add('page-ready');
+    document.body.classList.add('page-ready');
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
+      el.classList.add('revealed');
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      setTimeout(forceShowPage, 300);
+    });
+  } else {
+    setTimeout(forceShowPage, 300);
+  }
+  window.addEventListener('load', function () {
+    setTimeout(forceShowPage, 150);
+  });
+  // Absolute failsafe — har page 1.5s me khul jayega
+  setTimeout(forceShowPage, 1500);
+})();
+
+// ===== FIREBASE CONFIG =====
 const firebaseConfig = {
   apiKey: "AIzaSyAILcD4WQVlf6_2qRUeecZYRjgD6CmnzhE",
   authDomain: "rehmat-developers.firebaseapp.com",
@@ -28,33 +62,6 @@ try {
 } catch (err) {
   console.error('Firebase init error:', err);
 }
-
-// ===== PRELOADER =====
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const preloader = document.querySelector('.preloader');
-    if (preloader) {
-      preloader.classList.add('hidden');
-      setTimeout(() => preloader.remove(), 800);
-    }
-  }, 1800);
-});
-
-// ===== PRELOADER (FAILSAFE - KABHI ATKE NAHI) =====
-(function hidePreloader() {
-  const hide = () => {
-    const preloader = document.querySelector('.preloader');
-    if (!preloader) return;
-    preloader.classList.add('hidden');
-    setTimeout(() => preloader.remove(), 600);
-  };
-
-  // Normal: page load ke 1.2s baad
-  window.addEventListener('load', () => setTimeout(hide, 1200));
-
-  // Failsafe: agar load event hang ho jaye to 2.5s baad zabardasti hide
-  setTimeout(hide, 2500);
-})();
 
 // ===== CUSTOM CURSOR =====
 const cursorDot = document.querySelector('.cursor-dot');
@@ -294,15 +301,10 @@ if (window.innerWidth > 768) {
   });
 }
 
-/* =======================================================
-   ✅ ACTIVE NAV LINK (FIXED DUAL BUBBLES) 
-   ======================================================= */
+// ===== ACTIVE NAV LINK (SINGLE BUBBLE ONLY) =====
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.nav-links a:not(.btn)').forEach(link => {
-  // 1. Sabse pehle copy-paste ki gayi hardcoded 'active' class ko remove karein
+document.querySelectorAll('.nav-links a:not(.btn):not(.nav-cta-btn)').forEach(link => {
   link.classList.remove('active');
-  
-  // 2. Sirf jo page open hai, usi link ko 'active' karein
   const href = link.getAttribute('href');
   if (href) {
     const linkPath = href.split('/').pop();
@@ -315,7 +317,14 @@ document.querySelectorAll('.nav-links a:not(.btn)').forEach(link => {
 // ===== TYPING EFFECT (Hero Page) =====
 const typingElement = document.querySelector('.typing-text');
 if (typingElement) {
-  const words = JSON.parse(typingElement.getAttribute('data-words') || '["Websites", "Web Apps", "E-Commerce", "Digital Experiences"]');
+  let words = ['Websites', 'Web Apps', 'E-Commerce', 'Digital Experiences'];
+  try {
+    words = JSON.parse(typingElement.getAttribute('data-words') || '[]');
+    if (!Array.isArray(words) || !words.length) {
+      words = ['Websites', 'Web Apps', 'E-Commerce', 'Digital Experiences'];
+    }
+  } catch (e) {}
+
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
@@ -323,7 +332,6 @@ if (typingElement) {
 
   function typeEffect() {
     const currentWord = words[wordIndex];
-
     if (isDeleting) {
       typingElement.textContent = currentWord.substring(0, charIndex - 1);
       charIndex--;
@@ -342,7 +350,6 @@ if (typingElement) {
       wordIndex = (wordIndex + 1) % words.length;
       typingSpeed = 400;
     }
-
     setTimeout(typeEffect, typingSpeed);
   }
   setTimeout(typeEffect, 1000);
@@ -384,14 +391,8 @@ document.querySelectorAll('.faq-question').forEach(question => {
   question.addEventListener('click', () => {
     const item = question.parentElement;
     const isActive = item.classList.contains('active');
-
-    document.querySelectorAll('.faq-item').forEach(faq => {
-      faq.classList.remove('active');
-    });
-
-    if (!isActive) {
-      item.classList.add('active');
-    }
+    document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
   });
 });
 
@@ -401,6 +402,12 @@ if (starRating) {
   const stars = starRating.querySelectorAll('.star');
   let selectedRating = 0;
 
+  function updateStars() {
+    stars.forEach((s, i) => {
+      s.classList.toggle('active', i < selectedRating);
+    });
+  }
+
   stars.forEach((star, index) => {
     star.addEventListener('click', () => {
       selectedRating = index + 1;
@@ -408,23 +415,12 @@ if (starRating) {
       const ratingInput = document.getElementById('feedbackRating');
       if (ratingInput) ratingInput.value = selectedRating;
     });
-
     star.addEventListener('mouseenter', () => {
-      stars.forEach((s, i) => {
-        s.classList.toggle('active', i <= index);
-      });
+      stars.forEach((s, i) => s.classList.toggle('active', i <= index));
     });
   });
 
-  starRating.addEventListener('mouseleave', () => {
-    updateStars();
-  });
-
-  function updateStars() {
-    stars.forEach((s, i) => {
-      s.classList.toggle('active', i < selectedRating);
-    });
-  }
+  starRating.addEventListener('mouseleave', updateStars);
 }
 
 // ===== HELPER: ESCAPE HTML =====
@@ -438,7 +434,7 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-// ===== GLOBAL FEEDBACK SYSTEM (FIREBASE FIRESTORE) =====
+// ===== GLOBAL FEEDBACK SYSTEM (FIREBASE) — SYNTAX FIXED =====
 const FeedbackSystem = {
   COLLECTION: 'reviews',
 
@@ -457,7 +453,21 @@ const FeedbackSystem = {
       }));
     } catch (e) {
       console.error('Error loading reviews:', e);
-      return [];
+      // fallback without orderBy
+      try {
+        const snap = await db.collection(this.COLLECTION).get();
+        return snap.docs.map(doc => ({
+          id: doc.id,
+          name: doc.data().name || 'Client',
+          email: doc.data().email || '',
+          service: doc.data().service || 'Client',
+          message: doc.data().message || '',
+          rating: parseInt(doc.data().rating, 10) || 5,
+          date: doc.data().date || ''
+        }));
+      } catch (e2) {
+        return [];
+      }
     }
   },
 
@@ -502,7 +512,7 @@ const FeedbackSystem = {
           const safeDate = escapeHtml(fb.date || '');
 
           return `
-            <div class="glass-card feedback-card reveal" data-id="${escapeHtml(fb.id)}">
+            <div class="glass-card feedback-card reveal revealed" data-id="${escapeHtml(fb.id)}">
               <span class="date">${safeDate}</span>
               <div class="rating">${starsHtml}</div>
               <p class="message">"${safeMessage}"</p>
@@ -516,21 +526,20 @@ const FeedbackSystem = {
             </div>
           `;
         }).join('');
-
-        container.querySelectorAll('.feedback-card').forEach(card => {
-          if (typeof revealObserver !== 'undefined') revealObserver.observe(card);
-        });
       }
     }
 
     this.renderHomepageSlider(feedbacks);
   },
 
-      renderHomepageSlider(feedbacks) {
-    const track = document.getElementById('testimonialsSliderTrack');
+  renderHomepageSlider(feedbacks) {
+    // Support both IDs used across pages
+    const track =
+      document.getElementById('testimonialsSliderTrack') ||
+      document.getElementById('dynamicTestimonialsTrack');
+
     if (!track) return;
 
-    // Top 10 latest reviews tak limit
     const list = (feedbacks || []).slice(0, 10);
 
     if (list.length === 0) {
@@ -542,7 +551,6 @@ const FeedbackSystem = {
       return;
     }
 
-    // Single Card Builder
     const createCardHtml = (fb) => {
       const rating = parseInt(fb.rating, 10) || 5;
       const starsHtml = '★'.repeat(rating) + '☆'.repeat(5 - rating);
@@ -567,89 +575,39 @@ const FeedbackSystem = {
     };
 
     const cardsHtml = list.map(fb => createCardHtml(fb)).join('');
-
-    // SEAMLESS INFINITE LOOP: Single Set Ko Double (Clone) Kiya Hai Taake Smooth Transition Ho
-    // Agar reviews 4 se kam hon toh 4 baar repeat karega taake screen empty na lagay
     const repeatCount = list.length < 4 ? 4 : 2;
     let fullHtml = '';
     for (let i = 0; i < repeatCount; i++) {
       fullHtml += cardsHtml;
     }
-
     track.innerHTML = fullHtml;
 
-    // Adjust Speed According to Number of Items (Ideal: 35s smooth glide)
     const speedInSeconds = Math.max(25, list.length * 5);
-    track.style.animationDuration = `${speedInSeconds}s`;
+    track.style.animationDuration = speedInSeconds + 's';
   },
 
-    // --- SLIDER CONTROLS & AUTO-PLAY LOGIC ---
-    const prevBtn = document.getElementById('testimonialPrevBtn');
-    const nextBtn = document.getElementById('testimonialNextBtn');
-
-    if (prevBtn) {
-      prevBtn.onclick = () => {
-        track.scrollBy({ left: -360, behavior: 'smooth' });
-      };
-    }
-    if (nextBtn) {
-      nextBtn.onclick = () => {
-        track.scrollBy({ left: 360, behavior: 'smooth' });
-      };
-    }
-
-    // Auto Slide Every 3.5 Seconds
-    if (!track.dataset.sliderInitialized) {
-      track.dataset.sliderInitialized = 'true';
-      let autoSlideTimer = setInterval(() => {
-        if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
-          track.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          track.scrollBy({ left: 360, behavior: 'smooth' });
-        }
-      }, 3500);
-
-      // User mouse le kar aaye toh auto-slide pause ho jaye taake padh sakay
-      track.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
-      track.addEventListener('mouseleave', () => {
-        autoSlideTimer = setInterval(() => {
-          if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
-            track.scrollTo({ left: 0, behavior: 'smooth' });
-          } else {
-            track.scrollBy({ left: 360, behavior: 'smooth' });
-          }
-        }, 3500);
-      });
-    }
-  },
-
-   
   async sendEmailNotification(feedback) {
     try {
       const formData = new FormData();
       formData.append('access_key', 'cdabd95e-b135-49fa-814a-f97f62c001e7');
-      formData.append('subject', `New Client Review — ${feedback.name}`);
+      formData.append('subject', 'New Client Review — ' + feedback.name);
       formData.append('from_name', 'Rehmat Developers Reviews');
       formData.append('Reviewer Name', feedback.name);
       formData.append('Reviewer Email', feedback.email || 'Not provided');
       formData.append('Service', feedback.service || 'General');
-      formData.append('Rating', `${feedback.rating} Stars`);
+      formData.append('Rating', feedback.rating + ' Stars');
       formData.append('Review', feedback.message);
-
-      await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      });
+      await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
     } catch (err) {
       console.log('Review email notification error:', err);
     }
   }
 };
 
-// Load global reviews on page open
+// Load global reviews
 FeedbackSystem.render();
 
-// ===== FEEDBACK FORM SUBMISSION (GLOBAL) =====
+// ===== FEEDBACK FORM SUBMISSION =====
 const feedbackForm = document.getElementById('feedbackForm');
 if (feedbackForm) {
   feedbackForm.addEventListener('submit', async (e) => {
@@ -700,9 +658,7 @@ if (feedbackForm) {
       }
 
       const container = document.getElementById('feedbackContainer');
-      if (container) {
-        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (container) container.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (err) {
       console.error(err);
       alert('Could not publish review. Check internet / Firestore rules and try again.');
@@ -715,9 +671,7 @@ if (feedbackForm) {
   });
 }
 
-/* =======================================================
-   ✅ CONTACT FORM (Google Apps Script / Web3Forms Fix)
-   ======================================================= */
+// ===== CONTACT FORM =====
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
@@ -734,17 +688,14 @@ if (contactForm) {
 
     try {
       const formData = new FormData(contactForm);
-      const scriptURL = contactForm.getAttribute('action'); // HTML form ka action lay ga (Google Apps Script URL)
-
+      const scriptURL = contactForm.getAttribute('action');
       const res = await fetch(scriptURL || 'https://api.web3forms.com/submit', {
         method: 'POST',
         body: formData
       });
-      
       const result = await res.json();
 
-      // Check success for both Google Apps Script and Web3Forms response styles
-      if (result.result === "success" || result.result === "bot_detected" || result.success) {
+      if (result.result === 'success' || result.result === 'bot_detected' || result.success) {
         if (statusEl) {
           statusEl.style.color = '#10b981';
           statusEl.textContent = 'Thank you! Your message has been sent successfully.';
@@ -764,38 +715,35 @@ if (contactForm) {
   });
 }
 
-// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+// ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-// ===== PARALLAX ON HERO ORBS =====
+// ===== PARALLAX HERO ORBS =====
 if (window.innerWidth > 768) {
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     document.querySelectorAll('.hero-orb').forEach((orb, i) => {
       const speed = (i + 1) * 0.05;
-      orb.style.transform = `translateY(${scrolled * speed}px)`;
+      orb.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
     });
   });
 }
 
-// ===== MAGNETIC BUTTON EFFECT =====
+// ===== MAGNETIC BUTTONS =====
 if (window.innerWidth > 768) {
   document.querySelectorAll('.btn-primary, .btn-whatsapp').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+      btn.style.transform = 'translate(' + (x * 0.15) + 'px, ' + (y * 0.15) + 'px)';
     });
-
     btn.addEventListener('mouseleave', () => {
       btn.style.transform = 'translate(0, 0)';
     });
@@ -816,13 +764,13 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
-// ===== TEXT SPLIT ANIMATION (Hero h1) =====
+// ===== HERO TITLE VISIBLE =====
 const heroTitle = document.querySelector('.hero h1');
-if (heroTitle && window.innerWidth > 768) {
+if (heroTitle) {
   heroTitle.style.opacity = '1';
 }
 
-// ===== CONSOLE EASTER EGG =====
-console.log('%c🚀 Rehmat Developers', 'font-size:24px; font-weight:bold; background:linear-gradient(135deg,#00d4ff,#7c3aed); -webkit-background-clip:text; -webkit-text-fill-color:transparent;');
+// ===== CONSOLE =====
+console.log('%c🚀 Rehmat Developers', 'font-size:24px; font-weight:bold; color:#00d4ff;');
 console.log('%cCEO: Muhammad Waleed | Raja Jang, Kasur', 'font-size:12px; color:#94a3b8;');
-console.log('%c💡 Want to work with us? → rehmat.developers022@gmail.com', 'font-size:11px; color:#00d4ff;');
+console.log('%c💡 rehmat.developers022@gmail.com', 'font-size:11px; color:#00d4ff;');
