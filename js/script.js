@@ -510,11 +510,11 @@ const FeedbackSystem = {
     this.renderHomepageSlider(feedbacks);
   },
 
-    renderHomepageSlider(feedbacks) {
+      renderHomepageSlider(feedbacks) {
     const track = document.getElementById('testimonialsSliderTrack');
     if (!track) return;
 
-    // Sirf latest 10 reviews show karwane ke liye .slice(0, 10) lagaya hai
+    // Latest 10 reviews tak limit rakhi hai
     const list = (feedbacks || []).slice(0, 10);
 
     if (list.length === 0) {
@@ -535,21 +535,61 @@ const FeedbackSystem = {
       const safeService = escapeHtml(fb.service || 'Verified Client');
 
       return `
-        <div class="testimonial-card glass-card" style="min-width:min(320px, 85vw); max-width:400px; margin:10px; flex-shrink:0;">
-          <div class="rating" style="color:#f59e0b; letter-spacing:2px; margin-bottom:12px;">${starsHtml}</div>
-          <p class="message" style="color:#cbd5e1; font-style:italic; line-height:1.6; margin-bottom:16px;">"${safeMessage}"</p>
+        <div class="testimonial-card glass-card" style="min-width:min(320px, 85vw); max-width:380px; width:340px; margin:5px; flex-shrink:0;">
+          <div class="rating" style="color:#f59e0b; letter-spacing:2px; margin-bottom:12px; font-size:1.1rem;">${starsHtml}</div>
+          <p class="message" style="color:#cbd5e1; font-style:italic; line-height:1.6; margin-bottom:16px; font-size:0.95rem;">"${safeMessage}"</p>
           <div class="author" style="display:flex; align-items:center; gap:12px;">
             <div class="author-avatar" style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#00d4ff,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;">${escapeHtml(initials)}</div>
-            <div>
-              <h4 style="margin:0; color:#f8fafc; font-size:1rem;">${safeName}</h4>
+            <div style="text-align:left;">
+              <h4 style="margin:0; color:#f8fafc; font-size:1rem; font-weight:600;">${safeName}</h4>
               <span style="color:#94a3b8; font-size:0.85rem;">${safeService}</span>
             </div>
           </div>
         </div>
       `;
     }).join('');
+
+    // --- SLIDER CONTROLS & AUTO-PLAY LOGIC ---
+    const prevBtn = document.getElementById('testimonialPrevBtn');
+    const nextBtn = document.getElementById('testimonialNextBtn');
+
+    if (prevBtn) {
+      prevBtn.onclick = () => {
+        track.scrollBy({ left: -360, behavior: 'smooth' });
+      };
+    }
+    if (nextBtn) {
+      nextBtn.onclick = () => {
+        track.scrollBy({ left: 360, behavior: 'smooth' });
+      };
+    }
+
+    // Auto Slide Every 3.5 Seconds
+    if (!track.dataset.sliderInitialized) {
+      track.dataset.sliderInitialized = 'true';
+      let autoSlideTimer = setInterval(() => {
+        if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: 360, behavior: 'smooth' });
+        }
+      }, 3500);
+
+      // User mouse le kar aaye toh auto-slide pause ho jaye taake padh sakay
+      track.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+      track.addEventListener('mouseleave', () => {
+        autoSlideTimer = setInterval(() => {
+          if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: 360, behavior: 'smooth' });
+          }
+        }, 3500);
+      });
+    }
   },
 
+   
   async sendEmailNotification(feedback) {
     try {
       const formData = new FormData();
