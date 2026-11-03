@@ -245,39 +245,27 @@
     </div>
   </section>
 
- <!-- DYNAMIC REVIEWS SLIDER SECTION -->
-<section class="testimonials-section section-padding" style="position: relative; overflow: hidden;">
+ <!-- ULTRA-SMOOTH INFINITE REVIEWS MARQUEE -->
+<section class="testimonials-section section-padding" style="position: relative; overflow: hidden; padding: 60px 0;">
     <div class="container text-center">
         <h2 class="section-title">What Our <span>Clients</span> Say</h2>
-        <p style="color: var(--text-muted, #94a3b8); margin-bottom: 20px;">Real feedback from clients around the world</p>
+        <p style="color: var(--text-muted, #94a3b8); margin-bottom: 30px;">Real feedback from clients around the world</p>
 
-        <!-- Slider Wrapper with Navigation Arrows -->
-        <div class="slider-wrapper" style="position: relative; margin-top: 30px; display: flex; align-items: center;">
-            
-            <!-- Left Arrow Button -->
-            <button id="testimonialPrevBtn" aria-label="Previous Review" style="position: absolute; left: 0px; z-index: 10; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 212, 255, 0.5); color: #00d4ff; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s;">
-                <i class="fas fa-chevron-left" style="font-size: 1.1rem;"></i>
-            </button>
-
-            <!-- Slider Track -->
-            <div id="testimonialsSliderTrack" style="display: flex; overflow-x: auto; scroll-behavior: smooth; padding: 20px 10px; gap: 20px; scrollbar-width: none; -ms-overflow-style: none; width: 100%;">
-                <!-- Reviews JS se auto-load aur slide honge -->
+        <!-- Smooth Ticker Outer Container (Faded edges for premium feel) -->
+        <div class="reviews-marquee-container">
+            <div id="testimonialsSliderTrack" class="reviews-marquee-track">
+                <!-- Live Firebase Reviews JavaScript se yahan continuous infinite loop banayenge -->
             </div>
-
-            <!-- Right Arrow Button -->
-            <button id="testimonialNextBtn" aria-label="Next Review" style="position: absolute; right: 0px; z-index: 10; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 212, 255, 0.5); color: #00d4ff; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s;">
-                <i class="fas fa-chevron-right" style="font-size: 1.1rem;"></i>
-            </button>
         </div>
 
-        <div style="margin-top: 35px;">
+        <div style="margin-top: 40px; text-align:center;">
             <a href="reviews.html" class="btn btn-primary">See All Client Reviews</a>
         </div>
     </div>
 </section>
     
     <!-- View All Reviews Button -->
-    <div style="text-align:center; margin-top:40px;" class="reveal">
+    <div style=" margin-top:40px;" class="reveal">
         <a href="reviews.html" class="btn btn-secondary">View All Client Reviews →</a>
     </div>
   </section>
