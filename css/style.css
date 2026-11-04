@@ -2055,7 +2055,7 @@ body.admin-mode .feedback-card .delete-btn {
 .page-hero p {
   color: var(--text-secondary);
   font-size: 1.15rem;
-  max-width: 550px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
