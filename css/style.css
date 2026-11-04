@@ -1569,6 +1569,7 @@ body::before {
   font-size: 0.9rem;
   line-height: 1.7;
   margin-bottom: 16px;
+   text-align:justifiy;
 }
 
 .blog-card .read-more {
