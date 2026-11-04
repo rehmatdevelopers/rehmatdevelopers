@@ -523,7 +523,7 @@ body::before {
 
 .section-header p {
   color: var(--text-secondary);
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
   font-size: 1.1rem;
   line-height: 1.8;
