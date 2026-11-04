@@ -1,558 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0b1020">
-    <title>About Us — Rehmat Developers</title>
-    <meta name="description" content="Meet Muhammad Waleed, founder of Rehmat Developers. Learn about our mission, values, and approach to modern, user-friendly web development.">
-    <link rel="canonical" href="https://rehmatdevelopers.github.io/rehmatdevelopers/about.html">
-
-    <meta property="og:title" content="About Us — Rehmat Developers">
-    <meta property="og:description" content="Meet the founder of Rehmat Developers and discover our mission, values, and approach to building modern, responsive websites.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rehmatdevelopers.github.io/rehmatdevelopers/about.html">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        * { box-sizing: border-box; }
-
-        /* Keep decorative layers out of document flow (fixes top empty space) */
-        .cursor-dot,
-        .cursor-ring {
-            position: fixed !important;
-            z-index: 9999 !important;
-            pointer-events: none !important;
-        }
-        .scroll-progress {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            height: 3px !important;
-            background: #00d4ff !important;
-            z-index: 10000 !important;
-            pointer-events: none !important;
-        }
-        #particles {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            z-index: -1 !important;
-            pointer-events: none !important;
-        }
-
-        /* ===== ABOUT MAIN GRID: Image + Text side by side ===== */
-        .about-grid {
-            display: grid !important;
-            grid-template-columns: minmax(280px, 420px) 1fr !important;
-            gap: 50px !important;
-            align-items: center !important;
-            width: 100% !important;
-        }
-
-        /* ===== CEO IMAGE ===== */
-        .about-image-wrapper {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(124, 58, 237, 0.08));
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(0, 212, 255, 0.1);
-            aspect-ratio: 4 / 5;
-            max-height: 520px;
-            width: 100%;
-            margin: 0;
-        }
-        .about-image-wrapper img.ceo-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        .about-image-wrapper:hover img.ceo-photo {
-            transform: scale(1.03);
-        }
-        .ceo-glow {
-            position: absolute;
-            inset: 0;
-            border-radius: 24px;
-            pointer-events: none;
-            box-shadow: inset 0 0 0 1px rgba(0, 212, 255, 0.15);
-        }
-
-        /* ===== RIGHT TEXT: SINGLE CLEAN COLUMN ===== */
-        .about-content {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            text-align: left !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            column-count: 1 !important;
-            columns: auto !important;
-            float: none !important;
-            position: relative !important;
-        }
-        .about-content .section-tag {
-            margin-bottom: 3px !important;
-            display: inline-block !important;
-        }
-        .about-content .section-title,
-        .about-content h2 {
-            text-align: left !important;
-            margin: 0 0 22px 0 !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
-            line-height: 1.25 !important;
-            float: none !important;
-            column-span: all !important;
-        }
-        .about-content p {
-            display: block !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            float: none !important;
-            color: var(--text-secondary, #a0aec0) !important;
-            line-height: 1.75 !important;
-            margin: 0 0 14px 0 !important;
-            font-size: 1rem !important;
-            text-align: left !important;
-            column-count: 1 !important;
-            columns: auto !important;
-        }
-        .about-content .btn {
-            margin-top: 8px !important;
-            flex-shrink: 0;
-        }
-
-        /* ===== HIGHLIGHTS: honest, non-fake metrics ===== */
-        .stats-grid {
-            display: grid !important;
-            grid-template-columns: repeat(4, 1fr) !important;
-            gap: 20px !important;
-            margin-top: 60px !important;
-            width: 100% !important;
-        }
-        .stat-card {
-            background: rgba(255, 255, 255, 0.03) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            border-radius: 20px !important;
-            padding: 28px 18px !important;
-            text-align: center !important;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            min-height: 140px;
-        }
-        .stat-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(0, 212, 255, 0.4) !important;
-            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.12);
-        }
-        .stat-icon {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            line-height: 1;
-        }
-        .stat-number {
-            font-size: 1.35rem !important;
-            font-weight: 800 !important;
-            margin-bottom: 8px !important;
-            font-family: 'Space Grotesk', sans-serif !important;
-            background: linear-gradient(135deg, #00d4ff, #7c3aed) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-            line-height: 1.2 !important;
-        }
-        .stat-label {
-            color: #c0c8d4 !important;
-            font-size: 0.9rem !important;
-            font-weight: 600 !important;
-            line-height: 1.35 !important;
-        }
-
-        /* ===== VALUES GRID ===== */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 50px;
-        }
-        .value-card {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
-            padding: 36px 28px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-        .value-card:hover {
-            border-color: rgba(0, 212, 255, 0.3);
-            transform: translateY(-4px);
-        }
-        .value-icon {
-            font-size: 2.3rem;
-            margin-bottom: 18px;
-        }
-        .value-card h3 {
-            font-size: 1.25rem;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-        .value-card p {
-            color: var(--text-secondary, #a0aec0);
-            line-height: 1.65;
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        /* ===== CTA ===== */
-        .about-cta {
-            padding: 80px 0;
-            text-align: center;
-        }
-        .about-cta h2 {
-            font-size: 2.4rem;
-            margin-bottom: 18px;
-        }
-        .about-cta-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* ===== MOBILE ===== */
-        @media (max-width: 992px) {
-            .about-grid {
-                grid-template-columns: 1fr !important;
-                gap: 36px !important;
-                text-align: center;
-            }
-            .about-image-wrapper {
-                max-width: 380px;
-                margin: 0 auto;
-                max-height: 460px;
-            }
-            .about-content {
-                align-items: center !important;
-                text-align: center !important;
-            }
-            .about-content .section-title,
-            .about-content h2,
-            .about-content p {
-                text-align: center !important;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 768px) {
-            .values-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .value-card {
-                padding: 28px 22px;
-            }
-            .about-image-wrapper {
-                max-width: 100%;
-                max-height: 420px;
-            }
-            .stat-card {
-                min-height: 120px;
-                padding: 22px 14px !important;
-            }
-            .stat-number {
-                font-size: 1.15rem !important;
-            }
-            .about-cta h2 {
-                font-size: 1.75rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr 1fr !important;
-                gap: 12px !important;
-            }
-            .stat-number {
-                font-size: 1.05rem !important;
-            }
-            .stat-label {
-                font-size: 0.78rem !important;
-            }
-            .about-image-wrapper {
-                max-height: 360px;
-                border-radius: 18px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<title>About Us — Rehmat Developers</title>
+<meta name="description" content="Meet Muhammad Waleed, founder of Rehmat Developers. Discover our mission, values, transparent project process, and approach to modern, user-friendly web development.">
+<link rel="canonical" href="https://rehmatdevelopers.github.io/rehmatdevelopers/about.html">
+<meta property="og:title" content="About Us — Rehmat Developers">
+<meta property="og:description" content="Meet the founder of Rehmat Developers and discover our mission, values, and approach to building modern, responsive websites.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rehmatdevelopers.github.io/rehmatdevelopers/about.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+*{box-sizing:border-box}
+.cursor-dot,.cursor-ring{position:fixed!important;z-index:9999!important;pointer-events:none!important}
+.scroll-progress{position:fixed!important;top:0!important;left:0!important;height:3px!important;background:#00d4ff!important;z-index:10000!important;pointer-events:none!important}
+#particles{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;z-index:-1!important;pointer-events:none!important}
+.about-grid{display:grid!important;grid-template-columns:minmax(280px,420px) minmax(0,1fr)!important;gap:50px!important;align-items:center!important;width:100%!important}
+.about-image-wrapper{position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(0,212,255,.3);background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(124,58,237,.08));box-shadow:0 20px 60px rgba(0,0,0,.45),0 0 40px rgba(0,212,255,.1);aspect-ratio:4/5;max-height:520px;width:100%;margin:0}
+.about-image-wrapper img.ceo-photo{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .5s ease}
+.about-image-wrapper:hover img.ceo-photo{transform:scale(1.03)}
+.ceo-glow{position:absolute;inset:0;border-radius:24px;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(0,212,255,.15)}
+.about-content{display:flex!important;flex-direction:column!important;align-items:flex-start!important;text-align:left!important;width:100%!important;max-width:100%!important;min-width:0!important;column-count:1!important;columns:auto!important;float:none!important;position:relative!important}
+.about-content .section-tag{margin-bottom:3px!important;display:inline-block!important}
+.about-content .section-title,.about-content h2{text-align:left!important;margin:0 0 22px!important;width:100%!important;max-width:100%!important;font-size:clamp(1.6rem,3vw,2.2rem)!important;line-height:1.25!important;float:none!important;column-span:all!important}
+.about-content p{display:block!important;width:100%!important;max-width:100%!important;float:none!important;color:var(--text-secondary,#a0aec0)!important;line-height:1.75!important;margin:0 0 14px!important;font-size:1rem!important;text-align:left!important;column-count:1!important;columns:auto!important}
+.about-content .btn{margin-top:8px!important;flex-shrink:0}
+.stats-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:20px!important;margin-top:60px!important;width:100%!important}
+.stat-card{background:rgba(255,255,255,.03)!important;border:1px solid rgba(255,255,255,.1)!important;border-radius:20px!important;padding:28px 18px!important;text-align:center!important;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;min-height:140px;min-width:0}
+.stat-card:hover{transform:translateY(-6px);border-color:rgba(0,212,255,.4)!important;box-shadow:0 12px 40px rgba(0,212,255,.12)}
+.stat-icon{font-size:1.6rem;margin-bottom:10px;line-height:1}
+.stat-number{font-size:1.25rem!important;font-weight:800!important;margin-bottom:8px!important;font-family:'Space Grotesk',sans-serif!important;background:linear-gradient(135deg,#00d4ff,#7c3aed)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important;line-height:1.2!important}
+.stat-label{color:#c0c8d4!important;font-size:.9rem!important;font-weight:600!important;line-height:1.35!important}
+.values-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:50px}
+.mission-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:1000px;margin-left:auto;margin-right:auto}
+.value-card{background:rgba(255,255,255,.02);border-radius:20px;padding:36px 28px;border:1px solid rgba(255,255,255,.06);transition:border-color .3s ease,transform .3s ease;min-width:0}
+.value-card:hover{border-color:rgba(0,212,255,.3);transform:translateY(-4px)}
+.value-icon{font-size:2.3rem;margin-bottom:18px}
+.value-card h3{font-size:1.25rem;color:#fff;margin-bottom:12px}
+.value-card p{color:var(--text-secondary,#a0aec0);line-height:1.65;font-size:.95rem;margin:0}
+.policy-note{max-width:900px;margin:28px auto 0;padding:22px 24px;border:1px solid rgba(0,212,255,.18);border-radius:16px;background:rgba(0,212,255,.035);color:var(--text-secondary,#a0aec0);line-height:1.7;text-align:left}
+.policy-note strong{color:#fff}
+.about-cta{padding:80px 0;text-align:center}
+.about-cta h2{font-size:2.4rem;margin-bottom:18px}
+.about-cta-buttons{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+@media(max-width:992px){.about-grid{grid-template-columns:1fr!important;gap:36px!important;text-align:center}.about-image-wrapper{max-width:380px;margin:0 auto;max-height:460px}.about-content{align-items:center!important;text-align:center!important}.about-content .section-title,.about-content h2,.about-content p{text-align:center!important}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.values-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:768px){.values-grid,.mission-grid{grid-template-columns:1fr;gap:16px}.value-card{padding:28px 22px}.about-image-wrapper{max-width:100%;max-height:420px}.stat-card{min-height:120px;padding:22px 14px!important}.stat-number{font-size:1.1rem!important}.about-cta h2{font-size:1.75rem}.policy-note{padding:18px}}
+@media(max-width:480px){.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.stat-number{font-size:1rem!important}.stat-label{font-size:.78rem!important}.about-image-wrapper{max-height:360px;border-radius:18px}}
+@media(prefers-reduced-motion:reduce){.about-image-wrapper img.ceo-photo,.stat-card,.value-card{transition:none!important}.about-image-wrapper:hover img.ceo-photo,.stat-card:hover,.value-card:hover{transform:none!important}}
+</style>
 </head>
 <body>
-
-    <!-- ==================== PRELOADER ==================== -->
-    <div class="preloader">
-        <img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers Logo" style="height:120px; width:auto; vertical-align:middle;">
-        <div class="preloader-bar">
-            <div class="preloader-bar-fill"></div>
-        </div>
-    </div>
-
-    <!-- ==================== CUSTOM CURSOR (fixed = no top gap) ==================== -->
-    <div class="cursor-dot" style="position:fixed; z-index:9999; pointer-events:none;"></div>
-    <div class="cursor-ring" style="position:fixed; z-index:9999; pointer-events:none;"></div>
-
-    <!-- ==================== SCROLL PROGRESS ==================== -->
-    <div class="scroll-progress" style="position:fixed; top:0; left:0; height:3px; background:#00d4ff; z-index:10000; pointer-events:none;"></div>
-
-    <!-- ==================== PARTICLES ==================== -->
-    <canvas id="particles" aria-hidden="true" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1; pointer-events:none;"></canvas>
-
-    <!-- ==================== NAVBAR ==================== -->
-    <nav class="navbar" aria-label="Main navigation">
-        <a href="index.html" class="logo">
-            <img src="images/logo.png.png" alt="Rehmat Developers Logo" style="height:120px; width:auto; vertical-align:middle;">
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="admin.html">Admin</a></li>
-            <li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
-        </ul>
-        <div class="hamburger"><span></span><span></span><span></span></div>
-    </nav>
-
-    <!-- ==================== PAGE HERO ==================== -->
-    <section class="page-hero">
-        <div class="hero-orb orb-1"></div>
-        <div class="hero-orb orb-2"></div>
-        <div class="hero-orb orb-3"></div>
-        <div class="hero-grid"></div>
-        <div class="page-hero-content">
-            <h1 class="reveal">Our <span class="gradient-text">Story</span></h1>
-            <p class="reveal reveal-delay-1">Rehmat Developers helps businesses build a professional digital presence through modern websites, thoughtful design, and practical web solutions.</p>
-            <div class="breadcrumb reveal reveal-delay-2">
-                <a href="index.html">Home</a>
-                <span class="separator">/</span>
-                <span class="current">About Us</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== ABOUT STORY + CEO ==================== -->
-    <section class="section">
-        <div class="container">
-            <div class="about-grid">
-
-                <!-- LEFT: CEO Photo -->
-                <div class="about-image-wrapper reveal">
-                    <img class="ceo-photo" src="images/waleed.jpg" alt="Muhammad Waleed — CEO of Rehmat Developers" width="800" height="1000">
-                    <div class="ceo-glow"></div>
-                </div>
-
-                <!-- RIGHT: One clean text column -->
-                <div class="about-content reveal reveal-delay-1">
-                    <span class="section-tag">👋 Meet the Founder</span>
-                    <h2 class="section-title">Meet Muhammad Waleed, <br><span style="font-size:20px;" class="gradient-text">Founder &amp; CEO of Rehmat Developers</span></h2>
-                    <p>
-                        Muhammad Waleed founded Rehmat Developers with a passion for technology, creativity, and building meaningful digital experiences. His focus is on delivering solutions that combine modern design, reliable functionality, and practical business value.
-                    </p>
-                    <p>
-                        By staying directly involved in project planning, development, and client communication, he aims to give every project personal attention and ensure that it follows a clear direction.
-                    </p>
-                    <p>
-                        His <strong style="color:#00d4ff;">vision is to build</strong> lasting client relationships through honest communication, quality work, and a commitment to continuous improvement.
-                    </p>
-                    <a href="contact.html" class="btn btn-primary">Work With Us →</a>
-                </div>
-
-            </div>
-
-            <!-- Honest highlights (no invented client/project counts) -->
-            <div class="stats-grid reveal">
-                <div class="stat-card">
-                    <div class="stat-icon">🛡️</div>
-                    <div class="stat-number">Protected Process</div>
-                    <div class="stat-label">Milestone Payments</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">👀</div>
-                    <div class="stat-number">Live Previews</div>
-                    <div class="stat-label">Review at Agreed Milestones</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">📝</div>
-                    <div class="stat-number">Scoped Revisions</div>
-                    <div class="stat-label">Agreed Before Work Begins</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">📍</div>
-                    <div class="stat-number">Based in Pakistan</div>
-                    <div class="stat-label">Raja Jang, Kasur</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== OUR MISSION & VISION ==================== -->
-    <section class="section" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container">
-            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-                <span class="section-tag">🎯 What Guides Us</span>
-                <h2 class="section-title">Our Mission &amp; <span class="gradient-text">Vision</span></h2>
-            </div>
-            <div class="values-grid reveal reveal-delay-1" style="grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1000px; margin-left: auto; margin-right: auto;">
-                <div class="value-card">
-                    <div class="value-icon">🎯</div>
-                    <h3>Our Mission</h3>
-                    <p>Our mission is to help businesses build a strong digital presence through modern, user-friendly, and reliable web solutions. We aim to understand each client's needs and turn their ideas into practical digital experiences.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🌍</div>
-                    <h3>Our Vision</h3>
-                    <p>Our vision is to become a trusted web development partner by delivering thoughtful digital solutions, maintaining honest relationships, and continuously improving the way we work.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== OUR CORE VALUES ==================== -->
-    <section class="section" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container">
-            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-                <span class="section-tag">💎 Our Philosophy</span>
-                <h2 class="section-title">Why Choose <span class="gradient-text">Us?</span></h2>
-            </div>
-
-            <div class="values-grid reveal reveal-delay-1">
-                <div class="value-card">
-                    <div class="value-icon">🛡️</div>
-                    <h3>Clear Project Process</h3>
-                    <p>We agree on project scope, deliverables, payment milestones, and revision rounds before development begins. Progress previews are shared at agreed stages where available, helping keep expectations clear.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">⚡</div>
-                    <h3>Strong Performance</h3>
-                    <p>We focus on clean code, optimized images, and efficient assets to improve loading speed and provide a smoother experience across different devices.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🎨</div>
-                    <h3>Modern Design</h3>
-                    <p>Your business deserves a premium look. We use clean layouts, thoughtful UI/UX, and purposeful motion that supports the content.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">📱</div>
-                    <h3>Responsive First</h3>
-                    <p>Your website should work smoothly wherever customers view it. We build responsive layouts for mobile phones, tablets, and desktop screens.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🤝</div>
-                    <h3>Direct Communication</h3>
-                    <p>CEO Muhammad Waleed stays involved in project communication. Reach us clearly by email or WhatsApp throughout the build.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🚀</div>
-                    <h3>Maintainable Code</h3>
-                    <p>We build with growth in mind — organized structure you can extend later with new pages, features, and content.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== CTA SECTION ==================== -->
-    <section class="about-cta">
-        <div class="container">
-            <h2 class="reveal">Ready to Start Your <span class="gradient-text">Project?</span></h2>
-            <p class="reveal reveal-delay-1" style="color: var(--text-secondary); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Work with Rehmat Developers for a clear project process, transparent communication, and a website designed to represent your business professionally.</p>
-            <div class="about-cta-buttons reveal reveal-delay-2">
-                <a href="contact.html" class="btn btn-primary">Get a Free Quote</a>
-                <a href="portfolio.html" class="btn btn-outline">View Our Work</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <img src="images/logo.png.png" alt="Rehmat Developers Logo" style="height:120px; width:auto; vertical-align:middle; margin-bottom: 20px;">
-                    <p>Transforming ideas into powerful digital experiences. We build stunning, high-performance websites that help businesses grow and succeed in the modern digital landscape.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="reviews.html">Reviews</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="services.html">Web Development</a></li>
-                        <li><a href="services.html">UI/UX Design</a></li>
-                        <li><a href="services.html">E-Commerce Solutions</a></li>
-                        <li><a href="services.html">SEO Optimization</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Info</h4>
-                    <ul class="contact-info">
-                        <li>📍 <a href="https://maps.app.goo.gl/6MBJ13cBZTisaQM1A">Raja Jang, Kasur, Punjab, Pakistan</a></li>
-                        <li>📧 <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
-                        <li>📞 <a href="tel:+923284461097">+92 (328) 446-1097</a></li>
-                        <li>💬 <a href="https://wa.me/923284461097">WhatsApp Us</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 Rehmat Developers. All Rights Reserved.</p>
-                <p>Made with ❤ by Muhammad Waleed</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ==================== WHATSAPP FLOAT ==================== -->
-    <a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%20have%20a%20question." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
-
-    <!-- ==================== SCROLL TOP ==================== -->
-    <button class="scroll-top" aria-label="Scroll to top">↑</button>
-
-    <!-- ==================== SCRIPTS ==================== -->
-    <script>
-        setTimeout(function () {
-            var pl = document.querySelector('.preloader');
-            if (pl) pl.style.display = 'none';
-        }, 1500);
-    </script>
-    <script src="js/script.js"></script>
+<div class="preloader"><img class="preloader-logo" src="images/logo.png.png" alt="Rehmat Developers Logo" style="height:120px;width:auto;vertical-align:middle"><div class="preloader-bar"><div class="preloader-bar-fill"></div></div></div>
+<div class="cursor-dot" aria-hidden="true" style="position:fixed;z-index:9999;pointer-events:none"></div>
+<div class="cursor-ring" aria-hidden="true" style="position:fixed;z-index:9999;pointer-events:none"></div>
+<div class="scroll-progress" aria-hidden="true" style="position:fixed;top:0;left:0;height:3px;background:#00d4ff;z-index:10000;pointer-events:none"></div>
+<canvas id="particles" aria-hidden="true" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none"></canvas>
+<nav class="navbar" aria-label="Main navigation">
+<a href="index.html" class="logo"><img src="images/logo.png.png" alt="Rehmat Developers Logo" style="height:120px;width:auto;vertical-align:middle"></a>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li><li><a href="about.html" class="active" aria-current="page">About</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="blog.html">Blog</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="faq.html">FAQ</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="admin.html">Admin</a></li><li><a href="contact.html" class="nav-cta-btn">Contact Us</a></li>
+</ul><div class="hamburger" aria-label="Open navigation menu"><span></span><span></span><span></span></div>
+</nav>
+<main>
+<section class="page-hero"><div class="hero-orb orb-1"></div><div class="hero-orb orb-2"></div><div class="hero-orb orb-3"></div><div class="hero-grid"></div><div class="page-hero-content">
+<h1 class="reveal">Our <span class="gradient-text">Story</span></h1>
+<p class="reveal reveal-delay-1">Rehmat Developers helps businesses build a professional digital presence through modern websites, thoughtful design, and practical web solutions.</p>
+<div class="breadcrumb reveal reveal-delay-2"><a href="index.html">Home</a><span class="separator">/</span><span class="current">About Us</span></div>
+</div></section>
+<section class="section"><div class="container">
+<div class="about-grid">
+<div class="about-image-wrapper reveal"><img class="ceo-photo" src="images/waleed.jpg" alt="Muhammad Waleed, Founder and CEO of Rehmat Developers" width="800" height="1000"><div class="ceo-glow"></div></div>
+<div class="about-content reveal reveal-delay-1">
+<span class="section-tag">👋 Meet the Founder</span>
+<h2 class="section-title">Meet Muhammad Waleed, <br><span style="font-size:20px" class="gradient-text">Founder &amp; CEO of Rehmat Developers</span></h2>
+<p>Muhammad Waleed founded Rehmat Developers with a passion for technology, creativity, and building meaningful digital experiences. His focus is on delivering solutions that combine modern design, reliable functionality, and practical business value.</p>
+<p>By staying directly involved in project planning, development, and client communication, he aims to give every project personal attention and ensure that it follows a clear direction.</p>
+<p>His <strong style="color:#00d4ff">vision is to build</strong> lasting client relationships through honest communication, quality work, and a commitment to continuous improvement.</p>
+<a href="contact.html" class="btn btn-primary">Work With Us →</a>
+</div></div>
+<div class="stats-grid reveal">
+<div class="stat-card"><div class="stat-icon">🛡️</div><div class="stat-number">Clear Process</div><div class="stat-label">Milestones Agreed in Advance</div></div>
+<div class="stat-card"><div class="stat-icon">👀</div><div class="stat-number">Progress Previews</div><div class="stat-label">Shared at Agreed Stages, Where Available</div></div>
+<div class="stat-card"><div class="stat-icon">📝</div><div class="stat-number">Scoped Revisions</div><div class="stat-label">Agreed Before Work Begins</div></div>
+<div class="stat-card"><div class="stat-icon">📍</div><div class="stat-number">Based in Pakistan</div><div class="stat-label">Raja Jang, Kasur</div></div>
+</div></div></section>
+<section class="section" style="background:rgba(255,255,255,.01);border-top:1px solid rgba(255,255,255,.05)"><div class="container">
+<div style="text-align:center;max-width:700px;margin:0 auto"><span class="section-tag">🎯 What Guides Us</span><h2 class="section-title">Our Mission &amp; <span class="gradient-text">Vision</span></h2><p style="color:var(--text-secondary);line-height:1.7">The principles behind the way we plan, build, and support every project.</p></div>
+<div class="values-grid mission-grid reveal reveal-delay-1">
+<div class="value-card"><div class="value-icon">🎯</div><h3>Our Mission</h3><p>Our mission is to help businesses build a strong digital presence through modern, user-friendly, and reliable web solutions. We aim to understand each client's needs and turn their ideas into practical digital experiences.</p></div>
+<div class="value-card"><div class="value-icon">🌍</div><h3>Our Vision</h3><p>Our vision is to become a trusted web development partner by delivering thoughtful digital solutions, maintaining honest relationships, and continuously improving the way we work.</p></div>
+</div></div></section>
+<section class="section" style="background:rgba(255,255,255,.01);border-top:1px solid rgba(255,255,255,.05)"><div class="container">
+<div style="text-align:center;max-width:700px;margin:0 auto"><span class="section-tag">💎 Our Philosophy</span><h2 class="section-title">Why Choose <span class="gradient-text">Us?</span></h2></div>
+<div class="values-grid reveal reveal-delay-1">
+<div class="value-card"><div class="value-icon">🛡️</div><h3>Clear Project Process</h3><p>We agree on project scope, deliverables, payment milestones, and revision rounds before development begins. Progress previews are shared at agreed stages when they are part of the project plan.</p></div>
+<div class="value-card"><div class="value-icon">⚡</div><h3>Strong Performance</h3><p>We focus on clean code, optimized images, and efficient assets to improve loading speed and provide a smoother experience across different devices.</p></div>
+<div class="value-card"><div class="value-icon">🎨</div><h3>Modern Design</h3><p>Your business deserves a professional look. We use clean layouts, thoughtful UI/UX, and purposeful motion that supports the content.</p></div>
+<div class="value-card"><div class="value-icon">📱</div><h3>Responsive First</h3><p>Your website should work smoothly wherever customers view it. We build responsive layouts for mobile phones, tablets, and desktop screens.</p></div>
+<div class="value-card"><div class="value-icon">🤝</div><h3>Direct Communication</h3><p>CEO Muhammad Waleed stays involved in project communication. Reach us by email or WhatsApp to discuss progress, questions, and feedback.</p></div>
+<div class="value-card"><div class="value-icon">🚀</div><h3>Maintainable Code</h3><p>We build with growth in mind, using an organized structure that can be extended later with new pages, features, and content.</p></div>
+</div>
+<div class="policy-note"><strong>Project terms:</strong> Before work begins, the project proposal or written agreement should confirm the scope, deliverables, payment schedule, revision limits, expected timeline, and any preview or handover arrangements. Exact terms may vary by project, so review and agree to them before making a payment.</div>
+</div></section>
+<section class="about-cta"><div class="container">
+<h2 class="reveal">Ready to Start Your <span class="gradient-text">Project?</span></h2>
+<p class="reveal reveal-delay-1" style="color:var(--text-secondary);margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto">Work with Rehmat Developers for a clearly planned project, transparent communication, and a website designed to represent your business professionally.</p>
+<div class="about-cta-buttons reveal reveal-delay-2"><a href="contact.html" class="btn btn-primary">Get a Free Quote</a><a href="portfolio.html" class="btn btn-outline">View Our Work</a></div>
+</div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-grid">
+<div class="footer-col"><img src="images/logo.png.png" alt="Rehmat Developers Logo" style="height:120px;width:auto;vertical-align:middle;margin-bottom:20px"><p>Transforming ideas into powerful digital experiences. We build modern, high-performance websites that help businesses present themselves professionally and grow online.</p></div>
+<div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html" aria-current="page">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="blog.html">Blog</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="faq.html">FAQ</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+<div class="footer-col"><h4>Our Services</h4><ul><li><a href="services.html">Web Development</a></li><li><a href="services.html">UI/UX Design</a></li><li><a href="services.html">E-Commerce Solutions</a></li><li><a href="services.html">SEO Optimization</a></li></ul></div>
+<div class="footer-col"><h4>Contact Info</h4><ul class="contact-info">
+<li>📍 <a href="https://maps.app.goo.gl/6MBJ13cBZTisaQM1A" target="_blank" rel="noopener noreferrer">Raja Jang, Kasur, Punjab, Pakistan</a></li>
+<li>📧 <a href="mailto:rehmat.developers022@gmail.com">rehmat.developers022@gmail.com</a></li>
+<li>📞 <a href="tel:+923284461097">+92 (328) 446-1097</a></li>
+<li>💬 <a href="https://wa.me/923284461097" target="_blank" rel="noopener noreferrer">WhatsApp Us</a></li>
+</ul></div></div>
+<div class="footer-bottom"><p>© 2026 Rehmat Developers. All Rights Reserved.</p><p>Made with ❤ by Muhammad Waleed</p></div>
+</div></footer>
+<a href="https://wa.me/923284461097?text=Hi%20Rehmat%20Developers!%20I%20have%20a%20question." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<button class="scroll-top" aria-label="Scroll to top">↑</button>
+<script>
+(function(){function hidePreloader(){var loader=document.querySelector('.preloader');if(loader){loader.classList.add('loaded');loader.style.opacity='0';loader.style.visibility='hidden';loader.style.pointerEvents='none';window.setTimeout(function(){loader.style.display='none'},400)}}window.addEventListener('load',hidePreloader,{once:true});window.setTimeout(hidePreloader,2500)})();
+</script>
+<script src="js/script.js"></script>
 </body>
 </html>
