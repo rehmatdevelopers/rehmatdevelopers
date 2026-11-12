@@ -54,6 +54,18 @@
 @media(max-width:768px){.values-grid,.mission-grid{grid-template-columns:1fr;gap:16px}.value-card{padding:28px 22px}.about-image-wrapper{max-width:100%;max-height:420px}.stat-card{min-height:120px;padding:22px 14px!important}.stat-number{font-size:1.1rem!important}.about-cta h2{font-size:1.75rem}.policy-note{padding:18px}}
 @media(max-width:480px){.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}.stat-number{font-size:1rem!important}.stat-label{font-size:.78rem!important}.about-image-wrapper{max-height:360px;border-radius:18px}}
 @media(prefers-reduced-motion:reduce){.about-image-wrapper img.ceo-photo,.stat-card,.value-card{transition:none!important}.about-image-wrapper:hover img.ceo-photo,.stat-card:hover,.value-card:hover{transform:none!important}}
+
+.team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;max-width:900px;margin:48px auto 0}
+.team-card{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;padding:30px 28px 32px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.09);border-radius:22px;min-width:0;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.team-card:hover{transform:translateY(-6px);border-color:rgba(0,212,255,.38);box-shadow:0 16px 42px rgba(0,212,255,.1)}
+.team-photo-wrap{width:148px;height:148px;border-radius:50%;padding:4px;margin:0 auto 22px;background:linear-gradient(135deg,#00d4ff,#7c3aed);box-shadow:0 8px 30px rgba(0,212,255,.14)}
+.team-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;border:3px solid #0b1020;background:#151c30}
+.team-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;line-height:1.3;color:#fff;margin:0 0 9px}
+.team-role{display:inline-block;color:#00d4ff;font-size:.9rem;font-weight:700;line-height:1.5;margin-bottom:14px}
+.team-card p{color:var(--text-secondary,#a0aec0);font-size:.95rem;line-height:1.7;margin:0;max-width:350px}
+@media(max-width:768px){.team-grid{grid-template-columns:1fr;gap:18px;max-width:480px;margin-top:34px}.team-card{padding:26px 22px}.team-photo-wrap{width:132px;height:132px}}
+@media(prefers-reduced-motion:reduce){.team-card{transition:none}.team-card:hover{transform:none}}
+
 </style>
 </head>
 <body>
@@ -96,6 +108,35 @@
 <div class="value-card"><div class="value-icon">🎯</div><h3>Our Mission</h3><p style="text-align:justify;">Our mission is to help businesses build a strong digital presence through modern, user-friendly, and reliable web solutions. We aim to understand each client's needs and turn their ideas into practical digital experiences.</p></div>
 <div class="value-card"><div class="value-icon">🌍</div><h3>Our Vision</h3><p style="text-align:justify;">Our vision is to become a trusted web development partner by delivering thoughtful digital solutions, maintaining honest relationships, and continuously improving the way we work.</p></div>
 </div></div></section>
+
+<section class="section" id="our-team" style="background:rgba(255,255,255,.01);border-top:1px solid rgba(255,255,255,.05)">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto">
+      <span class="section-tag">👥 The People Behind Our Work</span>
+      <h2 style="font-size:50px;" class="section-title">Meet Our <span class="gradient-text">Team</span></h2>
+      <p style="color:var(--text-secondary);line-height:1.7">A focused team bringing custom web development and WordPress expertise together.</p>
+    </div>
+    <div class="team-grid reveal reveal-delay-1">
+      <article class="team-card">
+        <div class="team-photo-wrap">
+          <img class="team-photo" src="images/waleed.jpg" alt="Muhammad Waleed, Founder and CEO and Frontend and Backend Developer" width="300" height="300" loading="lazy">
+        </div>
+        <h3>Muhammad Waleed</h3>
+        <span class="team-role">Founder &amp; CEO | Frontend &amp; Backend Developer</span>
+        <p>Leads Rehmat Developers and builds responsive, functional websites through custom frontend and backend development.</p>
+      </article>
+      <article class="team-card">
+        <div class="team-photo-wrap">
+          <img class="team-photo" src="images/ahsan.jpg" alt="Muhammad Ahsan Jameel, WordPress Website Development Expert" width="300" height="300" loading="lazy">
+        </div>
+        <h3>Muhammad Ahsan Jameel</h3>
+        <span class="team-role">WordPress Website Development Expert</span>
+        <p>Specializes in creating, customizing, and managing professional WordPress websites tailored to business needs.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="section" style="background:rgba(255,255,255,.01);border-top:1px solid rgba(255,255,255,.05)"><div class="container">
 <div style="text-align:center;max-width:700px;margin:0 auto"><span class="section-tag">💎 Our Philosophy</span><h2 style="font-size:50px;" class="section-title">Why Choose <span class="gradient-text">Us?</span></h2></div>
 <div class="values-grid reveal reveal-delay-1">
