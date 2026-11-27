@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | Rehmat Developers</title>
+<meta name="description" content="Articles on web development, UI/UX design, SEO and business growth from the Rehmat Developers team.">
+<meta name="theme-color" content="#101B35">
+<meta property="og:title" content="Blog | Rehmat Developers">
+<meta property="og:description" content="Articles on web development, UI/UX design, SEO and business growth from the Rehmat Developers team.">
+<meta property="og:type" content="website">
+<link rel="icon" href="images/logo.png" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="site-header"></div>
+<noscript><div class="noscript">JavaScript is needed to show the navigation and page content. You can still reach us at rehmat.developers022@gmail.com or +92 328 4461097.</div></noscript>
+<main id="main">
+<section class="page-hero"><div class="container">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Blog</span></nav>
+<h1>Our blog</h1><p>Practical insights on web development, design, SEO and growing your business online.</p></div></section>
+<section class="section"><div class="container">
+<div data-mount="featuredPost"></div>
+<div class="toolbar mt"><div class="filters" id="post-filters" role="group" aria-label="Filter articles by category"></div>
+<div class="search" style="width:min(320px,100%)"><span data-icon="search"></span><label class="sr" for="post-search" style="position:absolute;left:-999px">Search articles</label><input id="post-search" type="search" placeholder="Search articles" autocomplete="off"></div></div>
+<p class="count" id="post-count" style="margin-bottom:20px" aria-live="polite"></p>
+<div data-mount="posts" id="post-grid"></div>
+<div class="empty" id="post-empty" hidden><h3>No articles match your search</h3><p>Try a different keyword or category.</p></div></div></section>
+<section class="section section--tint"><div class="container"><div class="newsletter">
+<div><h2>Get new articles by email</h2><p>Practical web development tips, design ideas and honest business advice. Enter your email and we will add you to the list.</p></div>
+<div><form id="nl-form" class="nl-form" novalidate><label class="sr" for="nl-email" style="position:absolute;left:-999px">Email address</label><input id="nl-email" type="email" placeholder="you@example.com" autocomplete="email"><button class="btn btn--primary" type="submit">Subscribe</button></form>
+<div class="nl-err" id="nl-err" role="alert"></div><div class="nl-ok" id="nl-ok" role="status"></div></div></div></div></section>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
